@@ -12,4 +12,4 @@ npx sequelize-cli model:generate --name UserGroupJoin --attributes userId:intege
 
 npx sequelize-cli model:generate --name ChannelMessage --attributes channelId:integer,userId:integer,messageText:string,messageImg:string
 
-npx sequelize-cli model:generate --name Notification --attributes userId:integer,channelMessagesId:integer,dmsId:integer,read:boolean
+npx sequelize-cli model:generate --name Notification --attributes userId:integer,channelMessagesId:integer,directMessagesId:integer,read:boolean

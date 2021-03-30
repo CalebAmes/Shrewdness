@@ -15,13 +15,73 @@ module.exports = {
         {
           email: faker.internet.email(),
           username: 'FakeUser1',
+          bio: faker.lorem.sentence(3),
+          avatar: faker.image.avatar(),
           hashedPassword: bcrypt.hashSync(faker.internet.password())
         },
         {
           email: faker.internet.email(),
           username: 'FakeUser2',
+          bio: faker.lorem.sentence(3),
+          avatar: faker.image.avatar(),
           hashedPassword: bcrypt.hashSync(faker.internet.password())
-        }
+        },
+        {
+          email: faker.internet.email(),
+          username: faker.lorem.word(),
+          bio: faker.lorem.sentence(3),
+          avatar: faker.image.avatar(),
+          hashedPassword: bcrypt.hashSync(faker.internet.password())
+        },
+        {
+          email: faker.internet.email(),
+          username: faker.lorem.word(),
+          bio: faker.lorem.sentence(3),
+          avatar: faker.image.avatar(),
+          hashedPassword: bcrypt.hashSync(faker.internet.password())
+        },
+        {
+          email: faker.internet.email(),
+          username: faker.lorem.word(),
+          bio: faker.lorem.sentence(3),
+          avatar: faker.image.avatar(),
+          hashedPassword: bcrypt.hashSync(faker.internet.password())
+        },
+        {
+          email: faker.internet.email(),
+          username: faker.lorem.word(),
+          bio: faker.lorem.sentence(3),
+          avatar: faker.image.avatar(),
+          hashedPassword: bcrypt.hashSync(faker.internet.password())
+        },
+        {
+          email: faker.internet.email(),
+          username: faker.lorem.word(),
+          bio: faker.lorem.sentence(3),
+          avatar: faker.image.avatar(),
+          hashedPassword: bcrypt.hashSync(faker.internet.password())
+        },
+        {
+          email: faker.internet.email(),
+          username: faker.lorem.word(),
+          bio: faker.lorem.sentence(3),
+          avatar: faker.image.avatar(),
+          hashedPassword: bcrypt.hashSync(faker.internet.password())
+        },
+        {
+          email: faker.internet.email(),
+          username: faker.lorem.word(),
+          bio: faker.lorem.sentence(3),
+          avatar: faker.image.avatar(),
+          hashedPassword: bcrypt.hashSync(faker.internet.password())
+        },
+        {
+          email: faker.internet.email(),
+          username: faker.lorem.word(),
+          bio: faker.lorem.sentence(3),
+          avatar: faker.image.avatar(),
+          hashedPassword: bcrypt.hashSync(faker.internet.password())
+        },
       ],
       {}
     );

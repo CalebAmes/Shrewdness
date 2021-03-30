@@ -9,25 +9,30 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       userId: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: { model: 'Users' },
       },
       channelMessagesId: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: { model: 'ChannelMessages' },
       },
-      dmsId: {
-        type: Sequelize.INTEGER
+      directMessagesId: {
+        type: Sequelize.INTEGER,
+        references: { model: 'DirectMessages' },
       },
       read: {
         type: Sequelize.BOOLEAN
       },
       createdAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.fn('now')
       },
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE
-      }
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.fn('now')
+      },
     });
   },
   down: (queryInterface, Sequelize) => {

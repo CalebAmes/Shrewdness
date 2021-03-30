@@ -9,12 +9,18 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       email: {
-        type: Sequelize.STRING,
+        type: Sequelize.STRING(100),
         allowNull: false,
         unique: true
       },
-      username: {
+      bio: {
+        type: Sequelize.STRING(300),
+      },
+      avatar: {
         type: Sequelize.STRING,
+      },
+      username: {
+        type: Sequelize.STRING(30),
         allowNull: false
       },
       hashedPassword: {
@@ -30,7 +36,7 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE,
         defaultValue: Sequelize.fn('now')
-      }
+      },
     });
   },
   down: (queryInterface, Sequelize) => {

@@ -28,7 +28,6 @@ module.exports = (sequelize, DataTypes) => {
       },
       bio: {
         type: DataTypes.STRING,
-        allowNull: true,
       },
       avatar: {
         type: DataTypes.STRING,
@@ -59,7 +58,22 @@ module.exports = (sequelize, DataTypes) => {
   );
   User.associate = function (models) {
     // associations can be defined here
-    User.hasMany(models.Dms)
+    const columnMapping = {
+      through: 'UserGroupJoin',
+      otherKey: 'groupId',
+      foreignKey: 'userId',
+    }
+
+    User.hasMany(models.DirectMessage, { foreignKey: 'userOneId' })
+    User.hasMany(models.DirectMessage, { foreignKey: 'userTwoId' })
+    
+    User.belongsToMany(models.Group, { columnMapping})
+    
+    User.hasMany(models.ChannelMessage, { foreignKey: 'userId' })
+
+    User.hasMany(models.Notification, { foreignKey: 'userId' })
+
+
   };
   User.prototype.toSafeObject = function () {
     // remember, this cannot be an arrow function
