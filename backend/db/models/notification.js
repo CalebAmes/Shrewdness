@@ -8,9 +8,9 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Notification.associate = function(models) {
     // associations can be defined here
-    Notification.BelongsTo(models.User, { foreignKey: 'userId'})
-    Notification.BelongsTo(models.ChannelMessage, { foreignKey: 'channelMessagesId'})
-    Notification.BelongsTo(models.DirectMessage, { foreignKey: 'directMessagesId'})
+    Notification.belongsTo(models.User, { foreignKey: 'userId'})
+    Notification.belongsTo(models.ChannelMessage, { foreignKey: 'channelMessagesId'})
+    Notification.belongsTo(models.DirectMessage, { foreignKey: 'directMessagesId'})
   };
   return Notification;
 };

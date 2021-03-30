@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
       foreignKey: 'groupId',
     }
     // associations can be defined here
-    User.belongsToMany(models.Group, { columnMapping });
+    Group.belongsToMany(models.User, columnMapping);
   };
   return Group;
 };

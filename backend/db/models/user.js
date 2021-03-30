@@ -67,7 +67,7 @@ module.exports = (sequelize, DataTypes) => {
     User.hasMany(models.DirectMessage, { foreignKey: 'userOneId' })
     User.hasMany(models.DirectMessage, { foreignKey: 'userTwoId' })
     
-    User.belongsToMany(models.Group, { columnMapping})
+    User.belongsToMany(models.Group, columnMapping)
     
     User.hasMany(models.ChannelMessage, { foreignKey: 'userId' })
 

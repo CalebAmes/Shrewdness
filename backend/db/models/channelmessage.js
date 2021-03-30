@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   ChannelMessage.associate = function(models) {
     // associations can be defined here
-    ChannelMessage.BelongsTo(models.User, { foreignKey: 'userId' })
+    ChannelMessage.belongsTo(models.User, { foreignKey: 'userId' })
     ChannelMessage.hasMany(models.Notification, { foreignKey: 'channelMessagesId' })
   };
   return ChannelMessage;
