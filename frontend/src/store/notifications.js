@@ -12,9 +12,8 @@ const addNotification = (notification) => ({
   notification,
 })
 
-const removeNotification = (notification) => ({
+const removeNotification = () => ({
   type: REMOVE_NOTIFICATION,
-  notification,
 })
 
 export const getNotification = () => async (dispatch) => {
@@ -24,13 +23,16 @@ export const getNotification = () => async (dispatch) => {
   return res;
 }
 
-export const createNotification = () => async (dispatch) => {
-  const {  } = notification;
+export const createNotification = (notification) => async (dispatch) => {
+  const { userId, channelMessagesId, directMessagesId, read, } = notification;
   const res = await fetch ('/api/notifications', {
     method: 'POST',
     headers: {'Content-Type': 'application/json'},
     body: JSON.stringify({
-
+      userId, 
+      channelMessagesId, 
+      directMessagesId, 
+      read, 
     })
   });
   if (res.ok) {

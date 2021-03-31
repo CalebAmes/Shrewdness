@@ -2,35 +2,34 @@ const SET_USER_GROUP = 'userGroups/setUserGroup';
 const ADD_USER_GROUP = 'userGroups/addUserGroup';
 const REMOVE_USER_GROUP = 'userGroups/removeUserGroup';
 
-const setUserGroup = (userGroups) => ({
+const setUserGroup = (userGroup) => ({
   type: SET_USER_GROUP,
-  userGroups,
+  userGroup,
 })
 
-const addUserGroup = (userGroups) => ({
+const addUserGroup = (userGroup) => ({
   type: ADD_USER_GROUP,
-  userGroups,
+  userGroup,
 })
 
-const removeUserGroup = (userGroups) => ({
+const removeUserGroup = () => ({
   type: REMOVE_USER_GROUP,
-  userGroups,
 })
 
 export const getUserGroup = () => async (dispatch) => {
-  const res = await fetch('/api/user-group');
+  const res = await fetch('/api/userGroups');
   const data = await res.json();
-  dispatch(setUserGroup(data.userGroup));
+  dispatch(setUserGroup(data));
   return res;
 }
 
-export const createUserGroup = () => async (dispatch) => {
-  const {  } = userGroup;
-  const res = await fetch ('/api/user-group', {
+export const createUserGroup = ( userGroups ) => async (dispatch) => {
+  const { userId, groupId, } = userGroups;
+  const res = await fetch ('/api/userGroups', {
     method: 'POST',
     headers: {'Content-Type': 'application/json'},
     body: JSON.stringify({
-
+      userId, groupId,
     })
   });
   if (res.ok) {
@@ -41,7 +40,7 @@ export const createUserGroup = () => async (dispatch) => {
 }
 
 export const deleteUserGroup = () => async (dispatch) => {
-  const res = await fetch ('/api/user-group', {
+  const res = await fetch ('/api/userGroups', {
     method: 'DELETE',
   });
   dispatch(removeUserGroup());
@@ -53,14 +52,11 @@ function reducer(state = {}, action) {
   switch (action.type) {
     case ADD_USER_GROUP:
       newState = { ...state };
-      newState['userGroup'] = action.userGroup;
+      newState['userGroup'] = action;
       return newState;
     case SET_USER_GROUP:
-      newState = {};
-      action.userGroup.forEach(item => {
-        newState[item.id] = item;
-      });
-      return newState;
+      newState = action.userGroup;
+      return newState.userGroup;
     case REMOVE_USER_GROUP:
       return { ...state, userGroup: null };
     default: return state;

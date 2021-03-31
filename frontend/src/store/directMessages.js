@@ -2,46 +2,48 @@ const SET_MESSAGE = 'directMessage/setMessage';
 const ADD_MESSAGE = 'directMessage/addMessage';
 const REMOVE_MESSAGE = 'directMessage/removeMessage';
 
-const setMessage = (message) => ({
+const setMessage = (directMessage) => ({
   type: SET_MESSAGE,
-  message,
+  directMessage,
 })
 
-const addMessage = (message) => ({
+const addMessage = (directMessage) => ({
   type: ADD_MESSAGE,
-  message,
+  directMessage,
 })
 
-const removeMessage = (message) => ({
+const removeMessage = () => ({
   type: REMOVE_MESSAGE,
-  message,
 })
 
-export const getMessage = () => async (dispatch) => {
-  const res = await fetch('/api/direct-messages');
+export const getDirectMessages = () => async (dispatch) => {
+  const res = await fetch('/api/directMessages');
   const data = await res.json();
-  dispatch(setMessage(data.message));
+  dispatch(setMessage(data.directMessage));
   return res;
 }
 
-export const createMessage = () => async (dispatch) => {
-  const {  } = message;
-  const res = await fetch ('/api/direct-messages', {
+export const createDirectMessage = (directMessage) => async (dispatch) => {
+  const { userOneId, userTwoId, messageText, messageImg, } = directMessage;
+  const res = await fetch ('/api/directMessages', {
     method: 'POST',
     headers: {'Content-Type': 'application/json'},
     body: JSON.stringify({
-
+      userOneId, 
+      userTwoId, 
+      messageText, 
+      messageImg,
     })
   });
   if (res.ok) {
     const data = await res.json();
-    dispatch(addMessage(data.message));
+    dispatch(addMessage(data.directMessage));
     return data;
   }
 }
 
-export const deleteChannelMessage = () => async (dispatch) => {
-  const res = await fetch ('/api/direct-messages', {
+export const deleteDirectMessage = () => async (dispatch) => {
+  const res = await fetch ('/api/directMessages', {
     method: 'DELETE',
   });
   dispatch(removeMessage());
@@ -53,16 +55,16 @@ function reducer(state = {}, action) {
   switch (action.type) {
     case ADD_MESSAGE:
       newState = { ...state };
-      newState['message'] = action.message;
+      newState['directMessage'] = action.directMessage;
       return newState;
     case SET_MESSAGE:
       newState = {};
-      action.message.forEach(item => {
+      action.directMessage.forEach(item => {
         newState[item.id] = item;
       });
       return newState;
     case REMOVE_MESSAGE:
-      return { ...state, message: null };
+      return { ...state, directMessage: null };
     default: return state;
   }
 }

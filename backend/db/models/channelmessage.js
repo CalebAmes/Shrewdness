@@ -11,5 +11,14 @@ module.exports = (sequelize, DataTypes) => {
     ChannelMessage.belongsTo(models.User, { foreignKey: 'userId' })
     ChannelMessage.hasMany(models.Notification, { foreignKey: 'channelMessagesId' })
   };
+  ChannelMessage.createChannelMessage = async function ({ 
+    channelId, userId, messageText, messageImg,
+  }) {
+    const channelMessage = await ChannelMessage.create({
+      channelId, userId, messageText, messageImg,
+    });
+    return await ChannelMessage.findByPk(channelMessage.id)
+  }
+
   return ChannelMessage;
 };

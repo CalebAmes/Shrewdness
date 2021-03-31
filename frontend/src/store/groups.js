@@ -12,9 +12,8 @@ const addGroup = (group) => ({
   group,
 })
 
-const removeGroup = (group) => ({
+const removeGroup = () => ({
   type: REMOVE_GROUP,
-  group,
 })
 
 export const getGroup = () => async (dispatch) => {
@@ -24,13 +23,15 @@ export const getGroup = () => async (dispatch) => {
   return res;
 }
 
-export const createGroup = () => async (dispatch) => {
-  const {  } = group;
+export const createGroup = (group) => async (dispatch) => {
+  const { name, avatar, description, } = group;
   const res = await fetch ('/api/groups', {
     method: 'POST',
     headers: {'Content-Type': 'application/json'},
     body: JSON.stringify({
-
+      name, 
+      avatar, 
+      description,
     })
   });
   if (res.ok) {

@@ -72,8 +72,6 @@ module.exports = (sequelize, DataTypes) => {
     User.hasMany(models.ChannelMessage, { foreignKey: 'userId' })
 
     User.hasMany(models.Notification, { foreignKey: 'userId' })
-
-
   };
   User.prototype.toSafeObject = function () {
     // remember, this cannot be an arrow function

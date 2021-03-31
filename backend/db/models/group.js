@@ -14,5 +14,14 @@ module.exports = (sequelize, DataTypes) => {
     // associations can be defined here
     Group.belongsToMany(models.User, columnMapping);
   };
+  Group.createGroup = async function ({ 
+    name, avatar, description
+  }) {
+    const group = await Group.create({
+      name, avatar, description
+    });
+    return await Group.findByPk(group.id);
+  }
+
   return Group;
 };

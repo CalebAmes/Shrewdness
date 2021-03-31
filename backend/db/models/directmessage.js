@@ -13,5 +13,14 @@ module.exports = (sequelize, DataTypes) => {
 
     DirectMessage.hasMany(models.Notification, { foreignKey: 'directMessagesId' })
   };
+  DirectMessage.createDirectMessage = async function ({ 
+    userOneId, userTwoId, messageText, messageImg,
+  }) {
+    const directMessage = await DirectMessage.create({
+      userOneId, userTwoId, messageText, messageImg,
+    });
+    return await DirectMessage.findByPk(directMessage.id)
+  }
+
   return DirectMessage;
 };

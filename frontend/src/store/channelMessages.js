@@ -2,31 +2,30 @@ const SET_MESSAGE = 'channelMessage/setMessage';
 const ADD_MESSAGE = 'channelMessage/addMessage';
 const REMOVE_MESSAGE = 'channelMessage/removeMessage';
 
-const setMessage = (message) => ({
+const setMessage = (channelMessage) => ({
   type: SET_MESSAGE,
-  message,
+  channelMessage,
 })
 
-const addMessage = (message) => ({
+const addMessage = (channelMessage) => ({
   type: ADD_MESSAGE,
-  message,
+  channelMessage,
 })
 
-const removeMessage = (message) => ({
+const removeMessage = () => ({
   type: REMOVE_MESSAGE,
-  message,
 })
 
 export const getChannelMessages = () => async (dispatch) => {
-  const res = await fetch('/api/channel-messages');
+  const res = await fetch('/api/channelMessages');
   const data = await res.json();
-  dispatch(setMessage(data.message));
+  dispatch(setMessage(data.channelMessage));
   return res;
 }
 
-export const createChannelMessage = () => async (dispatch) => {
-  const { channelId, userId, messageText, messageImg } = message;
-  const res = await fetch ('/api/channel-messages', {
+export const createChannelMessage = (channelMessage) => async (dispatch) => {
+  const { channelId, userId, messageText, messageImg } = channelMessage;
+  const res = await fetch ('/api/channelMessages', {
     method: 'POST',
     headers: {'Content-Type': 'application/json'},
     body: JSON.stringify({
@@ -38,13 +37,13 @@ export const createChannelMessage = () => async (dispatch) => {
   });
   if (res.ok) {
     const data = await res.json();
-    dispatch(addMessage(data.message));
+    dispatch(addMessage(data.channelMessage));
     return data;
   }
 }
 
 export const deleteChannelMessage = () => async (dispatch) => {
-  const res = await fetch ('/api/channel-messages', {
+  const res = await fetch ('/api/channelMessages', {
     method: 'DELETE',
   });
   dispatch(removeMessage());
@@ -56,18 +55,18 @@ function reducer(state = {}, action) {
   switch (action.type) {
     case ADD_MESSAGE:
       newState = { ...state };
-      newState['message'] = action.message;
+      newState['channelMessage'] = action.channelMessage;
       return newState;
     case SET_MESSAGE:
       newState = {};
-      action.message.forEach(item => {
+      action.channelMessage.forEach(item => {
         newState[item.id] = item;
       });
       return newState;
     case REMOVE_MESSAGE:
-      return { ...state, message: null };
+      return { ...state, channelMessage: null };
     default: return state;
   }
 }
 
-export default reducer
+export default reducer;

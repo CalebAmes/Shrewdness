@@ -12,5 +12,14 @@ module.exports = (sequelize, DataTypes) => {
     Notification.belongsTo(models.ChannelMessage, { foreignKey: 'channelMessagesId'})
     Notification.belongsTo(models.DirectMessage, { foreignKey: 'directMessagesId'})
   };
+  Notification.createNotification = async function ({ 
+    userId, channelMessagesId, directMessagesId, read,
+  }) {
+    const notification = await Notification.create({
+      userId, channelMessagesId, directMessagesId, read,
+    });
+    return await Notification.findByPk(notification.id);
+  }
+
   return Notification;
 };
