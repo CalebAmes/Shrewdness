@@ -13,3 +13,17 @@ npx sequelize-cli model:generate --name UserGroupJoin --attributes userId:intege
 npx sequelize-cli model:generate --name ChannelMessage --attributes channelId:integer,userId:integer,messageText:string,messageImg:string
 
 npx sequelize-cli model:generate --name Notification --attributes userId:integer,channelMessagesId:integer,directMessagesId:integer,read:boolean
+
+for electron in package.json
+  "main": "./src/main.js",
+    "start": "electron .",
+
+  in index.html
+
+for browser in package.json
+  "main": "index.js",
+  "start": "react-scripts start",
+
+  in index.html
+
+  <script src="./index.js"></script>
