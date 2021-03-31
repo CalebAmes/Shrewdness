@@ -13,7 +13,7 @@ const removeUser = () => ({
 });
 
 export const login = ({ credential, password }) => async (dispatch) => {
-  const res = await fetch('/api/session', {
+  const res = await fetch('http://localhost:5000/api/session', {
     method: 'POST',
     body: JSON.stringify({ credential, password })
   });
@@ -22,14 +22,14 @@ export const login = ({ credential, password }) => async (dispatch) => {
 };
 
 export const restoreUser = () => async (dispatch) => {
-  const res = await fetch('/api/session');
+  const res = await fetch('http://localhost:5000/api/session');
   dispatch(setUser(res.data.user));
   return res;
 };
 
 export const signup = (user) => async (dispatch) => {
   const { username, email, password } = user;
-  const response = await fetch('/api/users', {
+  const response = await fetch('http://localhost:5000/api/users', {
     method: 'POST',
     body: JSON.stringify({
       username,
@@ -43,7 +43,7 @@ export const signup = (user) => async (dispatch) => {
 };
 
 export const logout = () => async (dispatch) => {
-  const response = await fetch('/api/session', {
+  const response = await fetch('http://localhost:5000/api/session', {
     method: 'DELETE'
   });
   dispatch(removeUser());

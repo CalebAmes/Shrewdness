@@ -17,7 +17,7 @@ const removeNotification = () => ({
 })
 
 export const getNotification = () => async (dispatch) => {
-  const res = await fetch('/api/notifications');
+  const res = await fetch('http://localhost:5000/api/notifications');
   const data = await res.json();
   dispatch(setNotification(data.notification));
   return res;
@@ -25,7 +25,7 @@ export const getNotification = () => async (dispatch) => {
 
 export const createNotification = (notification) => async (dispatch) => {
   const { userId, channelMessagesId, directMessagesId, read, } = notification;
-  const res = await fetch ('/api/notifications', {
+  const res = await fetch ('http://localhost:5000/api/notifications', {
     method: 'POST',
     headers: {'Content-Type': 'application/json'},
     body: JSON.stringify({
@@ -43,7 +43,7 @@ export const createNotification = (notification) => async (dispatch) => {
 }
 
 export const deleteNotification = () => async (dispatch) => {
-  const res = await fetch ('/api/notifications', {
+  const res = await fetch ('http://localhost:5000/api/notifications', {
     method: 'DELETE',
   });
   dispatch(removeNotification());
