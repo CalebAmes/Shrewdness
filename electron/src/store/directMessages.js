@@ -17,7 +17,7 @@ const removeMessage = () => ({
 })
 
 export const getDirectMessages = () => async (dispatch) => {
-  const res = await fetch('/api/directMessages');
+  const res = await fetch('http://localhost:5000/api/directMessages');
   const data = await res.json();
   dispatch(setMessage(data.directMessage));
   return res;
@@ -25,9 +25,9 @@ export const getDirectMessages = () => async (dispatch) => {
 
 export const createDirectMessage = (directMessage) => async (dispatch) => {
   const { userOneId, userTwoId, messageText, messageImg, } = directMessage;
-  const res = await fetch ('/api/directMessages', {
+  const res = await fetch ('http://localhost:5000/api/directMessages', {
     method: 'POST',
-    headers: {'Content-Type': 'application/json'},
+    headers: {'Content-Type': 'http://localhost:5000application/json'},
     body: JSON.stringify({
       userOneId, 
       userTwoId, 
@@ -43,7 +43,7 @@ export const createDirectMessage = (directMessage) => async (dispatch) => {
 }
 
 export const deleteDirectMessage = () => async (dispatch) => {
-  const res = await fetch ('/api/directMessages', {
+  const res = await fetch ('http://localhost:5000/api/directMessages', {
     method: 'DELETE',
   });
   dispatch(removeMessage());

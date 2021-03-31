@@ -10,7 +10,6 @@ window.closeCurrentWindow = function(){
 contextBridge.exposeInMainWorld('e_notification', {
   sendNotification(message){
     ipcRenderer.send('notify', message)
-    require('electron-react-devtools').install()
   }
 })
 

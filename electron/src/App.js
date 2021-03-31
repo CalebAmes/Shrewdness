@@ -6,12 +6,14 @@ import LoginFormPage from "./components/LoginFormPage";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import Home from './components/Home';
+import Users from "./components/Users";
 import { getChannelMessages } from './store/channelMessages';
 import { getChannel } from './store/channels';
 import { getDirectMessages } from './store/directMessages';
 import { getGroup } from './store/groups';
 import { getNotification } from './store/notifications';
 import { getUserGroup } from './store/userGroups';
+import { getUsers } from './store/users';
 
 function App() {
   const dispatch = useDispatch();
@@ -24,6 +26,7 @@ function App() {
     dispatch(getGroup());
     dispatch(getNotification());
     dispatch(getUserGroup());
+    dispatch(getUsers());
   }, [dispatch]);
 
   return (
@@ -37,7 +40,10 @@ function App() {
           <Route path="/signup">
             <SignupFormPage />
           </Route>
-          <Route path='/' >
+          <Route path= '/users' >
+            <Users />
+          </Route>
+          <Route path='/' exact >
             <Home />
           </Route>
         </Switch>

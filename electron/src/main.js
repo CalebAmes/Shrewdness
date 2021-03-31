@@ -1,7 +1,16 @@
 const { app, BrowserWindow, ipcMain, Notification } = require('electron');
 const path = require('path');
 const isDev = !app.isPackaged;
-const express = require('../../backend/app.js');
+
+let mainWindow = null;
+
+function main() {
+  mainWindow = new BrowserWindow()
+  mainWindow.loadURL('http://localhost:5000/api/users')
+  mainWindow.on('close', event => {
+    mainWindow = null
+  })
+}
 
 function createWindow() {
   const win = new BrowserWindow({
@@ -24,11 +33,7 @@ if (isDev) {
   })
 }
 
-app.on('ready', function() {
-  express();
-  mainWindow.loadURL('http://localhost:5000/');
-  mainWindow.focus();
-})
+app.on('ready', main )
 
 app.whenReady().then(createWindow);
 

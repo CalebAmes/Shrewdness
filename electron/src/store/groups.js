@@ -17,7 +17,7 @@ const removeGroup = () => ({
 })
 
 export const getGroup = () => async (dispatch) => {
-  const res = await fetch('/api/groups');
+  const res = await fetch('http://localhost:5000/api/groups');
   const data = await res.json();
   dispatch(setGroup(data.group));
   return res;
@@ -25,7 +25,7 @@ export const getGroup = () => async (dispatch) => {
 
 export const createGroup = (group) => async (dispatch) => {
   const { name, avatar, description, } = group;
-  const res = await fetch ('/api/groups', {
+  const res = await fetch ('http://localhost:5000/api/groups', {
     method: 'POST',
     headers: {'Content-Type': 'application/json'},
     body: JSON.stringify({
@@ -42,7 +42,7 @@ export const createGroup = (group) => async (dispatch) => {
 }
 
 export const deleteGroup = () => async (dispatch) => {
-  const res = await fetch ('/api/groups', {
+  const res = await fetch ('http://localhost:5000/api/groups', {
     method: 'DELETE',
   });
   dispatch(removeGroup());

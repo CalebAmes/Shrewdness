@@ -17,7 +17,7 @@ const removeMessage = () => ({
 })
 
 export const getChannelMessages = () => async (dispatch) => {
-  const res = await fetch('/api/channelMessages');
+  const res = await fetch('http://localhost:5000/api/channelMessages');
   const data = await res.json();
   dispatch(setMessage(data.channelMessage));
   return res;
@@ -25,7 +25,7 @@ export const getChannelMessages = () => async (dispatch) => {
 
 export const createChannelMessage = (channelMessage) => async (dispatch) => {
   const { channelId, userId, messageText, messageImg } = channelMessage;
-  const res = await fetch ('/api/channelMessages', {
+  const res = await fetch ('http://localhost:5000/api/channelMessages', {
     method: 'POST',
     headers: {'Content-Type': 'application/json'},
     body: JSON.stringify({
@@ -43,7 +43,7 @@ export const createChannelMessage = (channelMessage) => async (dispatch) => {
 }
 
 export const deleteChannelMessage = () => async (dispatch) => {
-  const res = await fetch ('/api/channelMessages', {
+  const res = await fetch ('http://localhost:5000/api/channelMessages', {
     method: 'DELETE',
   });
   dispatch(removeMessage());
