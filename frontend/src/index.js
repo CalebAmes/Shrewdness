@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 import './index.css';
 
 import ReactDOM from 'react-dom';
@@ -22,6 +21,12 @@ if (process.env.NODE_ENV !== 'production') {
   window.store = store;
   window.sessionActions = sessionActions;
 }
+
+// const Carrot = () => (
+//   <div style={{ color: "orange", fontSize: "100px" }}>
+//     <i className="fas fa-carrot"></i>
+//   </div>
+// );
 
 function Root() {
   return (
