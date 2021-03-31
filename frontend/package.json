@@ -2,6 +2,7 @@
   "name": "authenticate-me",
   "version": "0.1.0",
   "private": true,
+  "main": "index.js",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
@@ -17,6 +18,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "watch": "webpack --config webpack.common.js --watch",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -37,7 +39,13 @@
     ]
   },
   "devDependencies": {
-    "redux-logger": "^3.0.6"
+    "@babel/core": "^7.13.10",
+    "electron": "^12.0.2",
+    "electron-redux-devtools": "^0.3.4",
+    "electron-reload": "^1.5.0",
+    "redux-logger": "^3.0.6",
+    "webpack": "^5.27.1",
+    "webpack-cli": "^4.5.0"
   },
   "proxy": "http://localhost:5000"
 }
