@@ -28,17 +28,18 @@ db.sequelize
       
       // Runs when a client disconnects (yes it needs 
       //to be inside of the connection)
+      
+      //listen for a chat message
+      
+      // console.log('socket connection');
+      socket.on('chatMessage', (msg) => {
+        io.emit('message', msg.messageText);
+      })
+      
       socket.on('disconnect', () => {
         io.emit('message', 'user has left the chat')
       })
-
-      //listen for a chat message
-      socket.on('chatMessage', (msg) => {
-        io.emit('message', msg);
-      })
       
-      console.log('socket connection');
-
     });
 
     // Start listening for connections

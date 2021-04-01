@@ -19,6 +19,7 @@
     "react-redux": "^7.2.2",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.0",
+    "react-transition-group": "^4.4.1",
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0",
     "sass": "^1.32.8",
@@ -51,6 +52,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.13.14",
+    "@svgr/webpack": "^5.5.0",
     "electron": "^12.0.2",
     "electron-redux-devtools": "^0.3.4",
     "electron-reload": "^1.5.0",

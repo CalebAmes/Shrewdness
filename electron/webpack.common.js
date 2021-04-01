@@ -30,7 +30,11 @@ module.exports = {
           'css-loader',
           'sass-loader',
         ],
-      }
+      },
+      {
+        test: /\.svg$/,
+        use: ['@svgr/webpack'],
+      },
     ]
   },
   plugins: [],
