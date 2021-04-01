@@ -24,7 +24,7 @@ db.sequelize
       socket.broadcast.emit('message', 'User has joined the chat room');
       
       //broadcasts to everyone, including the current user
-      io.emit()
+      // io.emit()
       
       // Runs when a client disconnects (yes it needs 
       //to be inside of the connection)

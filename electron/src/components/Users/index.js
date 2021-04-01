@@ -19,14 +19,16 @@ const Users = () => {
     // emitting the message to the server
     socket.emit('chatMessage', msg)
   }
-  const chatMessages = document.querySelector('chatMessages')
+  const chatMessagesList = document.querySelector('.chatMessages')
   
   socket.on('message', text => {
+
+
     const el = document.createElement('li');
     el.innerHTML = text;
     document.querySelector('.chatMessagesList').appendChild(el);
     //make the page scroll down when you get a message
-    chatMessages.scrollTop = chatMessages.scrollHeight;
+    chatMessagesList.scrollTop = chatMessagesList.scrollHeight;
   })
 
   return (
