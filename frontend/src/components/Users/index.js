@@ -6,7 +6,7 @@ import { io } from 'socket.io-client';
 const Users = () => {
   const dispatch = useDispatch();
   const usersList = useSelector(state => state.users)
-  const socket = io('http://localhost:5000')
+  const socket = io()
 
   const users = Object.values(usersList)
 

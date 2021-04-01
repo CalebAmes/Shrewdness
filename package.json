@@ -14,5 +14,9 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "moment": "^2.29.1",
+    "socket.io": "^4.0.0"
+  }
 }
