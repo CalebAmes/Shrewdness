@@ -7,6 +7,7 @@ import directMessages from './directMessages';
 import groups from './groups';
 import notifications from './notifications';
 import userGroups from './userGroups';
+import users from './users';
 
 const rootReducer = combineReducers({
   session,
@@ -16,6 +17,7 @@ const rootReducer = combineReducers({
   groups,
   notifications,
   userGroups,
+  users,
 });
 
 let enhancer;
