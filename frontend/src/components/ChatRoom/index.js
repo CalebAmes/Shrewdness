@@ -37,6 +37,8 @@ const ChatRoom = () => {
     // socket.emit('join_channel', format(channel, user))
     socket.on(`chat_message_${id}`, async (msg) => {
       await dispatch(getChannelMessages())
+      setIsLoaded(true);
+      await dispatch(getChannelMessages())
       scroll()
     })
     socket.on(`join_channel_res_${id}`, (msg) => {socketRes(msg)})
