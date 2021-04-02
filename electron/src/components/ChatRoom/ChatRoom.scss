@@ -1,0 +1,24 @@
+.chatMessages {
+  min-width: 100%;
+  min-height: 500px;
+  overflow: scroll;
+}
+
+
+#messagePad {
+  padding: 10px;
+}
+
+.chatComponentDiv {
+  box-sizing: border-box;
+  height: 90%;
+  width: 90%;
+  background: tan;
+  margin: 5%;
+  padding: 3%;
+}
+
+.messsage {
+  font-size: 14px;
+  font-weight: 100;
+}

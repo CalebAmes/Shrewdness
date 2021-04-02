@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 import socket from '../../service/socket'
 import './message.scss';
 
-const MessageInput = ({ userId, channelId }) => {
+const MessageInput = ({ user, channelId }) => {
   const [value, setValue] = useState('');
+  const userId = user?.id
+  const data = { user, channelId }
 
   const keyPress = (e) => {
     if (e.key === 'Enter') {

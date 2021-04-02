@@ -20,35 +20,66 @@ const ChatRoom = () => {
   const { id } = useParams();
   const channelId = id
   const channel = channelsObj[channelId];
+  const [value, setValue] = useState('');
+  const userId = user?.id
   
   //TODO: add an api route to get just the current channels messages from the redux store to you don't have to store all of them
   const rawMessages = Object.values(channelMessagesObj);
   const msgs = rawMessages.filter(message => message.channelId == id);
   const channels = Object.values(channelsObj);
 
-  const format = (channel, user) => {
-    return {
-      channel, user,
-    }
-  }
-
-  useEffect(() => {
-    dispatch(getGroup());
-    dispatch(getChannel());
-    dispatch(getChannelMessages())
+  
+  useEffect(async () => {
+    await dispatch(getGroup());
+    await dispatch(getChannel());
+    await dispatch(getChannelMessages())
     setIsLoaded(true);
-    socket.emit('join_channel', format(channel, user))
+    // socket.emit('join_channel', format(channel, user))
+    socket.on(`chat_message_${id}`, async (msg) => {
+      await dispatch(getChannelMessages())
+      scroll()
+    })
+    socket.on(`join_channel_res_${id}`, (msg) => {socketRes(msg)})
     scroll()
   }, []);
   
-  socket.on(`chat_message_${id}`, (msg) => {newMessage(msg)})
-  socket.on(`join_channel_res_${id}`, (msg) => {socketRes(msg)})
-
-  const newMessage = (msg) => {
-    dispatch(getChannelMessages());
-    setIsLoaded(true);
-    scroll();
+  const keyPress = (e) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      sendMessage();
+      setValue('');
+    }
   }
+  const sendMessage = () => {
+    if (value.trim() === '') return;
+
+    const msg = {
+      messageText: value.trim(),
+      userId,
+      channelId,
+    }
+    socket.emit(`chatMessage`, msg)
+  }
+
+  const MsgInput = ({ user, channelId }) => {
+
+
+    return (
+      <div className='messageInputDiv'>
+        <textarea
+          onChange={e => setValue(e.target.value)}
+          onKeyPress={ keyPress }
+          value={ value }
+          className='messageInputTextarea'
+          placeholder='Type your message here...'>
+        </textarea>
+      </div>
+    )
+  }
+
+
+
+
 
   const socketRes = (msg) => {
     setHello(msg)

@@ -13,8 +13,6 @@ const MessageInput = ({ user, channelId }) => {
       sendMessage();
       setValue('');
     }
-    // socket.emit('is_typing', data)
-    
   }
 
   const sendMessage = () => {

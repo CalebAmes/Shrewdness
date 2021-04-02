@@ -12,58 +12,123 @@ import './ChatRoom.scss';
 const ChatRoom = () => {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
+  const [hello, setHello] = useState('')
   const channelsObj = useSelector(state => state.channels);
-  const channelMessagesObj = useSelector(state => state.channelMessages)
+  const channelMessagesObj = useSelector(state => state.channelMessages);
+  const users = useSelector(state => state.users);
   const user = useSelector(state => state.session.user);
   const { id } = useParams();
   const channelId = id
   const channel = channelsObj[channelId];
+  const [value, setValue] = useState('');
+  const userId = user?.id
   
   //TODO: add an api route to get just the current channels messages from the redux store to you don't have to store all of them
-  const rawMessages = Object.values(channelMessagesObj)
-  const msgs = rawMessages.filter(message => message.channelId == id)
-  const channels = Object.values(channelsObj)
+  const rawMessages = Object.values(channelMessagesObj);
+  const msgs = rawMessages.filter(message => message.channelId == id);
+  const channels = Object.values(channelsObj);
 
-  const format = (channel, user) => {
-    return {
-      channel, user,
+  
+  useEffect(async () => {
+    await dispatch(getGroup());
+    await dispatch(getChannel());
+    await dispatch(getChannelMessages())
+    setIsLoaded(true);
+    // socket.emit('join_channel', format(channel, user))
+    socket.on(`chat_message_${id}`, async (msg) => {
+      await dispatch(getChannelMessages())
+      setIsLoaded(true);
+      await dispatch(getChannelMessages())
+      scroll()
+    })
+    socket.on(`join_channel_res_${id}`, (msg) => {socketRes(msg)})
+    scroll()
+  }, []);
+  
+  const keyPress = (e) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      sendMessage();
+      setValue('');
     }
   }
+  const sendMessage = () => {
+    if (value.trim() === '') return;
 
-  useEffect(() => {
-    dispatch(getGroup());
-    dispatch(getChannel());
-    setIsLoaded(true);
-    socket.on(`join_channel_res_${id}`, (msg) => socketRes(msg))
-    socket.on(`chat_message_${id}`, (msg) => {newMessage(msg)})
-    socket.emit('join_channel', format(channel, user))
-    
-  }, []);
-
-  const newMessage = (msg) => {
-    dispatch(getChannelMessages())
+    const msg = {
+      messageText: value.trim(),
+      userId,
+      channelId,
+    }
+    socket.emit(`chatMessage`, msg)
   }
 
+  const MsgInput = ({ user, channelId }) => {
+
+
+    return (
+      <div className='messageInputDiv'>
+        <textarea
+          onChange={e => setValue(e.target.value)}
+          onKeyPress={ keyPress }
+          value={ value }
+          className='messageInputTextarea'
+          placeholder='Type your message here...'>
+        </textarea>
+      </div>
+    )
+  }
+
+
+
+
+
   const socketRes = (msg) => {
-    const el = document.createElement('p');
-    el.innerHTML = msg;
-    document.querySelector('.chatMessages').appendChild(el);
-    // make the page scroll down when you get a message
-    // chatMessagesList.scrollTop = chatMessagesList.scrollHeight;
+    setHello(msg)
+    scroll()
+  }
+
+  const scroll = () => {
+    const messagePad = document.getElementById('messagePad')
+    messagePad?.scrollIntoView({ behavior: "smooth" })
   }
 
   return (
-    <>{ isLoaded &&
+    <>{ isLoaded && user &&
       <>
         <h1>Welcome to chat room {id}</h1>
         <div className='chatMessages'>
           {msgs.map((msg) => (
-            <h3>{msg.messageText}</h3>
+
+            <ChatComponent message={msg} users={users} currentUserId={user.id} />
           ))}
+          <div id='messagePad'>{hello}</div>
         </div>
-        <MessageInput userId={user?.id} channelId={id} />
+        <MessageInput user={user} channelId={id} />
       </>
+    }{
+      !user && 
+      <h1>Please log in to join a chat room</h1>
     }
+    </>
+  )
+}
+
+export function ChatComponent ({ message, users, currentUserId }) {
+  
+  return (
+    <>
+      <div className='chatComponentDiv'>
+        <div className='message'>
+          { message.messageText }
+        </div>
+        <div className='messageTime'>
+          { message.updatedAt }
+        </div>
+        <div className='messageOrigin'>
+          { users[currentUserId]?.username }
+        </div>
+      </div>
     </>
   )
 }
