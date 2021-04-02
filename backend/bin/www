@@ -1,10 +1,21 @@
 #!/usr/bin/env node
 const { port } = require('../config');
 const app = require('../app');
+const { ChannelMessage } = require('../db/models');
 
 const httpServer = require('http').createServer(app);
 const db = require('../db/models');
 const io = require('socket.io')(httpServer);
+
+const createChannelMessage = (channelMessage) => {
+  const { channelId, userId, messageText, messageImg } = channelMessage;
+  ChannelMessage.createChannelMessage({ 
+    channelId,
+    userId,
+    messageText,
+    messageImg,
+  });
+}
 
 // Check the database connection before starting the app
 db.sequelize
@@ -17,11 +28,19 @@ db.sequelize
     io.on('connection', socket => {
       
       //this is to a single client (current user)
-      socket.emit('message', 'Welcome to Shrewdness')
+
+      socket.on('join_channel', (channel, user) => {
+        if(channel && user){
+          socket.emit(`message${channel.id}`, `Welcome to Shrewdness ${user.username}`)
+          socket.broadcast.emit(`message${channel.id}`, `${user.username} has joined the ${channel.name} chat room`);
+        }else{
+          socket.emit(`message`, `Welcome to Shrewdness`)
+          socket.broadcast.emit(`message`, `User has joined the chat room`);
+        }
+      })
       
       //broadcast (to other users) when a user connections
       //to everyone except user
-      socket.broadcast.emit('message', 'User has joined the chat room');
       
       //broadcasts to everyone, including the current user
       // io.emit()
@@ -32,14 +51,15 @@ db.sequelize
       //listen for a chat message
       
       // console.log('socket connection');
-      socket.on('chatMessage', (msg) => {
-        io.emit('message', msg.messageText);
-      })
       
       socket.on('disconnect', () => {
         io.emit('message', 'user has left the chat')
       })
       
+      socket.on('chatMessage', (msg) => {
+        createChannelMessage(msg);
+        io.emit(`message${msg.channelId}`, msg.messageText);
+      })
     });
 
     // Start listening for connections
