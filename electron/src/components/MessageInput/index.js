@@ -21,7 +21,7 @@ const MessageInput = ({ userId, channelId }) => {
       userId,
       channelId,
     }
-    socket.emit('chatMessage', msg)
+    socket.emit(`chatMessage`, msg)
   }
 
   return (
