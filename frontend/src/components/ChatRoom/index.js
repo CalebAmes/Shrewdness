@@ -12,6 +12,7 @@ import './ChatRoom.scss';
 const ChatRoom = () => {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
+  const [hello, setHello] = useState('')
   const channelsObj = useSelector(state => state.channels);
   const channelMessagesObj = useSelector(state => state.channelMessages);
   const users = useSelector(state => state.users);
@@ -36,23 +37,27 @@ const ChatRoom = () => {
     dispatch(getChannel());
     dispatch(getChannelMessages())
     setIsLoaded(true);
-    socket.on(`join_channel_res_${id}`, (msg) => socketRes(msg))
-    socket.on(`chat_message_${id}`, (msg) => {newMessage(msg)})
     socket.emit('join_channel', format(channel, user))
-    
-  }, [dispatch]);
+    scroll()
+  }, []);
+  
+  socket.on(`chat_message_${id}`, (msg) => {newMessage(msg)})
+  socket.on(`join_channel_res_${id}`, (msg) => {socketRes(msg)})
 
   const newMessage = (msg) => {
-    document.querySelector('.chatMessages')
-      .appendChild(<ChatComponent message={msg} users={users} currentUserId={user?.id} />)
+    dispatch(getChannelMessages());
+    setIsLoaded(true);
+    scroll();
   }
 
   const socketRes = (msg) => {
-    const el = document.createElement('p');
-    el.innerHTML = msg;
-    document.querySelector('.chatMessages').appendChild(el);
-    // make the page scroll down when you get a message
-    // chatMessagesList.scrollTop = chatMessagesList.scrollHeight;
+    setHello(msg)
+    scroll()
+  }
+
+  const scroll = () => {
+    const messagePad = document.getElementById('messagePad')
+    messagePad?.scrollIntoView({ behavior: "smooth" })
   }
 
   return (
@@ -61,10 +66,12 @@ const ChatRoom = () => {
         <h1>Welcome to chat room {id}</h1>
         <div className='chatMessages'>
           {msgs.map((msg) => (
+
             <ChatComponent message={msg} users={users} currentUserId={user.id} />
           ))}
+          <div id='messagePad'>{hello}</div>
         </div>
-        <MessageInput userId={user?.id} channelId={id} />
+        <MessageInput user={user} channelId={id} />
       </>
     }{
       !user && 
@@ -91,7 +98,6 @@ export function ChatComponent ({ message, users, currentUserId }) {
       </div>
     </>
   )
-
 }
 
 export default ChatRoom
