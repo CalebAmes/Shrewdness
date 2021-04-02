@@ -30,11 +30,11 @@ db.sequelize
       //this is to a single client (current user)
 
       socket.on('join_channel', format => {
-        console.log(format.channel);
-        console.log(format.user);
-        if(format.channel && format.user){
+        // console.log(format.channel);
+        // console.log(format.user);
+        if(format?.channel && format?.user){
           socket.emit(`join_channel_res_${format.channel.id}`, `Welcome to Shrewdness ${format.user.username}`)
-          socket.broadcast.emit(`join_channel_res_${format.channel.id}`, `${format.user.username} has joined the ${format.channel.name} chat room`);
+          // socket.broadcast.emit(`join_channel_res_${format.channel.id}`, `${format.user.username} has joined the ${format.channel.name} chat room`);
         }else{
           socket.emit(`message`, `Welcome to Shrewdness`)
           socket.broadcast.emit(`message`, `User has joined the chat room`);

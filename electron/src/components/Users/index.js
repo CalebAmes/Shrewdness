@@ -18,14 +18,14 @@ const Users = () => {
     socket.on('message', msg => addMessage(msg))
   }, [])
   
-  const addMessage = (msg) => {
-    // console.log(msg)
-    const el = document.createElement('li');
-    el.innerHTML = msg;
-    document.querySelector('.chatMessagesList').appendChild(el);
-    // make the page scroll down when you get a message
-    // chatMessagesList.scrollTop = chatMessagesList.scrollHeight;
-  }
+  // const addMessage = (msg) => {
+  //   // console.log(msg)
+  //   const el = document.createElement('li');
+  //   el.innerHTML = msg;
+  //   document.querySelector('.chatMessagesList').appendChild(el);
+  //   // make the page scroll down when you get a message
+  //   // chatMessagesList.scrollTop = chatMessagesList.scrollHeight;
+  // }
 
 
   return (
