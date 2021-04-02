@@ -1,34 +1,32 @@
 import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
-import { io } from 'socket.io-client';
-import './users.scss'
+import { Link } from 'react-router-dom'
+import MessageInput from '../MessageInput'
+import socket from '../../service/socket'
+import './users.scss';
 
 const Users = () => {
   const dispatch = useDispatch();
-  const usersList = useSelector(state => state.users)
-  const socket = io()
-
-  const users = Object.values(usersList)
-
-  const addChat = (e) => {
-    e.preventDefault();
-    
-    //getting the message from the dom
-    const msg = e.target.elements.msg.value;
-
-    // emitting the message to the server
-    socket.emit('chatMessage', msg)
-  }
-  const chatMessages = document.querySelector('.chatMessages')
+  const usersList = useSelector(state => state.users);
+  const user = useSelector(state => state.session.user);
+  const users = Object.values(usersList);
   
-  socket.on('chatMessage', text => {
+  // const chatMessagesList = document.querySelector('.chatMessages')
+  useEffect(() => {
+    socket.emit('join_channel')
+    socket.on('message', msg => addMessage(msg))
+  }, [])
+  
+  const addMessage = (msg) => {
+    // console.log(msg)
     const el = document.createElement('li');
-    el.innerHTML = text;
+    el.innerHTML = msg;
     document.querySelector('.chatMessagesList').appendChild(el);
-    //make the page scroll down when you get a message
-    // TODO fix this error
-    // chatMessages.scrollTop = chatMessages.scrollHeight;
-  })
+    // make the page scroll down when you get a message
+    // chatMessagesList.scrollTop = chatMessagesList.scrollHeight;
+  }
+
 
   return (
     <>
@@ -38,27 +36,14 @@ const Users = () => {
         { users.map(user => (
           <li key={user?.id} >{user?.username}</li>
         ))}
-        {/* {
-          socket.on('chatMessage', () => (
-            <li>{chatMessage}</li>
-          ))
-        } */}
       </ul>
     </div>
-    <div className='chatDiv'>
-      <form className='chatForm' onSubmit={addChat}>
-        <textarea
-          type='text'
-          className='chatTextarea'
-          id='msg'
-          required />
-        <button className='sendChat button' type='submit'>...send</button>
-      </form>
-    </div>
+    <MessageInput userId={user?.id} channelId={2} />
     <div className='chatMessages'>
       <ul className='chatMessagesList'>
       </ul>
     </div>
+    <Link to='/chatRoom/3'>click me.</Link>
     </>
   )
 }

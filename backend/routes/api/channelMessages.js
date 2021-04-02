@@ -5,7 +5,9 @@ const { ChannelMessage } = require('../../db/models');
 const router = express.Router();
 
 router.get('/', asyncHandler(async function (req, res) {
-  const channelMessage = await ChannelMessage.findAll();
+  const channelMessage = await ChannelMessage.findAll(
+    { order: [['updatedAt', 'DESC']] }
+  );
   return res.json({ channelMessage })
 }));
 

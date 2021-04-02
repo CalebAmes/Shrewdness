@@ -4,14 +4,6 @@ const isDev = !app.isPackaged;
 
 let mainWindow = null;
 
-function main() {
-  mainWindow = new BrowserWindow()
-  mainWindow.loadURL('http://localhost:5000/api/users')
-  mainWindow.on('close', event => {
-    mainWindow = null
-  })
-}
-
 function createWindow() {
   const win = new BrowserWindow({
     width: 1200,
@@ -32,8 +24,6 @@ if (isDev) {
     electron: path.join(__dirname, 'node_modules', '.bin', 'electron')
   })
 }
-
-app.on('ready', main )
 
 app.whenReady().then(createWindow);
 

@@ -7,6 +7,8 @@ import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import Home from './components/Home';
 import Users from "./components/Users";
+import Groups from "./components/Groups";
+import ChatRoom from "./components/ChatRoom";
 import { getChannelMessages } from './store/channelMessages';
 import { getChannel } from './store/channels';
 import { getDirectMessages } from './store/directMessages';
@@ -31,8 +33,8 @@ function App() {
 
   return (
     <>
-      <Navigation isLoaded={isLoaded} />
-      {isLoaded && (
+      {/* <Navigation isLoaded={isLoaded} />
+      {isLoaded && ( */}
         <Switch>
           <Route path="/login" >
             <LoginFormPage />
@@ -43,11 +45,17 @@ function App() {
           <Route path= '/users' >
             <Users />
           </Route>
+          <Route path= '/groups' >
+            <Groups />
+          </Route>
+          <Route path= '/chatRoom/:id' >
+            <ChatRoom />
+          </Route>
           <Route path='/' exact >
             <Home />
           </Route>
         </Switch>
-      )}
+      {/* // )} */}
     </>
   );
 }
