@@ -29,6 +29,7 @@ const MessageInput = ({ user, channelId }) => {
   return (
     <div className='messageInputDiv'>
       <textarea
+        maxlength='140'
         onChange={e => setValue(e.target.value)}
         onKeyPress={ keyPress }
         value={ value }

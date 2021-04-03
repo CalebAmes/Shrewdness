@@ -7,84 +7,39 @@ module.exports = {
       'Groups',
       [
         {
-          name: faker.lorem.word(),
+          name: 'Gorillas',
           avatar: faker.image.cats(),
-          description: faker.lorem.sentence(6),
+          description: faker.lorem.sentence(2),
         },
         {
-          name: faker.lorem.word(),
+          name: 'Chimpanzees',
           avatar: faker.image.cats(),
-          description: faker.lorem.sentence(6),
+          description: faker.lorem.sentence(2),
         },
         {
-          name: faker.lorem.word(),
+          name: 'Origin Club',
           avatar: faker.image.cats(),
-          description: faker.lorem.sentence(6),
+          description: `This is a Private Group for only the Shrewdest. If you don't know how to get in, you can't get in.`,
         },
         {
-          name: faker.lorem.word(),
+          name: 'Marmosets',
           avatar: faker.image.cats(),
-          description: faker.lorem.sentence(6),
+          description: faker.lorem.sentence(2),
         },
         {
-          name: faker.lorem.word(),
+          name: 'Papionini',
           avatar: faker.image.cats(),
-          description: faker.lorem.sentence(6),
+          description: faker.lorem.sentence(2),
         },
         {
-          name: faker.lorem.word(),
+          name: 'Macaque',
           avatar: faker.image.cats(),
-          description: faker.lorem.sentence(6),
+          description: faker.lorem.sentence(2),
         },
         {
-          name: faker.lorem.word(),
+          name: 'Baboons',
           avatar: faker.image.cats(),
-          description: faker.lorem.sentence(6),
-        },
-        {
-          name: faker.lorem.word(),
-          avatar: faker.image.cats(),
-          description: faker.lorem.sentence(6),
-        },
-        {
-          name: faker.lorem.word(),
-          avatar: faker.image.cats(),
-          description: faker.lorem.sentence(6),
-        },
-        {
-          name: faker.lorem.word(),
-          avatar: faker.image.cats(),
-          description: faker.lorem.sentence(6),
-        },
-        {
-          name: faker.lorem.word(),
-          avatar: faker.image.cats(),
-          description: faker.lorem.sentence(6),
-        },
-        {
-          name: faker.lorem.word(),
-          avatar: faker.image.cats(),
-          description: faker.lorem.sentence(6),
-        },
-        {
-          name: faker.lorem.word(),
-          avatar: faker.image.cats(),
-          description: faker.lorem.sentence(6),
-        },
-        {
-          name: faker.lorem.word(),
-          avatar: faker.image.cats(),
-          description: faker.lorem.sentence(6),
-        },
-        {
-          name: faker.lorem.word(),
-          avatar: faker.image.cats(),
-          description: faker.lorem.sentence(6),
-        },
-        {
-          name: faker.lorem.word(),
-          avatar: faker.image.cats(),
-          description: faker.lorem.sentence(6),
+          description: faker.lorem.sentence(2),
         },
       ]
     )

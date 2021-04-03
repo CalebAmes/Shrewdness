@@ -96,7 +96,7 @@ const ChatRoom = () => {
   return (
     <>{ isLoaded && user &&
       <>
-        <h1>Welcome to chat room {id}</h1>
+        <h1>Welcome to: {channel.name}</h1>
         <div className='chatMessages'>
           {msgs.map((msg) => (
 
@@ -114,8 +114,12 @@ const ChatRoom = () => {
   )
 }
 
-export function ChatComponent ({ message, users, currentUserId }) {
-  
+export function ChatComponent ({ message, users }) {
+  const userId = message.userId;
+  console.log(userId);
+  console.log(users)
+  const user = users[userId]
+  console.log(user)
   return (
     <>
       <div className='chatComponentDiv'>
@@ -126,7 +130,7 @@ export function ChatComponent ({ message, users, currentUserId }) {
           { message.updatedAt }
         </div>
         <div className='messageOrigin'>
-          { users[currentUserId]?.username }
+          { user?.username }
         </div>
       </div>
     </>

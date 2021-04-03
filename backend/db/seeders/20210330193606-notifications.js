@@ -1,5 +1,4 @@
 'use strict';
-const faker = require('faker');
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
@@ -8,7 +7,7 @@ module.exports = {
       [
         {
           userId: 1,
-          channelMessagesId: 9,
+          directMessagesId: 2,
           read: false,
         },
         {
@@ -18,7 +17,7 @@ module.exports = {
         },
         {
           userId: 1,
-          channelMessagesId: 2,
+          directMessagesId: 1,
           read: false,
         },
       ]

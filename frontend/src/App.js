@@ -33,8 +33,9 @@ function App() {
 
   return (
     <>
-      {/* <Navigation isLoaded={isLoaded} />
-      {isLoaded && ( */}
+      <Navigation isLoaded={isLoaded} />
+      {isLoaded && (
+        <>
         <Switch>
           <Route path="/login" >
             <LoginFormPage />
@@ -55,7 +56,8 @@ function App() {
             <Home />
           </Route>
         </Switch>
-      {/* // )} */}
+        </>
+      )}
     </>
   );
 }

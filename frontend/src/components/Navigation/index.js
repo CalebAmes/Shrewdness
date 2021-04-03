@@ -2,7 +2,7 @@ import React,{ useEffect, useState } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import Image from '../../icons/gorilla.svg';
+import { ReactComponent as Image } from '../../icons/gorilla.svg'
 import { getGroup } from '../../store/groups'
 import { getChannel } from '../../store/channels'
 import LoginFormModal from '../LoginFormModal';
@@ -57,12 +57,13 @@ export function NavComment(props) {
   )
 }
 
-export function Dropdown({setAuthenticated}) {
+export function Dropdown() {
   const dispatch = useDispatch();
   const groupsItems = useSelector((state) => state?.groups);
   const channelsItems = useSelector((state) => state?.channels)
   const user = useSelector((state) => state.session?.user)
 
+  const [ groupId, setGroupId ] = useState(0)
   const [ activeMenu, setActiveMenu ] = useState('main');
   const [ menuHeight, setMenuHeight ] = useState(null);
 
@@ -80,10 +81,15 @@ export function Dropdown({setAuthenticated}) {
   }
 
   function DropdownItem(props) {
+    const click = () => {
+      if (props.group) setGroupId(props.group.id)
+      props.goToMenu && setActiveMenu(props.goToMenu)
+    }
+
     return (
       <a href='#' 
         className='dropdown-item item' 
-        onClick={()=> props.goToMenu && setActiveMenu(props.goToMenu)}
+        onClick={click}
         >
             { props.children }
             <div>
@@ -94,23 +100,33 @@ export function Dropdown({setAuthenticated}) {
     );
   }
 
-  function DropdownChannel({ channels }) {
+  function DropdownChannel() {
     return (
-      <Link to={`/channels/${ channels.id }`} className='menu-item item'>
-        <div className='icon-button'></div>
-        {channels.name}
-      </Link>
+      <>
+      {
+        channelsArray.filter(channel => channel.groupId === groupId)
+          .map(channel => (
+            <Link className='dropdown-item item' to={`/chatRoom/${ channel.id }`}>{ channel.name }</Link>
+          ))
+      }
+      </>
     )
   }
 
-  function DropdownGroup({ groups }) {
+  function DropdownGroups() {
     return (
-      <div className='menu-item item'>
-      <Link to={`/groups/${ groups.id }`}>
-        <div className='icon-button'></div>
-        { groups.name }
-      </Link>
-      </div>
+      <>
+        {
+          groupsArray.map((group) => (
+            <DropdownItem 
+              goToMenu='channels' 
+              groupId={group.id} 
+              rightRightIcon={<i class="fas fa-chevron-right"/>}
+              group={group}
+              >{group.name}</DropdownItem>
+          ))
+        }
+      </>
     )
   }
 
@@ -124,19 +140,6 @@ export function Dropdown({setAuthenticated}) {
         onEnter={ calcHeight }
         >
         <ul className='dd'>
-          <div className='profileGrid'>
-            <Link to={`/profile/${user?.id}`} 
-              className='pGridItem profile' 
-              id='profile'>
-                Profile
-            </Link>
-            <Link to='/' 
-              className='pGridItem logout' 
-              // onClick={ }
-              >
-                Logout
-            </Link>
-          </div>
           <DropdownItem 
             rightRightIcon={<i class="fas fa-chevron-right"/>} goToMenu='groups'>
               Groups
@@ -169,16 +172,12 @@ export function Dropdown({setAuthenticated}) {
             goToMenu='main'>
               ...back
           </DropdownItem>
-          <DropdownItem 
-            rightRightIcon={<i class="fas fa-chevron-right"/>}
-            goToMenu='dms'>
-              Direct Messages
-            </DropdownItem>
+            <DropdownGroups />
         </ul>
 
       </CSSTransition>
       <CSSTransition 
-        in={ activeMenu === 'dms' } 
+        in={ activeMenu === 'channels' } 
         unmountOnExit
         timeout={ 500 }
         classNames='menu-secondary'
@@ -195,6 +194,7 @@ export function Dropdown({setAuthenticated}) {
             goToMenu='main'>
               ....main
           </DropdownItem>
+          <DropdownChannel />
         </ul>
       </CSSTransition>
     </div>

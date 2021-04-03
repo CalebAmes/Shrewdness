@@ -1,5 +1,4 @@
 'use strict';
-const faker = require('faker');
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
@@ -7,180 +6,124 @@ module.exports = {
       'Channels',
       [
         {
-          name: faker.lorem.word(),
+          name: 'General',
           groupId: 1,
         },
         {
-          name: faker.lorem.word(),
+          name: 'Tips and Tricks',
           groupId: 1,
         },
         {
-          name: faker.lorem.word(),
+          name: 'Animals',
           groupId: 1,
         },
         {
-          name: faker.lorem.word(),
+          name: 'Flex',
           groupId: 1,
         },
         {
-          name: faker.lorem.word(),
+          name: 'Foodies',
           groupId: 1,
         },
         {
-          name: faker.lorem.word(),
-          groupId: 1,
-        },
-        {
-          name: faker.lorem.word(),
-          groupId: 1,
-        },
-        {
-          name: faker.lorem.word(),
-          groupId: 1,
-        },
-        {
-          name: faker.lorem.word(),
-          groupId: 1,
-        },
-        {
-          name: faker.lorem.word(),
-          groupId: 1,
-        },
-        {
-          name: faker.lorem.word(),
-          groupId: 1,
-        },
-        {
-          name: faker.lorem.word(),
+          name: 'General',
           groupId: 2,
         },
         {
-          name: faker.lorem.word(),
+          name: 'Tips and Tricks',
           groupId: 2,
         },
         {
-          name: faker.lorem.word(),
+          name: 'Animals',
           groupId: 2,
         },
         {
-          name: faker.lorem.word(),
+          name: 'Flex',
           groupId: 2,
         },
         {
-          name: faker.lorem.word(),
+          name: 'Foodies',
           groupId: 2,
         },
         {
-          name: faker.lorem.word(),
-          groupId: 2,
+          name: 'General',
+          groupId: 7,
         },
         {
-          name: faker.lorem.word(),
-          groupId: 2,
+          name: 'Tips and Tricks',
+          groupId: 7,
         },
         {
-          name: faker.lorem.word(),
-          groupId: 2,
+          name: 'Animals',
+          groupId: 7,
         },
         {
-          name: faker.lorem.word(),
-          groupId: 2,
+          name: 'Flex',
+          groupId: 7,
         },
         {
-          name: faker.lorem.word(),
-          groupId: 2,
+          name: 'Foodies',
+          groupId: 7,
         },
         {
-          name: faker.lorem.word(),
-          groupId: 2,
-        },
-        {
-          name: faker.lorem.word(),
-          groupId: 3,
-        },
-        {
-          name: faker.lorem.word(),
-          groupId: 3,
-        },
-        {
-          name: faker.lorem.word(),
-          groupId: 3,
-        },
-        {
-          name: faker.lorem.word(),
-          groupId: 3,
-        },
-        {
-          name: faker.lorem.word(),
-          groupId: 3,
-        },
-        {
-          name: faker.lorem.word(),
-          groupId: 3,
-        },
-        {
-          name: faker.lorem.word(),
-          groupId: 3,
-        },
-        {
-          name: faker.lorem.word(),
-          groupId: 3,
-        },
-        {
-          name: faker.lorem.word(),
-          groupId: 3,
-        },
-        {
-          name: faker.lorem.word(),
-          groupId: 3,
-        },
-        {
-          name: faker.lorem.word(),
-          groupId: 3,
-        },
-        {
-          name: faker.lorem.word(),
+          name: 'General',
           groupId: 4,
         },
         {
-          name: faker.lorem.word(),
+          name: 'Tips and Tricks',
           groupId: 4,
         },
         {
-          name: faker.lorem.word(),
+          name: 'Animals',
           groupId: 4,
         },
         {
-          name: faker.lorem.word(),
+          name: 'Flex',
           groupId: 4,
         },
         {
-          name: faker.lorem.word(),
+          name: 'Foodies',
           groupId: 4,
         },
         {
-          name: faker.lorem.word(),
-          groupId: 4,
+          name: 'General',
+          groupId: 5,
         },
         {
-          name: faker.lorem.word(),
-          groupId: 4,
+          name: 'Tips and Tricks',
+          groupId: 5,
         },
         {
-          name: faker.lorem.word(),
-          groupId: 4,
+          name: 'Animals',
+          groupId: 5,
         },
         {
-          name: faker.lorem.word(),
-          groupId: 4,
+          name: 'Flex',
+          groupId: 5,
         },
         {
-          name: faker.lorem.word(),
-          groupId: 4,
+          name: 'Foodies',
+          groupId: 5,
         },
         {
-          name: faker.lorem.word(),
-          groupId: 4,
+          name: 'General',
+          groupId: 6,
+        },
+        {
+          name: 'Tips and Tricks',
+          groupId: 6,
+        },
+        {
+          name: 'Animals',
+          groupId: 6,
+        },
+        {
+          name: 'Flex',
+          groupId: 6,
+        },
+        {
+          name: 'chatRoom 3',
+          groupId: 3,
         },
       ]
     )
