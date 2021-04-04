@@ -1,6 +1,7 @@
 const express = require('express');
 const asyncHandler = require('express-async-handler');
 const { ChannelMessage } = require('../../db/models');
+const { singlePublicFileUpload, singleMulterUpload } = require('../../awsS3');
 
 const router = express.Router();
 
@@ -13,13 +14,14 @@ router.get('/', asyncHandler(async function (req, res) {
 
 router.post(
   '/',
+  singleMulterUpload("image"),
   asyncHandler(async (req, res) => {
     const { 
       channelId,
       userId,
       messageText,
-      messageImg,
     } = req.body;
+    const messageImg = await singlePublicFileUpload(req.file);
     const channelMessage = await ChannelMessage.createChannelMessage({ 
       channelId,
       userId,
