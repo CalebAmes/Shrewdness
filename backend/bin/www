@@ -22,12 +22,14 @@ const postMessage = async (channelMessage) => {
     messageImg = await singlePublicFileUpload(channelMessage.messageImg);
     console.log('this is the messageImg - - - >  ', messageImg)
   }
-  ChannelMessage.createChannelMessage({ 
+  await ChannelMessage.createChannelMessage({ 
     channelId,
     userId,
     messageText,
     messageImg,
   });
+
+  return true
 } 
 
 
@@ -62,8 +64,8 @@ db.sequelize
         io.emit('message', 'user has left the chat')
       })
       
-      socket.on('chatMessage', (msg) => {
-        postMessage(msg);
+      socket.on('chatMessage', async (msg) => {
+        await postMessage(msg);
         io.emit(`chat_message_${msg.channelId}`);
       })
     });
