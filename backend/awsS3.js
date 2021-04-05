@@ -12,23 +12,32 @@ const multer = require("multer");
 
 const s3 = new AWS.S3({ apiVersion: "2006-03-01" });
 
+console.log(process.env.AWS_ACCESS_KEY_ID)
+
+// AWS.config.getCredentials(function(err) {
+//   if (err) console.log(err.stack);
+//   // credentials not loaded
+//   else {
+//     console.log("Access key:", AWS.config.credentials.accessKeyId);
+//   }
+// });
+
 // --------------------------- Public UPLOAD ------------------------
 
 const singlePublicFileUpload = async (file) => {
-  const { originalname, mimetype, buffer } = await file;
-  const path = require("path");
-  // name of the file in your S3 bucket will be the date in ms plus the extension name
-  const Key = new Date().getTime().toString() + path.extname(originalname);
+
+  const Key = new Date().getTime().toString();
   const uploadParams = {
     Bucket: NAME_OF_BUCKET,
     Key,
-    Body: buffer,
+    Body: file,
     ACL: "public-read",
   };
+
   const result = await s3.upload(uploadParams).promise();
 
-  // save the name of the file in your bucket as the key in your database to retrieve for later
   return result.Location;
+  
 };
 
 const multiplePublicFileUpload = async (files) => {
@@ -86,7 +95,7 @@ const storage = multer.memoryStorage({
 
 const singleMulterUpload = (nameOfKey) =>
   multer({ storage: storage }).single(nameOfKey);
-  
+
 const multipleMulterUpload = (nameOfKey) =>
   multer({ storage: storage }).array(nameOfKey);
 

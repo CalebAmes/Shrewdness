@@ -4,6 +4,7 @@ import './message.scss';
 
 const MessageInput = ({ user, channelId }) => {
   const [value, setValue] = useState('');
+  const [image, setImage] = useState(null);
   const userId = user?.id
   const data = { user, channelId }
 
@@ -12,7 +13,14 @@ const MessageInput = ({ user, channelId }) => {
       e.preventDefault();
       sendMessage();
       setValue('');
+      setImage(null);
     }
+  }
+
+  const updateFile = (e) => {
+    const file = e.target.files[0];
+    if (file) setImage(file);
+    console.log(file)
   }
 
   const sendMessage = () => {
@@ -22,7 +30,10 @@ const MessageInput = ({ user, channelId }) => {
       messageText: value.trim(),
       userId,
       channelId,
+      messageImg: image,
     }
+    
+    console.log(image)
     socket.emit(`chatMessage`, msg)
   }
 
@@ -36,6 +47,9 @@ const MessageInput = ({ user, channelId }) => {
         className='messageInputTextarea'
         placeholder='Type your message here...'>
       </textarea>
+      <label>
+          <input type="file" onChange={updateFile} />
+      </label>
     </div>
   )
 }

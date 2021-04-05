@@ -116,10 +116,7 @@ const ChatRoom = () => {
 
 export function ChatComponent ({ message, users }) {
   const userId = message.userId;
-  console.log(userId);
-  console.log(users)
   const user = users[userId]
-  console.log(user)
   return (
     <>
       <div className='chatComponentDiv'>
