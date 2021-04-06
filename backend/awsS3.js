@@ -12,16 +12,6 @@ const multer = require("multer");
 
 const s3 = new AWS.S3({ apiVersion: "2006-03-01" });
 
-console.log(process.env.AWS_ACCESS_KEY_ID)
-
-// AWS.config.getCredentials(function(err) {
-//   if (err) console.log(err.stack);
-//   // credentials not loaded
-//   else {
-//     console.log("Access key:", AWS.config.credentials.accessKeyId);
-//   }
-// });
-
 // --------------------------- Public UPLOAD ------------------------
 
 const singlePublicFileUpload = async (file) => {

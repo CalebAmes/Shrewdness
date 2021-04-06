@@ -20,7 +20,7 @@ module.exports = {
       },
       avatar: {
         type: Sequelize.STRING,
-        defaultValue: faker.image.avatar(),
+        defaultValue: faker.image.animals(400, 400),
       },
       username: {
         type: Sequelize.STRING(30),
