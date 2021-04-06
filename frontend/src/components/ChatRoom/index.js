@@ -93,6 +93,7 @@ const ChatRoom = () => {
 }
 
 export function ChatComponent ({ message, users }) {
+  const [open, setOpen] = useState(false)
   const userId = message.userId;
   const user = users[userId]
   let messageImg;
@@ -116,8 +117,7 @@ export function ChatComponent ({ message, users }) {
             { message.messageText }
             { messageImg &&
             <>
-              <div 
-              className='divImage'>
+              <div className='divImage' onClick={() => setOpen(!open)}>
                 <img src={messageImg} className='messageImg'/>
               </div>
             </>
@@ -125,6 +125,14 @@ export function ChatComponent ({ message, users }) {
           </div>
         </div>
       </div>
+      { open &&
+      <>
+        <div class="modal">
+        <div className="modal-background" onClick={() => setOpen(!open)} />
+          <img src={messageImg} class="modal-content"/>
+        </div>
+      </>
+      }
     </>
   )
 }
