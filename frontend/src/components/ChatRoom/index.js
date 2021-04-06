@@ -75,7 +75,6 @@ const ChatRoom = () => {
   return (
     <>{ isLoaded && user &&
       <>
-        <h1>Welcome to: {channel.name}</h1>
         <div className='chatMessages'>
           {msgs.map((msg) => (
 
@@ -103,25 +102,29 @@ export function ChatComponent ({ message, users }) {
   return (
     <>
       <div className='chatComponentDiv'>
-        <img src={user?.avatar} className='avatar' />
-        <div className='messageOrigin'>
-          { user?.username }
-        </div>
-        <div className='message'>
-          { message.messageText }
-        </div>
-        <div className='messageTime'>
-          { message.updatedAt }
+        <div className='post'>
+          <div className='postInfo'>
+            <img src={user?.avatar} className='avatar' />
+            <div className='messageOrigin'>
+              { user?.username }
+            </div>
+            <div className='messageTime'>
+              { message.updatedAt }
+            </div>
+          </div>
+          <div className='message'>
+            { message.messageText }
+            { messageImg &&
+            <>
+              <div 
+              className='divImage'>
+                <img src={messageImg} className='messageImg'/>
+              </div>
+            </>
+            }
+          </div>
         </div>
       </div>
-        { messageImg &&
-        <>
-          <div 
-          className='divImage'>
-            <img src={messageImg} className='messageImg'/>
-          </div>
-        </>
-        }
     </>
   )
 }

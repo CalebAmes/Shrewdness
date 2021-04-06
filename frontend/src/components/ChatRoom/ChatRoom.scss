@@ -1,5 +1,5 @@
 .chatMessages {
-  min-width: 100%;
+  min-width: 100vw;
   min-height: 90vh;
   overflow: scroll;
   border: none;
@@ -16,13 +16,20 @@
   height: 90%;
   color: black;
   width: 90%;
-  margin: 5%;
-  padding: 3%;
+  margin-left: 5%;
+  padding: 15px;
+}
+
+.post:hover {
+  background: #efefef
 }
 
 .message {
   font-size: 14px;
   font-weight: 100;
+  display: flex;
+  flex-direction: column;
+
 }
 
 .divImage {
@@ -30,12 +37,28 @@
 
 }
 
+.postInfo {
+  display: flex;
+  flex-direction: row;
+}
+
 .messageImg {
-  width: 175px;
+  width: 400px;
   max-height: 400px;
-  transform: translateX(100%)
 }
 
 .messageOrigin {
-  
+  font-size: 18px;
+  font-weight: bold;
+  color: #f4743b
+}
+
+.messageTime {
+  font-size: 8px;
+  margin: 10px;
+}
+
+.messageText {
+  font-size: 18px;
+
 }
