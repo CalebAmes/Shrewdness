@@ -1,0 +1,43 @@
+.messageInputDiv {
+  // border: 1px solid black;
+  font-size: 18px;
+  display: flex;
+  flex-direction: row;
+  background: #483c46;
+  color: #beee62;
+  border-radius: 12px;
+  position: fixed;
+  z-index: 1000;
+  width: 90vw;
+  left: 50%;
+  transform: translate(-50%, 0);
+  bottom: 25px;
+}
+
+.messageInputTextarea {
+  background: #483c46;
+  color: #beee62;
+  width: 80%;
+  border: none;
+  outline: none;
+  resize: none;
+  font-size: 18px;
+  margin-top: 15px;
+  margin-left: 25px;
+}
+
+.dropzone {
+  margin-top: 20px;
+  margin-left: 25px;
+  display: flex;
+  flex-direction: row;
+  outline: none;
+}
+
+.preview {
+  margin-bottom: 12px;
+}
+
+.fa-window-close {
+  transform: translateY(8px) translateX(-12px)
+}

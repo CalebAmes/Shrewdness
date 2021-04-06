@@ -62,26 +62,6 @@ const ChatRoom = () => {
     socket.emit(`chatMessage`, msg)
   }
 
-  const MsgInput = ({ user, channelId }) => {
-
-
-    return (
-      <div className='messageInputDiv'>
-        <textarea
-          onChange={e => setValue(e.target.value)}
-          onKeyPress={ keyPress }
-          value={ value }
-          className='messageInputTextarea'
-          placeholder='Type your message here...'>
-        </textarea>
-      </div>
-    )
-  }
-
-
-
-
-
   const socketRes = (msg) => {
     setHello(msg)
     scroll()
@@ -103,7 +83,7 @@ const ChatRoom = () => {
           ))}
           <div id='messagePad'>{hello}</div>
         </div>
-        <MessageInput user={user} channelId={id} />
+        <MessageInput user={user} channelId={id} channelName={channel.name} />
       </>
     }{
       !user && 
@@ -123,14 +103,15 @@ export function ChatComponent ({ message, users }) {
   return (
     <>
       <div className='chatComponentDiv'>
+        <img src={user?.avatar} className='avatar' />
+        <div className='messageOrigin'>
+          { user?.username }
+        </div>
         <div className='message'>
           { message.messageText }
         </div>
         <div className='messageTime'>
           { message.updatedAt }
-        </div>
-        <div className='messageOrigin'>
-          { user?.username }
         </div>
       </div>
         { messageImg &&

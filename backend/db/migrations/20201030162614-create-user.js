@@ -1,4 +1,6 @@
 'use strict';
+const faker = require('faker');
+
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.createTable('Users', {
@@ -18,6 +20,7 @@ module.exports = {
       },
       avatar: {
         type: Sequelize.STRING,
+        defaultValue: faker.image.avatar(),
       },
       username: {
         type: Sequelize.STRING(30),
