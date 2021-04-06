@@ -32,6 +32,7 @@
   display: flex;
   flex-direction: row;
   outline: none;
+  cursor: pointer
 }
 
 .preview {
@@ -39,5 +40,5 @@
 }
 
 .fa-window-close {
-  transform: translateY(8px) translateX(-12px)
+  transform: translateY(8px) translateX(-12px);
 }

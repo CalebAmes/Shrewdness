@@ -104,17 +104,20 @@ export function ChatComponent ({ message, users }) {
     <>
       <div className='chatComponentDiv'>
         <div className='post'>
-          <div className='postInfo'>
-            <img src={user?.avatar} className='avatar' />
-            <div className='messageOrigin'>
-              { user?.username }
+          <img src={user?.avatar} className='avatar' />
+          <div className='postMessage'>
+            <div className='postInfo'>
+              <div className='messageOrigin'>
+                { user?.username }
+              </div>
+              <div className='messageTime'>
+                { message.updatedAt }
+              </div>
             </div>
-            <div className='messageTime'>
-              { message.updatedAt }
+            <div className='messageText'>
+              { message.messageText }
             </div>
-          </div>
-          <div className='message'>
-            { message.messageText }
+          <div className='messageImgDiv'>
             { messageImg &&
             <>
               <div className='divImage' onClick={() => setOpen(!open)}>
@@ -122,6 +125,7 @@ export function ChatComponent ({ message, users }) {
               </div>
             </>
             }
+          </div>
           </div>
         </div>
       </div>
