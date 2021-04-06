@@ -1,21 +1,47 @@
 #!/usr/bin/env node
+const asyncHandler = require('express-async-handler');
 const { port } = require('../config');
 const app = require('../app');
 const { ChannelMessage } = require('../db/models');
+const { singlePublicFileUpload, singleMulterUpload } = require('../awsS3')
 
 const httpServer = require('http').createServer(app);
 const db = require('../db/models');
 const io = require('socket.io')(httpServer);
 
-const createChannelMessage = (channelMessage) => {
-  const { channelId, userId, messageText, messageImg } = channelMessage;
-  ChannelMessage.createChannelMessage({ 
+const postMessage = async (channelMessage) => {
+  singleMulterUpload("image")
+  const { 
+    channelId,
+    userId,
+    messageText,
+  } = channelMessage;
+  let messageImg;
+  if (channelMessage.messageImg !== null) {
+    console.log('this is the channelMessage.messageImg - - - >  ', channelMessage.messageImg)
+    messageImg = await singlePublicFileUpload(channelMessage.messageImg);
+    console.log('this is the messageImg - - - >  ', messageImg)
+  }
+  await ChannelMessage.createChannelMessage({ 
     channelId,
     userId,
     messageText,
     messageImg,
   });
-}
+
+  return true
+} 
+
+
+// const postMessage = (channelMessage) => {
+//   const { channelId, userId, messageText, messageImg } = channelMessage;
+//   ChannelMessage.createChannelMessage({ 
+//     channelId,
+//     userId,
+//     messageText,
+//     messageImg,
+//   });
+// }
 
 // Check the database connection before starting the app
 db.sequelize
@@ -38,8 +64,8 @@ db.sequelize
         io.emit('message', 'user has left the chat')
       })
       
-      socket.on('chatMessage', (msg) => {
-        createChannelMessage(msg);
+      socket.on('chatMessage', async (msg) => {
+        await postMessage(msg);
         io.emit(`chat_message_${msg.channelId}`);
       })
     });

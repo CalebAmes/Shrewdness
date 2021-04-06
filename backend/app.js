@@ -3,7 +3,7 @@ const morgan = require('morgan');
 const cors = require('cors');
 const csurf = require('csurf');
 const helmet = require('helmet');
-const bodyParser = require('bodyParser');
+const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const { ValidationError } = require('sequelize');
 

@@ -36,9 +36,8 @@ const ChatRoom = () => {
     setIsLoaded(true);
     // socket.emit('join_channel', format(channel, user))
     socket.on(`chat_message_${id}`, async (msg) => {
-      await dispatch(getChannelMessages())
+      await dispatch(getChannelMessages());
       setIsLoaded(true);
-      await dispatch(getChannelMessages())
       scroll()
     })
     socket.on(`join_channel_res_${id}`, (msg) => {socketRes(msg)})
@@ -116,10 +115,11 @@ const ChatRoom = () => {
 
 export function ChatComponent ({ message, users }) {
   const userId = message.userId;
-  console.log(userId);
-  console.log(users)
   const user = users[userId]
-  console.log(user)
+  let messageImg;
+
+  if (message.messageImg) messageImg = message.messageImg;
+
   return (
     <>
       <div className='chatComponentDiv'>
@@ -133,6 +133,14 @@ export function ChatComponent ({ message, users }) {
           { user?.username }
         </div>
       </div>
+        { messageImg &&
+        <>
+          <div 
+          className='divImage'>
+            <img src={messageImg} className='messageImg'/>
+          </div>
+        </>
+        }
     </>
   )
 }
