@@ -62,26 +62,6 @@ const ChatRoom = () => {
     socket.emit(`chatMessage`, msg)
   }
 
-  const MsgInput = ({ user, channelId }) => {
-
-
-    return (
-      <div className='messageInputDiv'>
-        <textarea
-          onChange={e => setValue(e.target.value)}
-          onKeyPress={ keyPress }
-          value={ value }
-          className='messageInputTextarea'
-          placeholder='Type your message here...'>
-        </textarea>
-      </div>
-    )
-  }
-
-
-
-
-
   const socketRes = (msg) => {
     setHello(msg)
     scroll()
@@ -95,7 +75,6 @@ const ChatRoom = () => {
   return (
     <>{ isLoaded && user &&
       <>
-        <h1>Welcome to: {channel.name}</h1>
         <div className='chatMessages'>
           {msgs.map((msg) => (
 
@@ -103,7 +82,7 @@ const ChatRoom = () => {
           ))}
           <div id='messagePad'>{hello}</div>
         </div>
-        <MessageInput user={user} channelId={id} />
+        <MessageInput user={user} channelId={id} channelName={channel.name} />
       </>
     }{
       !user && 
@@ -123,24 +102,29 @@ export function ChatComponent ({ message, users }) {
   return (
     <>
       <div className='chatComponentDiv'>
-        <div className='message'>
-          { message.messageText }
-        </div>
-        <div className='messageTime'>
-          { message.updatedAt }
-        </div>
-        <div className='messageOrigin'>
-          { user?.username }
+        <div className='post'>
+          <div className='postInfo'>
+            <img src={user?.avatar} className='avatar' />
+            <div className='messageOrigin'>
+              { user?.username }
+            </div>
+            <div className='messageTime'>
+              { message.updatedAt }
+            </div>
+          </div>
+          <div className='message'>
+            { message.messageText }
+            { messageImg &&
+            <>
+              <div 
+              className='divImage'>
+                <img src={messageImg} className='messageImg'/>
+              </div>
+            </>
+            }
+          </div>
         </div>
       </div>
-        { messageImg &&
-        <>
-          <div 
-          className='divImage'>
-            <img src={messageImg} className='messageImg'/>
-          </div>
-        </>
-        }
     </>
   )
 }
