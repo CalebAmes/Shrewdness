@@ -101,6 +101,20 @@
   to {transform:scale(1)}
 }
 
+.userCard {
+  animation-name: slidein;
+  animation-duration: 0.3s;
+}
+
+@keyframes slidein {
+  from {
+    transform: translateX(20%)
+  }
+  to {
+    transform: translateX(0%)
+  }
+}
+
 // @media only screen and (max-width: 700px){
 //   .modal-content {
 //     width: 100%;
