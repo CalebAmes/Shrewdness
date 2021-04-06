@@ -7,7 +7,7 @@ import { getChannelMessages } from '../../store/channelMessages'
 import MessageInput from '../MessageInput';
 import socket from '../../service/socket';
 import './ChatRoom.scss';
-
+import '../UserCard/UserCard.scss';
 
 const ChatRoom = () => {
   const dispatch = useDispatch();
@@ -94,9 +94,14 @@ const ChatRoom = () => {
 
 export function ChatComponent ({ message, users }) {
   const [open, setOpen] = useState(false)
+  const [card, setCard] = useState(false)
   const userId = message.userId;
   const user = users[userId]
   let messageImg;
+
+  const closeCard = () => {
+    setCard(!card)
+  }
 
   if (message.messageImg) messageImg = message.messageImg;
 
@@ -104,24 +109,32 @@ export function ChatComponent ({ message, users }) {
     <>
       <div className='chatComponentDiv'>
         <div className='post'>
-          <div className='postInfo'>
-            <img src={user?.avatar} className='avatar' />
-            <div className='messageOrigin'>
-              { user?.username }
+          <img src={user?.avatar} className='avatar' onClick={ closeCard } />
+          <div className='postMessage'>
+            <div className='postInfo'>
+              <div className='messageOrigin' onClick={ closeCard }>
+                { user?.username }
+              </div>
+              <div className='messageTime'>
+                { message.updatedAt }
+                { card && 
+                  <UserCard user={ user } closeCard={ closeCard } />
+                }
+              </div>
             </div>
-            <div className='messageTime'>
-              { message.updatedAt }
+            <div className='messageText'>
+              { message.messageText }
             </div>
-          </div>
-          <div className='message'>
-            { message.messageText }
+          <div className='messageImgDiv'>
             { messageImg &&
             <>
+              
               <div className='divImage' onClick={() => setOpen(!open)}>
                 <img src={messageImg} className='messageImg'/>
               </div>
             </>
             }
+          </div>
           </div>
         </div>
       </div>
@@ -134,6 +147,21 @@ export function ChatComponent ({ message, users }) {
       </>
       }
     </>
+  )
+
+}
+
+export function UserCard ({ user, closeCard }) {
+
+  return (
+    <div className='userCard'>
+      <div className='cardBackground' onClick={ closeCard }></div>
+      <div className='topCard'>
+        <img src={ user.avatar } className='cardImg'/>
+        <h3>{ user.username }</h3>
+      </div>
+      <div className='bottomCard'></div>
+    </div>
   )
 }
 

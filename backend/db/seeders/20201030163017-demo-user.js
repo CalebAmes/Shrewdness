@@ -10,77 +10,77 @@ module.exports = {
         {
           email: 'demo@user.io',
           username: 'Demo-lition',
-          avatar: faker.image.avatar(),
+          avatar: faker.image.animals(400, 400),
           hashedPassword: bcrypt.hashSync('password'),
         },
         {
           email: faker.internet.email(),
           username: 'FakeUser1',
           bio: faker.lorem.sentence(3),
-          avatar: faker.image.avatar(),
+          avatar: faker.image.animals(400, 400),
           hashedPassword: bcrypt.hashSync(faker.internet.password())
         },
         {
           email: faker.internet.email(),
           username: 'FakeUser2',
           bio: faker.lorem.sentence(3),
-          avatar: faker.image.avatar(),
+          avatar: faker.image.animals(400, 400),
           hashedPassword: bcrypt.hashSync(faker.internet.password())
         },
         {
           email: faker.internet.email(),
           username: faker.lorem.word(),
           bio: faker.lorem.sentence(3),
-          avatar: faker.image.avatar(),
+          avatar: faker.image.animals(400, 400),
           hashedPassword: bcrypt.hashSync(faker.internet.password())
         },
         {
           email: faker.internet.email(),
           username: faker.lorem.word(),
           bio: faker.lorem.sentence(3),
-          avatar: faker.image.avatar(),
+          avatar: faker.image.animals(400, 400),
           hashedPassword: bcrypt.hashSync(faker.internet.password())
         },
         {
           email: faker.internet.email(),
           username: faker.lorem.word(),
           bio: faker.lorem.sentence(3),
-          avatar: faker.image.avatar(),
+          avatar: faker.image.animals(400, 400),
           hashedPassword: bcrypt.hashSync(faker.internet.password())
         },
         {
           email: faker.internet.email(),
           username: faker.lorem.word(),
           bio: faker.lorem.sentence(3),
-          avatar: faker.image.avatar(),
+          avatar: faker.image.animals(400, 400),
           hashedPassword: bcrypt.hashSync(faker.internet.password())
         },
         {
           email: faker.internet.email(),
           username: faker.lorem.word(),
           bio: faker.lorem.sentence(3),
-          avatar: faker.image.avatar(),
+          avatar: faker.image.animals(400, 400),
           hashedPassword: bcrypt.hashSync(faker.internet.password())
         },
         {
           email: faker.internet.email(),
           username: faker.lorem.word(),
           bio: faker.lorem.sentence(3),
-          avatar: faker.image.avatar(),
+          avatar: faker.image.animals(400, 400),
           hashedPassword: bcrypt.hashSync(faker.internet.password())
         },
         {
           email: faker.internet.email(),
           username: faker.lorem.word(),
           bio: faker.lorem.sentence(3),
-          avatar: faker.image.avatar(),
+          avatar: faker.image.animals(400, 400),
           hashedPassword: bcrypt.hashSync(faker.internet.password())
         },
         {
           email: faker.internet.email(),
           username: faker.lorem.word(),
           bio: faker.lorem.sentence(3),
-          avatar: faker.image.avatar(),
+          avatar: faker.image.animals(400, 400),
           hashedPassword: bcrypt.hashSync(faker.internet.password())
         },
       ],
