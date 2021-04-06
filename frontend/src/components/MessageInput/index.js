@@ -78,7 +78,6 @@ const MessageInput = ({ user, channelId, channelName }) => {
     <div className='messageInputDiv'>
       <div className='dropzone' {...getRootProps()}>
         <input {...getInputProps()} />
-        {/* <i class="fas fa-plus-circle"/> */}
         <i class="fas fa-image"/>
       </div>
       <textarea
