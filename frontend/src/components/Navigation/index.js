@@ -148,7 +148,7 @@ export function Dropdown() {
             <Link className='dropdown-item item' to="/users">Users</Link>
 
           <div className='dropdown-item item' >
-            <LoginFormModal />
+            <LoginFormModal user={user} />
           </div>
           <Link className='dropdown-item item' to="/signup">Sign Up</Link>
           <Link className='dropdown-item item' to="/groups">Groups</Link>

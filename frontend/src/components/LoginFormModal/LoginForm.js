@@ -1,23 +1,31 @@
-import React, { useState } from "react";
+import React, { useState, useSelector } from "react";
 import * as sessionActions from "../../store/session";
 import { useDispatch } from "react-redux";
 import "./LoginForm.scss";
 
-function LoginForm() {
+function LoginForm({open}) {
   const dispatch = useDispatch();
   const [credential, setCredential] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
-
-  const handleSubmit = (e) => {
+  
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setErrors([]);
-    return dispatch(sessionActions.login({ credential, password })).catch(
+    const res = await dispatch(sessionActions.login({ credential, password })).catch(
       (res) => {
-        if (res.data && res.data.errors) setErrors(res.data.errors);
-      }
-    );
+        if (res.data && res.data.errors) {
+          setErrors(res.data.errors);
+        }
+      })
+
+    if(res && res.ok) open()
   };
+
+  const demoLogin = () => {
+    dispatch(sessionActions.login({ credential: 'Demo-lition', password: 'password' }))
+    open()
+  }
 
   return (
     <>
@@ -52,9 +60,14 @@ function LoginForm() {
         </div>
         <button type="submit">Login</button>
       </form>
-      <div className='toRegister'>
-        <p>Need an account? </p>
-        <div>Register</div>
+      <div className='registerDemo'>
+        <div className='toRegister'>
+          <p>Need an account? </p>
+          <div>Register</div>
+        </div>
+        <div className='demo'>
+          <div onClick={ demoLogin }>Demo Login</div>
+        </div>
       </div>
     </div>
     </>

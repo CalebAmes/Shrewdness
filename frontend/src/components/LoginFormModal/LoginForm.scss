@@ -73,12 +73,19 @@
   border: none;
   margin-top: 30px;
   background: #00b0f4;
+  outline: none;
   color: #fff;
   transition: all var(--speed) ease;
 }
 
 .loginForm > button:hover {
   background: #7289da;
+}
+
+.registerDemo {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 .toRegister {
@@ -88,20 +95,25 @@
 
 .toRegister > p {
   margin-left: 35px;
-  margin-top: 20px;
+  margin-top: 15px;
   color: #72767d;
   font-size: 12px;
   cursor: default;
 }
 
-.toRegister > div {
+.toRegister > div, .demo > div {
   margin-left: 5px;
-  margin-top: 20px;
+  margin-top: 15px;
   color: #7289da;
   font-size: 12px;
   cursor: default;
 }
 
-.toRegister > div:hover {
+.toRegister > div:hover, .demo > div:hover {
   text-decoration: underline;
 }
+
+.demo {
+  margin-right: 35px;
+}
+
