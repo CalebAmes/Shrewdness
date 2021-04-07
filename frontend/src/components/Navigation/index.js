@@ -128,75 +128,90 @@ export function Dropdown({openFunc}) {
 
   return (
     <>
+    { user && 
+      <>
+        <div className='cardBackground' onClick={ openFunc }></div>
+        <div className='dropdown' style={{ height: menuHeight }}>
+          <CSSTransition 
+            in={ activeMenu === 'main' } 
+            unmountOnExit
+            timeout={ 500 }
+            classNames='menu-primary'
+            onEnter={ calcHeight }
+            >
+            <ul className='dd'>
+              <DropdownItem 
+                rightRightIcon={<i class="fas fa-chevron-right"/>} goToMenu='groups'>
+                  Groups
+              </DropdownItem>
+      
+                <Link className='dropdown-item item' to="/users">Users</Link>
+
+              
+ 
+              <Link className='dropdown-item item' to="/groups">Groups</Link>
+              <Link className='dropdown-item item' exact to="/">Home</Link>
+              <div className='dropdown-item item' >
+                <ProfileButton user={user} />
+              </div>
+
+            </ul>
+          </CSSTransition>
+
+          <CSSTransition 
+            in={ activeMenu === 'groups' } 
+            unmountOnExit
+            timeout={ 500 }
+            classNames='menu-secondary'
+            >
+            <ul className='dd'>
+              <DropdownItem 
+                rightRightIcon={<i class="fas fa-chevron-left"/>} 
+                goToMenu='main'>
+                  ...back
+              </DropdownItem>
+                <DropdownGroups />
+            </ul>
+
+          </CSSTransition>
+          <CSSTransition 
+            in={ activeMenu === 'channels' } 
+            unmountOnExit
+            timeout={ 500 }
+            classNames='menu-secondary'
+            >
+            <ul className='dd'>
+              <DropdownItem 
+                rightRightIcon={<i class="fas fa-chevron-left"/>}
+                goToMenu='main'>
+                  ...back
+              </DropdownItem>
+              <DropdownItem 
+                rightIcon={<i class="fas fa-chevron-left"/>}
+                rightRightIcon={<i class="fas fa-chevron-left"/>}
+                goToMenu='main'>
+                  ....main
+              </DropdownItem>
+              <DropdownChannel />
+            </ul>
+          </CSSTransition>
+        </div>
+      </>
+    }
+    { !user &&
+    <>
       <div className='cardBackground' onClick={ openFunc }></div>
       <div className='dropdown' style={{ height: menuHeight }}>
-        <CSSTransition 
-          in={ activeMenu === 'main' } 
-          unmountOnExit
-          timeout={ 500 }
-          classNames='menu-primary'
-          onEnter={ calcHeight }
-          >
-          <ul className='dd'>
-            <DropdownItem 
-              rightRightIcon={<i class="fas fa-chevron-right"/>} goToMenu='groups'>
-                Groups
-            </DropdownItem>
-    
-              <Link className='dropdown-item item' to="/users">Users</Link>
-
-            <div className='dropdown-item item' >
-              <LoginFormModal user={user} />
-            </div>
-            <Link className='dropdown-item item' to="/signup">Sign Up</Link>
-            <Link className='dropdown-item item' to="/groups">Groups</Link>
-            <Link className='dropdown-item item' exact to="/">Home</Link>
-            <div className='dropdown-item item' >
-              <ProfileButton user={user} />
-            </div>
-
-          </ul>
-        </CSSTransition>
-
-        <CSSTransition 
-          in={ activeMenu === 'groups' } 
-          unmountOnExit
-          timeout={ 500 }
-          classNames='menu-secondary'
-          >
-          <ul className='dd'>
-            <DropdownItem 
-              rightRightIcon={<i class="fas fa-chevron-left"/>} 
-              goToMenu='main'>
-                ...back
-            </DropdownItem>
-              <DropdownGroups />
-          </ul>
-
-        </CSSTransition>
-        <CSSTransition 
-          in={ activeMenu === 'channels' } 
-          unmountOnExit
-          timeout={ 500 }
-          classNames='menu-secondary'
-          >
-          <ul className='dd'>
-            <DropdownItem 
-              rightRightIcon={<i class="fas fa-chevron-left"/>}
-              goToMenu='main'>
-                ...back
-            </DropdownItem>
-            <DropdownItem 
-              rightIcon={<i class="fas fa-chevron-left"/>}
-              rightRightIcon={<i class="fas fa-chevron-left"/>}
-              goToMenu='main'>
-                ....main
-            </DropdownItem>
-            <DropdownChannel />
-          </ul>
-        </CSSTransition>
+        <ul className='dd'>
+        <Link className='dropdown-item item' to="/signup">Sign Up</Link>
+        <div className='dropdown-item item' >
+          <LoginFormModal user={user} />
+        </div>
+      </ul>
       </div>
     </>
+    }
+  </>
   )
 }
 
