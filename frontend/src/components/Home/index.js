@@ -13,7 +13,7 @@ const Home = () => {
       <div className='yourPlace'>
         <div className='yourText'>
           <h1>Your place to talk</h1>
-          <h3>Whether you're part of a school club, gaming group, worldwide art community, or just a handful of friends that want to spend some time together, Discord makes it easy to talk every day and hang out more often.</h3>
+          <h3>Whether you're part of a school club, gaming group, worldwide art community, or just a handful of friends that want to spend some time together, Shrewdness makes it easy to talk every day and hang out more often.</h3>
         </div>
       </div>
     </>
