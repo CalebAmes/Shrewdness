@@ -10,6 +10,7 @@ module.exports = {
         {
           email: 'demo@user.io',
           username: 'Demo-lition',
+          bio: 'This is the demo user. They are the coolest!',
           avatar: faker.image.animals(400, 400),
           hashedPassword: bcrypt.hashSync('password'),
         },

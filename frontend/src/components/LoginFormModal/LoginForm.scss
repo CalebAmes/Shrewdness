@@ -1,0 +1,107 @@
+.loginDiv {
+  width: 480px;
+  height: 406px;
+  background: #36393f;
+  color: #8e9297;
+  border-radius: 8px;
+}
+
+.welcome > h1{
+  color: #fff;
+  margin-top: 30px;
+  font-size: 30px;
+}
+
+.welcome > h2{
+  margin: 0px;
+  font-weight: 100;
+}
+
+.welcome {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 0px;
+  margin-top: -5px;
+}
+
+.loginForm {
+  margin: 10px 25px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  font-family: 300;
+  font-size: 10px;
+}
+
+.labelDiv > input {
+  width: 410px;
+  height: 40px;
+  border-radius: 3px;
+  box-shadow: none;
+  border: 1px solid #222428;
+  box-sizing: border-box;
+  outline: none;
+  font-size: 14px;
+  padding-left: 10px;
+  background: #303339;
+  color: #dcddde;
+  transition: all var(--speed) ease;
+}
+
+.labelDiv > input:hover {
+  border: 1px solid black;
+}
+
+.labelDiv > input:focus {
+  border: 1px solid #00b0f4;
+}
+
+.labelDiv {
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.loginForm > button {
+  width: 410px;
+  height: 40px;
+  border-radius: 3px;
+  box-shadow: none;
+  border: none;
+  margin-top: 30px;
+  background: #00b0f4;
+  color: #fff;
+  transition: all var(--speed) ease;
+}
+
+.loginForm > button:hover {
+  background: #7289da;
+}
+
+.toRegister {
+  display: flex;
+  flex-direction: row;
+}
+
+.toRegister > p {
+  margin-left: 35px;
+  margin-top: 20px;
+  color: #72767d;
+  font-size: 12px;
+  cursor: default;
+}
+
+.toRegister > div {
+  margin-left: 5px;
+  margin-top: 20px;
+  color: #7289da;
+  font-size: 12px;
+  cursor: default;
+}
+
+.toRegister > div:hover {
+  text-decoration: underline;
+}

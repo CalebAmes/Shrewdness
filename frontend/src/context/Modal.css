@@ -22,7 +22,6 @@
 
 .modal-content {
   position: absolute;
-  background-color:white;
   max-width: 90vw;
   max-height: 80vh;
   z-index: 10;

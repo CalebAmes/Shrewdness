@@ -5,7 +5,7 @@
   border-radius: 8px;
   overflow: hidden;
   position: fixed;
-  z-index: 1;
+  z-index: 3;
 }
 
 .topCard {
@@ -36,5 +36,20 @@
 .bottomCard {
   width: 100;
   height: 275px;
-  background: #3c6e71;
+  background: #483c46;
+  margin: auto;
+}
+
+.cardText {
+  color: #483c46;
+  font-weight: 800;
+  font-size: 18px;
+  margin: 10px;
+}
+
+.bioDiv {
+  box-sizing: border-box;
+  margin-left: 10px;
+  padding-top: 8px;
+  color: #8e9297;
 }

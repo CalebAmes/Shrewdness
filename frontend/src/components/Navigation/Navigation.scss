@@ -10,7 +10,7 @@
   /* padding: 0px 1rem; */
   width: 100%;
   position: fixed;
-  z-index: 300;
+  z-index: 3;
   /* color: var(--text-color-1); */
   transform: translateX(-8px) translateY(-8px);
 }
@@ -25,7 +25,7 @@
 
 nav {
   position: fixed;
-  z-index: 9;
+  z-index: 3;
 }
 
 .categoryGrid {
@@ -93,8 +93,8 @@ nav {
 }
 
 .navItem {
-display: flex;
-justify-content: flex-start;
+  display: flex;
+  justify-content: flex-start;
 }
 
 .far-els {
@@ -104,7 +104,7 @@ justify-content: flex-start;
 
 .nav-item svg{
   position:fixed;
-  z-index: 1000;
+  z-index: 4;
   width: 32px;
   height: 32px;
   transform: translateX(10px);
@@ -126,7 +126,7 @@ justify-content: flex-start;
 
 .dropdown {
   position: fixed;
-  z-index:400;
+  z-index:4;
 }
 
 .dd {
@@ -138,7 +138,7 @@ justify-content: flex-start;
   background-color: var(--bg);
   border: var(--border);
   overflow: scroll;
-  z-index: 400;
+  z-index: 4;
   transition: height var(--speed) ease;
   overflow: hidden;
   font-size: 18px;
