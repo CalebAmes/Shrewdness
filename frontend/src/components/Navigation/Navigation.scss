@@ -1,95 +1,10 @@
-// .profile-dropdown {
-//   position: absolute;
-// }
-
-.NavBar {
-  height: var(--nav-size);
-  background: var(--bg);
-  opacity: 0;
-  font-size: 14px;
-  // border-bottom: var(--border);
-  /* padding: 0px 1rem; */
-  width: 100%;
-  position: fixed;
-  z-index: 3;
-  /* color: var(--text-color-1); */
-  transform: translateX(-8px) translateY(-8px);
-}
-
 .nav-div {
   color: black;
-}
-
-// .pad {
-//   height: 40px;
-//   background: inherit
-// }
-
-nav {
-  position: fixed;
-  z-index: 3;
-}
-
-.categoryGrid {
-  /* color: var(--text-color-1); */
-  display: grid;
-  grid-template-columns: 33.3% 33.3% 33.3%;
-  grid-template-rows: 2;
-  margin: 0;
-  padding: 0;
-  border-bottom: var(--border);
-}
-
-.cGridItem {
-  margin: auto;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 90px;
-  width: 100%;
-  transition: color 1000ms;
-}
-
-.gridDiv{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.profileGrid {
-  /* color: var(--text-color-1); */
-  display: grid;
-  grid-template-columns: 50% 50%;
-  height: 60px;
-  width: 100%;
-  font-weight: 400;
-  border-bottom: var(--border)
-}
-
-.pGridItem {
-  transition: background var(--speed);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.NavBar-div .far-els {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
 }
 
 .navItem {
   display: flex;
   justify-content: flex-start;
-}
-
-.far-els {
-  margin-top: 8px;
-  transform: translateX(-20px);
 }
 
 .nav-item svg{
