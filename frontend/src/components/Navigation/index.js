@@ -152,7 +152,7 @@ export function Dropdown({openFunc}) {
                 rightRightIcon={<i class="fas fa-chevron-right"/>} goToMenu='groups'>
                   Groups
               </DropdownItem> */}
-              <Link className='dropdown-item item' to="/users">Users</Link>
+              {/* <Link className='dropdown-item item' to="/users">Users</Link> */}
               <div className='dropdown-item item' onClick={logout}>Log Out</div>
             </ul>
           </CSSTransition>
