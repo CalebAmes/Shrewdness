@@ -72,13 +72,23 @@ const ChatRoom = () => {
     messagePad?.scrollIntoView({ behavior: "smooth" })
   }
 
+  const scrollValue = () => {
+    if (document.querySelector('.chatMessages')){
+      const div = document.querySelector('.chatMessages')
+      const height = div.scrollTop
+      // console.log(div)
+      // console.log(height)
+      return height
+    }
+  }
+
   return (
     <>{ isLoaded && user &&
       <>
-        <div className='chatMessages'>
+        <div className='chatMessages' onClick={ scrollValue }>
           {msgs.map((msg) => (
 
-            <ChatComponent message={msg} users={users} currentUserId={user.id} />
+            <ChatComponent message={msg} users={users} scrollValue={ scrollValue } currentUserId={user.id} />
           ))}
           <div id='messagePad'>{hello}</div>
         </div>
@@ -92,14 +102,19 @@ const ChatRoom = () => {
   )
 }
 
-export function ChatComponent ({ message, users }) {
+export function ChatComponent ({ message, users, scrollValue }) {
   const [open, setOpen] = useState(false)
   const [card, setCard] = useState(false)
+  const [height, setHeight] = useState(0)
   const userId = message.userId;
   const user = users[userId]
   let messageImg;
 
-  const closeCard = () => {
+  const closeCard = async () => {
+    const div = document.querySelector('.post');
+    const scroll = await scrollValue();
+    setHeight(scroll);
+    // console.log(height)
     setCard(!card)
   }
 
@@ -118,7 +133,7 @@ export function ChatComponent ({ message, users }) {
               <div className='messageTime'>
                 { message.updatedAt }
                 { card && 
-                  <UserCard user={ user } closeCard={ closeCard } />
+                  <UserCard user={ user } closeCard={ closeCard } height={ height } />
                 }
               </div>
             </div>
@@ -151,10 +166,14 @@ export function ChatComponent ({ message, users }) {
 
 }
 
-export function UserCard ({ user, closeCard }) {
-
+export function UserCard ({ user, closeCard, height }) {
+  console.log(height)
+  const y = 100
+  const styles = { 
+    transform: `translateY(-${height}px)` 
+};
   return (
-    <div className='userCard'>
+    <div className='userCard' style={styles}>
       <div className='cardBackground' onClick={ closeCard }></div>
       <div className='topCard'>
         <img src={ user.avatar } className='cardImg'/>
