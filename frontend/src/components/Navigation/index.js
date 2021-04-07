@@ -2,7 +2,8 @@ import React,{ useEffect, useState } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { ReactComponent as Image } from '../../icons/gorilla.svg'
+import { ReactComponent as Image } from '../../icons/gorilla.svg';
+import * as sessionActions from '../../store/session';
 import { getGroup } from '../../store/groups'
 import { getChannel } from '../../store/channels'
 import LoginFormModal from '../LoginFormModal';
@@ -76,6 +77,11 @@ export function Dropdown({openFunc}) {
     setMenuHeight(height);
   }
 
+  const logout = (e) => {
+    e.preventDefault();
+    dispatch(sessionActions.logout());
+  };
+
   function DropdownItem(props) {
     const click = () => {
       if (props.group) setGroupId(props.group.id)
@@ -140,21 +146,14 @@ export function Dropdown({openFunc}) {
             onEnter={ calcHeight }
             >
             <ul className='dd'>
-              <DropdownItem 
+              <p>Groups:</p>
+              <DropdownGroups />
+              {/* <DropdownItem 
                 rightRightIcon={<i class="fas fa-chevron-right"/>} goToMenu='groups'>
                   Groups
-              </DropdownItem>
-      
-                <Link className='dropdown-item item' to="/users">Users</Link>
-
-              
- 
-              <Link className='dropdown-item item' to="/groups">Groups</Link>
-              <Link className='dropdown-item item' exact to="/">Home</Link>
-              <div className='dropdown-item item' >
-                <ProfileButton user={user} />
-              </div>
-
+              </DropdownItem> */}
+              <Link className='dropdown-item item' to="/users">Users</Link>
+              <div className='dropdown-item item' onClick={logout}>Log Out</div>
             </ul>
           </CSSTransition>
 
@@ -181,18 +180,19 @@ export function Dropdown({openFunc}) {
             classNames='menu-secondary'
             >
             <ul className='dd'>
+              {/* <DropdownItem 
+                rightIcon={<i class="fas fa-chevron-left"/>}
+                rightRightIcon={<i class="fas fa-chevron-left"/>}
+                goToMenu='main'>
+                ....main
+              </DropdownItem> */}
+              <p>Channels:</p>
+              <DropdownChannel />
               <DropdownItem 
                 rightRightIcon={<i class="fas fa-chevron-left"/>}
                 goToMenu='main'>
                   ...back
               </DropdownItem>
-              <DropdownItem 
-                rightIcon={<i class="fas fa-chevron-left"/>}
-                rightRightIcon={<i class="fas fa-chevron-left"/>}
-                goToMenu='main'>
-                  ....main
-              </DropdownItem>
-              <DropdownChannel />
             </ul>
           </CSSTransition>
         </div>
