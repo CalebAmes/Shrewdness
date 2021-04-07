@@ -26,7 +26,7 @@ function LoginFormPage() {
     <>
     <div className='loginForm'>
       <div className='welcome'>
-        <h1>Welcome Back</h1>
+        <h1>Welcome Back!</h1>
         <h3>We're so excited to see you again!</h3>
       </div>
       <form onSubmit={handleSubmit}>

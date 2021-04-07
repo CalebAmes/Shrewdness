@@ -5,6 +5,7 @@
 .NavBar {
   height: var(--nav-size);
   background: var(--bg);
+  opacity: 0;
   font-size: 14px;
   // border-bottom: var(--border);
   /* padding: 0px 1rem; */
@@ -19,9 +20,10 @@
   color: black;
 }
 
-.pad {
-  height: 40px;
-}
+// .pad {
+//   height: 40px;
+//   background: inherit
+// }
 
 nav {
   position: fixed;
@@ -192,11 +194,11 @@ nav {
 }
 
 .dropdown-item:hover {
-  background: #8e9297;
+  background: #fff;
 }
 
 .menu-item:hover {
-  background: #8e9297;
+  background: #fff;
 }
 
 .cat-menu > i{

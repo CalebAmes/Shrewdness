@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
+import { Redirect } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getGroup } from '../../store/groups';
 import { getChannel } from '../../store/channels';
@@ -96,7 +97,7 @@ const ChatRoom = () => {
       </>
     }{
       !user && 
-      <h1>Please log in to join a chat room</h1>
+      <Redirect to='/' />
     }
     </>
   )
