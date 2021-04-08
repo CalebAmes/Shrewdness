@@ -37,13 +37,14 @@
 
 .image {
   position: fixed;
-  z-index: 10;
-  height: 60px;
+  z-index: 1;
+
 }
 
 .imageOne {
   animation-name: imageOne;
   animation-duration: 10s;
+  height: 60px;
 }
 
 @keyframes imageOne {
@@ -58,6 +59,7 @@
 .imageTwo {
   animation-name: imageTwo;
   animation-duration: 20s;
+  height: 60px;
 }
 
 @keyframes imageTwo {
@@ -74,6 +76,7 @@
 .imageThree {
   animation-name: imageThree;
   animation-duration: 10s;
+  height: 60px;
 }
 
 @keyframes imageThree {
@@ -88,6 +91,7 @@
 .imageFour {
   animation-name: imageFour;
   animation-duration: 10s;
+  height: 60px;
 }
 
 @keyframes imageFour {
@@ -102,6 +106,7 @@
 .imageFive {
   animation-name: imageFive;
   animation-duration: 10s;
+  height: 60px;
 }
 
 @keyframes imageFive {
@@ -111,5 +116,80 @@
   to {
     transform: translateX(1000%);
   }
+}
+.imageSix {
+  animation-name: imageSix;
+  animation-duration: 10s;
+  height: 60px;
+}
 
+@keyframes imageSix {
+  from {
+    transform: translateY(1000%);
+  }
+  to {
+    transform: translateY(-1000%);
+  }
+}
+
+.imageSeven {
+  animation-name: imageSeven;
+  animation-duration: 20s;
+  height: 60px;
+}
+
+@keyframes imageSeven {
+  from {
+    transform: translateX(400%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(-400%);
+    opacity: 1;
+  }
+}
+  
+.imageEight {
+  animation-name: imageEight;
+  animation-duration: 10s;
+  height: 60px;
+}
+
+@keyframes imageEight {
+  from {
+    transform: translateY(1000%) translateX(1000px);
+  }
+  to {
+    transform: translateY(-1000%) translateX(-1000px);
+  }
+}
+
+.imageNine {
+  animation-name: imageNine;
+  animation-duration: 10s;
+  height: 60px;
+}
+
+@keyframes imageNine {
+  from {
+    transform: translateX(-1000%) translateY(-200px);
+  }
+  to {
+    transform: translateX(1100%) translateY(800px);
+  }
+}
+
+.imageTen {
+  animation-name: imageTen;
+  animation-duration: 10s;
+  height: 60px;
+}
+
+@keyframes imageTen {
+  from {
+    transform: translateX(1000%);
+  }
+  to {
+    transform: translateX(-1000%);
+  }
 }

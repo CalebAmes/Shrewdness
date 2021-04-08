@@ -17,6 +17,11 @@ const Home = () => {
         <Image className='image imageThree'/>
         <Image className='image imageFour'/>
         <Image className='image imageFive'/>
+        <Image className='image imageSix'/>
+        <Image className='image imageSeven'/>
+        <Image className='image imageEight'/>
+        <Image className='image imageNine'/>
+        <Image className='image imageTen'/>
         <div className='yourText'>
           <h1>Your place to talk</h1>
           <h3>Whether you're part of a school club, gaming group, worldwide art community, or just a handful of friends that want to spend some time together, Shrewdness makes it easy to talk every day and hang out more often.</h3>
