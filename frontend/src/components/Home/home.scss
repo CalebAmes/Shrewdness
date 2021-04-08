@@ -20,6 +20,7 @@
   justify-content: center;
   align-items: center;
   color: #fff;
+  z-index: 3;
 }
 
 .yourText > h3 {
@@ -32,4 +33,83 @@
   text-align: center;
   font-weight: 600;
   font-size: 56px;
+}
+
+.image {
+  position: fixed;
+  z-index: 10;
+  height: 60px;
+}
+
+.imageOne {
+  animation-name: imageOne;
+  animation-duration: 10s;
+}
+
+@keyframes imageOne {
+  from {
+    transform: translateY(-1000%);
+  }
+  to {
+    transform: translateY(1000%);
+  }
+}
+
+.imageTwo {
+  animation-name: imageTwo;
+  animation-duration: 20s;
+}
+
+@keyframes imageTwo {
+  from {
+    transform: translateX(-400%);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(400%);
+    opacity: 0;
+  }
+}
+  
+.imageThree {
+  animation-name: imageThree;
+  animation-duration: 10s;
+}
+
+@keyframes imageThree {
+  from {
+    transform: translateY(-1000%) translateX(-1000px);
+  }
+  to {
+    transform: translateY(1000%) translateX(1000px);
+  }
+}
+
+.imageFour {
+  animation-name: imageFour;
+  animation-duration: 10s;
+}
+
+@keyframes imageFour {
+  from {
+    transform: translateX(1000%) translateY(200px);
+  }
+  to {
+    transform: translateX(-1100%) translateY(800px);
+  }
+}
+
+.imageFive {
+  animation-name: imageFive;
+  animation-duration: 10s;
+}
+
+@keyframes imageFive {
+  from {
+    transform: translateX(-1000%);
+  }
+  to {
+    transform: translateX(1000%);
+  }
+
 }

@@ -2,6 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import './home.scss'
+import { ReactComponent as Image } from '../../icons/gorilla.svg';
 
 const Home = () => {
   const user = useSelector(state => state.session?.user)
@@ -11,6 +12,11 @@ const Home = () => {
   return (
     <>
       <div className='yourPlace'>
+        <Image className='image imageOne'/>
+        <Image className='image imageTwo'/>
+        <Image className='image imageThree'/>
+        <Image className='image imageFour'/>
+        <Image className='image imageFive'/>
         <div className='yourText'>
           <h1>Your place to talk</h1>
           <h3>Whether you're part of a school club, gaming group, worldwide art community, or just a handful of friends that want to spend some time together, Shrewdness makes it easy to talk every day and hang out more often.</h3>
