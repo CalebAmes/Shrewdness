@@ -7,7 +7,8 @@ import * as sessionActions from '../../store/session';
 import { getGroup } from '../../store/groups'
 import { getChannel } from '../../store/channels'
 import LoginFormModal from '../LoginFormModal';
-import ProfileButton from './ProfileButton';
+import SignupFormModal from '../SignupFormModal';
+
 import '../../index.scss';
 import './Navigation.scss';
 
@@ -203,9 +204,11 @@ export function Dropdown({openFunc}) {
       <div className='cardBackground' onClick={ openFunc }></div>
       <div className='dropdown' style={{ height: menuHeight }}>
         <ul className='dd'>
-        <Link className='dropdown-item item' to="/signup">Sign Up</Link>
         <div className='dropdown-item item' >
           <LoginFormModal user={user} />
+        </div>
+        <div className='dropdown-item item' >
+          <SignupFormModal user={user} />
         </div>
       </ul>
       </div>
