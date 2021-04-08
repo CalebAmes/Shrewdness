@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import './home.scss'
 import { ReactComponent as Image } from '../../icons/gorilla.svg';
+import { ReactComponent as Arrow } from '../../icons/arrow_10.svg';
 
 const Home = () => {
   const user = useSelector(state => state.session?.user)
@@ -11,6 +12,8 @@ const Home = () => {
 
   return (
     <>
+      <Arrow className='arrow'/>
+      <div className='click'>Click the monkey!</div>
       <div className='yourPlace'>
         <Image className='image imageOne'/>
         <Image className='image imageTwo'/>
