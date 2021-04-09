@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Modal } from '../../context/Modal';
 import LoginForm from './LoginForm';
 
-function LoginFormModal() {
+function LoginFormModal({text, fromSignup}) {
   const [showModal, setShowModal] = useState(false);
   const open = () => {
     setShowModal(!showModal)
@@ -10,10 +10,10 @@ function LoginFormModal() {
 
   return (
     <>
-      <div className='openModal' onClick={() => setShowModal(true)}>Log In</div>
+      <div className='openModal' onClick={() => setShowModal(true)}>{text}</div>
       {showModal && (
         <Modal onClose={open}>
-          <LoginForm open={open} />
+          <LoginForm open={open} fromSignup={fromSignup} />
         </Modal>
       )}
     </>

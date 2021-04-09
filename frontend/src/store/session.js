@@ -28,18 +28,23 @@ export const restoreUser = () => async (dispatch) => {
 };
 
 export const signup = (user) => async (dispatch) => {
-  const { username, email, password, bio, } = user;
+  const { username, email, password, bio, avatar } = user;
+  const formData = new FormData();
+  formData.append('username', username)
+  formData.append('email', email)
+  formData.append('bio', bio)
+  formData.append('password', password)
+
+  if (avatar) formData.append('avatar', avatar);
+
   const response = await fetch('/api/users', {
     method: 'POST',
-    body: JSON.stringify({
-      username,
-      email,
-      password,
-      bio,
-    })
+    headers: {'Content-Type': 'multipart/form-data'},
+    body: formData,
   });
 
-  dispatch(setUser(response.data.user));
+  const data = await response.json();
+  dispatch(setUser(data.user));
   return response;
 };
 
@@ -57,8 +62,7 @@ function reducer(state = initialState, action) {
   let newState;
   switch (action.type) {
     case SET_USER:
-      newState = Object.assign({}, state, { user: action.payload });
-      return newState;
+      return { ...state, user: action.payload };
     case REMOVE_USER:
       newState = Object.assign({}, state, { user: null });
       return newState;

@@ -8,7 +8,6 @@ const MessageInput = ({ user, channelId, channelName }) => {
   const [image, setImage] = useState(null);
   const [files, setFiles] = useState([])
   const userId = user?.id
-  const data = { user, channelId }
 
   const keyPress = (e) => {
     if (e.key === 'Enter') {
@@ -18,12 +17,6 @@ const MessageInput = ({ user, channelId, channelName }) => {
       setValue('');
       setFiles([]);
     }
-  }
-
-  const updateFile = (e) => {
-    const file = e.target.files[0];
-    if (file) setFiles(file);
-    console.log(files)
   }
 
   const sendMessage = () => {

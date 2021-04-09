@@ -205,10 +205,10 @@ export function Dropdown({openFunc}) {
       <div className='dropdown' style={{ height: menuHeight }}>
         <ul className='dd'>
         <div className='dropdown-item item' >
-          <LoginFormModal user={user} />
+          <LoginFormModal user={user} text={'Log In'} />
         </div>
         <div className='dropdown-item item' >
-          <SignupFormModal user={user} />
+          <SignupFormModal user={user} text={'Sign Up'} />
         </div>
       </ul>
       </div>

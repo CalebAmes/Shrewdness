@@ -1,9 +1,10 @@
 import React, { useState, useSelector } from "react";
 import * as sessionActions from "../../store/session";
 import { useDispatch } from "react-redux";
+import SignupFormModal from '../SignupFormModal'
 import "./LoginForm.scss";
 
-function LoginForm({open}) {
+function LoginForm({open, fromSignup}) {
   const dispatch = useDispatch();
   const [credential, setCredential] = useState("");
   const [password, setPassword] = useState("");
@@ -63,7 +64,16 @@ function LoginForm({open}) {
       <div className='registerDemo'>
         <div className='toRegister'>
           <p>Need an account? </p>
-          <div>Register</div>
+          { fromSignup &&
+            <div onClick={open}>
+              Register
+            </div>
+          }
+          { !fromSignup &&
+            <div className='toModal'>
+              <SignupFormModal text={'Register'} fromLogin={true} />
+            </div>
+          }
         </div>
         <div className='demo'>
           <div onClick={ demoLogin }>Demo Login</div>

@@ -2,18 +2,19 @@ import React, { useState } from 'react';
 import { Modal } from '../../context/Modal';
 import SignupForm from './SignupForm';
 
-function SignupFormModal() {
+function SignupFormModal({text, fromLogin}) {
   const [showModal, setShowModal] = useState(false);
-  const open = () => {
-    setShowModal(!showModal)
+  const open = async () => {
+    await setShowModal(!showModal)
   }
+
 
   return (
     <>
-      <div className='openModal' onClick={() => setShowModal(true)}>Sign Up</div>
+      <div className='openModal' onClick={open}>{text}</div>
       {showModal && (
         <Modal onClose={open}>
-          <SignupForm open={open} />
+          <SignupForm open={open} fromLogin={fromLogin} />
         </Modal>
       )}
     </>

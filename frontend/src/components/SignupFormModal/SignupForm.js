@@ -2,17 +2,35 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import * as sessionActions from "../../store/session";
+import LoginFormModal from '../LoginFormModal';
+import { useDropzone } from 'react-dropzone';
 import './SignupForm.scss';
 
-function SignupFormPage({open}) {
+function SignupFormPage({open, fromLogin}) {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
+  const [image, setImage] = useState(null);
+  const [files, setFiles] = useState([])
   const [bio, setBio] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState([]);
+  
+  const { getRootProps, getInputProps } = useDropzone({
+    accept: "image/*",
+    onDrop: (acceptedFiles) => {
+      setFiles(
+        acceptedFiles.map((file) =>
+          Object.assign(file, {
+            preview: URL.createObjectURL(file),
+          })
+        )
+      )
+    },
+  })
+
 
   if (sessionUser) return <Redirect to="/" />;
 
@@ -20,19 +38,46 @@ function SignupFormPage({open}) {
     e.preventDefault();
     if (password === confirmPassword) {
       setErrors([]);
-      return dispatch(sessionActions.signup({ email, username, bio, password }))
-        .catch(res => {
-          if (res.data && res.data.errors) setErrors(res.data.errors);
+      if(files[0]){
+        return dispatch(sessionActions.signup({ 
+          email, 
+          username, 
+          bio, 
+          avatar: files[0],
+          password 
+        })).catch(res => {
+            if (res.data && res.data.errors) setErrors(res.data.errors);
         });
+      }
+      if(!files[0]) {
+        return setErrors(['Please provide an avatar']);
+      }
     }
     return setErrors(['Confirm Password field must be the same as the Password field']);
   };
+
+
+  const demoLogin = () => {
+    dispatch(sessionActions.login({ credential: 'Demo-lition', password: 'password' }))
+    open()
+  }
+
+
+
+  const images = files.map((file) => (
+    <div key={file.name}>
+      <div>
+        <img src={file.preview} style={{ width: "100px" }} alt="preview" />
+      </div>
+    </div>
+  ))
 
   return (
     <>
       <div className='signupDiv'>
         <div className='welcome'>
-          <h1>Sign Up</h1>
+          <h1>Create an account</h1>
+          <h2>Look at you making great decisions!</h2>
         </div>
         <form className='loginForm' onSubmit={handleSubmit}>
           <ul>
@@ -62,7 +107,23 @@ function SignupFormPage({open}) {
               type="text"
               value={bio}
               onChange={(e) => setBio(e.target.value)}
+              required
               />
+          </div>
+          <h3 className='avatarh3'>Add an Avatar:</h3>
+          <div className='addavatar'>
+            <div className='dropzone2' {...getRootProps()}>
+              <input {...getInputProps()} />
+              <i class="fas fa-image fa-lg"/>
+            </div>
+            <div className='preview'>
+              { files[0] &&
+                <div onClick={() => setFiles([])}>
+                  <i class="fas fa-window-close"/>
+                </div>
+              }
+              {images}
+            </div>
           </div>
           <div className='labelDiv'>
             <h3>Password</h3>
@@ -84,6 +145,24 @@ function SignupFormPage({open}) {
           </div>
           <button type="submit">Sign Up</button>
         </form>
+        <div className='registerDemo'>
+        <div className='toRegister'>
+          <p>Already an account? </p>
+          { fromLogin &&
+            <div onClick={open}>
+              Log in here
+            </div>
+          }
+          { !fromLogin &&
+            <div  className='toModal' >
+              <LoginFormModal text={'Log in here'} fromSignup={true} />
+            </div>
+          }
+        </div>
+        <div className='demo'>
+          <div onClick={ demoLogin }>Demo Login</div>
+        </div>
+      </div>
       </div>
     </>
   );
