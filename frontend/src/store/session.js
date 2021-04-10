@@ -22,10 +22,8 @@ export const login = ({ credential, password }) => async (dispatch) => {
 };
 
 export const restoreUser = () => async (dispatch) => {
-  const res = await fetch('/api/session');
-  if (res.user){
-    dispatch(setUser(res.data.user));
-  }
+  const res = await csrFetch('/api/session');
+  dispatch(setUser(res.data.user));
   return res;
 };
 
