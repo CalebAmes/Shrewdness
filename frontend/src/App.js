@@ -22,13 +22,13 @@ function App() {
   const [isLoaded, setIsLoaded] = useState(false);
   useEffect(() => {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
-    dispatch(getChannelMessages());
-    dispatch(getChannel());
-    dispatch(getDirectMessages());
-    dispatch(getGroup());
-    dispatch(getNotification());
-    dispatch(getUserGroup());
-    dispatch(getUsers());
+    // dispatch(getChannelMessages());
+    // dispatch(getChannel());
+    // dispatch(getDirectMessages());
+    // dispatch(getGroup());
+    // dispatch(getNotification());
+    // dispatch(getUserGroup());
+    // dispatch(getUsers());
   }, [dispatch]);
 
   return (
