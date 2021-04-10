@@ -49,7 +49,8 @@ export const signup = (user) => async (dispatch) => {
     body: formData,
   });
 
-  dispatch(setUser(res.data.user));
+  const data = await res.json()
+  await dispatch(setUser(data.user));
   return res;
 };
 
