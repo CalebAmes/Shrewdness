@@ -31,27 +31,28 @@ function SignupFormPage({open, fromLogin}) {
     },
   })
 
-
-  if (sessionUser) return <Redirect to="/" />;
-
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (password === confirmPassword) {
       setErrors([]);
-      if(files[0]){
-        return dispatch(sessionActions.signup({ 
+      // if(files[0]){
+        const res = await dispatch(sessionActions.signup({ 
           email, 
           username, 
           bio, 
           avatar: files[0],
           password 
         })).catch(res => {
-            if (res.data && res.data.errors) setErrors(res.data.errors);
+            if (res.data && res.data.errors) {
+              return setErrors(res.data.errors);
+            }
         });
-      }
-      if(!files[0]) {
-        return setErrors(['Please provide an avatar']);
-      }
+        console.log(
+          '============== this is hit'
+        )
+        console.log('this is res.data in form ---',res.data)
+        if (res && res.ok) return window.location.reload() 
+        
     }
     return setErrors(['Confirm Password field must be the same as the Password field']);
   };

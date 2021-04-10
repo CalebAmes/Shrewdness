@@ -37,15 +37,16 @@ export const signup = (user) => async (dispatch) => {
 
   if (avatar) formData.append('avatar', avatar);
 
-  const response = await fetch('/api/users', {
+  const res = await fetch('/api/users', {
     method: 'POST',
     headers: {'Content-Type': 'multipart/form-data'},
     body: formData,
   });
 
-  const data = await response.json();
-  dispatch(setUser(data.user));
-  return response;
+  console.log('this is hit---------------------------')
+
+  dispatch(setUser(res.data.user));
+  return res;
 };
 
 export const logout = () => async (dispatch) => {

@@ -21,10 +21,12 @@ module.exports = {
       avatar: {
         allowNull: false,
         type: Sequelize.STRING,
+        defaultValue: faker.image.animals(400, 400),
       },
       username: {
         type: Sequelize.STRING(30),
-        allowNull: false
+        allowNull: false,
+        unique: true
       },
       hashedPassword: {
         type: Sequelize.STRING.BINARY,

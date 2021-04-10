@@ -15,7 +15,7 @@ const s3 = new AWS.S3({ apiVersion: "2006-03-01" });
 // --------------------------- Public UPLOAD ------------------------
 
 const singlePublicFileUpload = async (file) => {
-  // console.log('thisis the file' ,file)
+  // console.log('this is the file' ,file)
 
   const { mimetype, buffer } = await file;
   // name of the file in your S3 bucket will be the date in ms plus the extension name
