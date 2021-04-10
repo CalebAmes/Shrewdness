@@ -34,7 +34,7 @@ app.use(
     cookie: {
       secure: isProduction,
       sameSite: isProduction && 'Lax',
-      httpOnly: true
+      httpOnly: false
     }
   })
 );
