@@ -33,28 +33,32 @@ function SignupFormPage({open, fromLogin}) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (password === confirmPassword) {
-      setErrors([]);
-      const res = await dispatch(sessionActions.signup({ 
-        email, 
-        username, 
-        bio, 
-        avatar: files[0],
-        password 
-      })).catch(res => {
-          if (res.data && res.data.errors) {
-            return setErrors(res.data.errors);
-          }
-      });
-      if (res && res.ok) return window.location.reload() 
+    if (password !== confirmPassword) {
+      return setErrors(['Confirm Password field must be the same as the Password field']);
     }
-    return setErrors(['Confirm Password field must be the same as the Password field']);
+    setErrors([]);
+    const response = await dispatch(sessionActions.signup({ 
+      email, 
+      username, 
+      bio, 
+      avatar: files[0],
+      password 
+    })).catch(async (res) => {
+        const data = await res.json();
+        if (data?.errors){
+          return setErrors(data.errors);
+        }
+    });
+    if (response && response.ok) return window.location.reload() 
   };
+
 
   const demoLogin = () => {
     dispatch(sessionActions.login({ credential: 'Demo-lition', password: 'password' }))
     open()
   }
+
+
 
   const images = files.map((file) => (
     <div key={file.name}>
