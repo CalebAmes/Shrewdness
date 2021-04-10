@@ -14,7 +14,7 @@ export async function csrFetch(url, options = {}) {
     options.headers["XSRF-Token"] = Cookies.get("XSRF-TOKEN");
   }
 
-  const res = await window.csrFetch(url, options);
+  const res = await window.fetch(url, options);
 
   const contentType = res.headers.get('content-type');
   if (contentType && contentType.includes('application/json')) {
