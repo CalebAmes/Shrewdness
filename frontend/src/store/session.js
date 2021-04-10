@@ -1,4 +1,4 @@
-import { fetch } from './csrf.js';
+import { csrFetch } from './csrf.js';
 
 const SET_USER = 'session/setUser';
 const REMOVE_USER = 'session/removeUser';
@@ -13,7 +13,7 @@ const removeUser = () => ({
 });
 
 export const login = ({ credential, password }) => async (dispatch) => {
-  const res = await fetch('/api/session', {
+  const res = await csrFetch('/api/session', {
     method: 'POST',
     body: JSON.stringify({ credential, password })
   });
@@ -37,7 +37,7 @@ export const signup = (user) => async (dispatch) => {
 
   if (avatar) formData.append('avatar', avatar);
 
-  const res = await fetch('/api/users', {
+  const res = await csrFetch('/api/users', {
     method: 'POST',
     headers: {'Content-Type': 'multipart/form-data'},
     body: formData,
@@ -48,7 +48,7 @@ export const signup = (user) => async (dispatch) => {
 };
 
 export const logout = () => async (dispatch) => {
-  const response = await fetch('/api/session', {
+  const response = await csrFetch('/api/session', {
     method: 'DELETE'
   });
   dispatch(removeUser());
