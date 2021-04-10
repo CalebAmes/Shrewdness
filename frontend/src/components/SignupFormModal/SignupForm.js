@@ -35,35 +35,26 @@ function SignupFormPage({open, fromLogin}) {
     e.preventDefault();
     if (password === confirmPassword) {
       setErrors([]);
-      // if(files[0]){
-        const res = await dispatch(sessionActions.signup({ 
-          email, 
-          username, 
-          bio, 
-          avatar: files[0],
-          password 
-        })).catch(res => {
-            if (res.data && res.data.errors) {
-              return setErrors(res.data.errors);
-            }
-        });
-        console.log(
-          '============== this is hit'
-        )
-        console.log('this is res.data in form ---',res.data)
-        if (res && res.ok) return window.location.reload() 
-        
+      const res = await dispatch(sessionActions.signup({ 
+        email, 
+        username, 
+        bio, 
+        avatar: files[0],
+        password 
+      })).catch(res => {
+          if (res.data && res.data.errors) {
+            return setErrors(res.data.errors);
+          }
+      });
+      if (res && res.ok) return window.location.reload() 
     }
     return setErrors(['Confirm Password field must be the same as the Password field']);
   };
-
 
   const demoLogin = () => {
     dispatch(sessionActions.login({ credential: 'Demo-lition', password: 'password' }))
     open()
   }
-
-
 
   const images = files.map((file) => (
     <div key={file.name}>

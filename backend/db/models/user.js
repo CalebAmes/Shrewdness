@@ -74,8 +74,7 @@ module.exports = (sequelize, DataTypes) => {
     User.hasMany(models.Notification, { foreignKey: 'userId' })
   };
   User.prototype.toSafeObject = function () {
-    // remember, this cannot be an arrow function
-    const { id, username, email } = this; // context will be the User instance
+    const { id, username, email } = this;
     return { id, username, email };
   };
 
@@ -111,7 +110,6 @@ module.exports = (sequelize, DataTypes) => {
       avatar,
       hashedPassword,
     });
-    // console.log('---------------------------------------this is user.dataValues in models ', user.dataValues)
 
     return await User.scope('currentUser').findByPk(user.id);
   };

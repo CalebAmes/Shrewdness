@@ -43,8 +43,6 @@ export const signup = (user) => async (dispatch) => {
     body: formData,
   });
 
-  console.log('this is hit---------------------------')
-
   dispatch(setUser(res.data.user));
   return res;
 };
