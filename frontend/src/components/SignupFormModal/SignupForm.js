@@ -112,7 +112,7 @@ function SignupFormPage({open, fromLogin}) {
               <input {...getInputProps()} />
               <i class="fas fa-image fa-lg"/>
             </div>
-            <div className='preview'>
+            <div className='preview preview2'>
               { files[0] &&
                 <div onClick={() => setFiles([])}>
                   <i class="fas fa-window-close"/>
