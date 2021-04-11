@@ -17,7 +17,7 @@ const removeMessage = () => ({
 })
 
 export const getChannelMessages = () => async (dispatch) => {
-  const res = await fetch('/api/channelMessages');
+  const res = await fetch('/api/channelMessages/');
   const data = await res.json();
   dispatch(setMessage(data.channelMessage));
   return res;
@@ -31,7 +31,7 @@ export const createChannelMessage = (channelMessage) => async (dispatch) => {
   formData.append('messageText', messageText);
   if (messageImg) formData.append('messageImg', messageImg);
 
-  const res = await fetch(`/api/channelMessages`, {
+  const res = await fetch(`/api/channelMessages/`, {
     method: "POST",
     headers: {
       "Content-Type": "multipart/form-data",

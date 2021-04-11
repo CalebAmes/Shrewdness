@@ -17,7 +17,7 @@ const removeChannel = () => ({
 })
 
 export const getChannel = () => async (dispatch) => {
-  const res = await fetch('/api/channels');
+  const res = await fetch('/api/channels/');
   const data = await res.json();
   dispatch(setChannel(data.channel));
   return res;
@@ -25,7 +25,7 @@ export const getChannel = () => async (dispatch) => {
 
 export const createChannel = (channel) => async (dispatch) => {
   const { name, groupId, } = channel;
-  const res = await fetch ('/api/channels', {
+  const res = await fetch ('/api/channels/', {
     method: 'POST',
     headers: {'Content-Type': 'application/json'},
     body: JSON.stringify({
@@ -41,7 +41,7 @@ export const createChannel = (channel) => async (dispatch) => {
 }
 
 export const deleteChannel = () => async (dispatch) => {
-  const res = await fetch ('/api/channels', {
+  const res = await fetch ('/api/channels/', {
     method: 'DELETE',
   });
   dispatch(removeChannel());

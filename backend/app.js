@@ -29,15 +29,15 @@ app.use(
   })
 );
 
-app.use(
-  csurf({
-    cookie: {
-      secure: isProduction,
-      sameSite: isProduction && 'Lax',
-      httpOnly: false
-    }
-  })
-);
+// app.use(
+//   csurf({
+//     cookie: {
+//       secure: isProduction,
+//       sameSite: isProduction && 'Lax',
+//       httpOnly: false
+//     }
+//   })
+// );
 
 app.use(routes); // Connect all the routes
 

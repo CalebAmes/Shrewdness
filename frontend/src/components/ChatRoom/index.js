@@ -77,8 +77,6 @@ const ChatRoom = () => {
     if (document.querySelector('.chatMessages')){
       const div = document.querySelector('.chatMessages')
       const height = div.scrollTop
-      // console.log(div)
-      // console.log(height)
       return height
     }
   }
@@ -115,7 +113,6 @@ export function ChatComponent ({ message, users, scrollValue }) {
     const div = document.querySelector('.post');
     const scroll = await scrollValue();
     setHeight(scroll);
-    // console.log(height)
     setCard(!card)
   }
 
@@ -169,7 +166,6 @@ export function ChatComponent ({ message, users, scrollValue }) {
 
 export function UserCard ({ user, closeCard, height }) {
   console.log(height)
-  const y = 100
   const styles = { 
     transform: `translateY(-${height}px)` 
 };
