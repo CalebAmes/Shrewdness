@@ -21,7 +21,7 @@ const MessageInput = ({ user, channelId, channelName }) => {
 
   const sendMessage = () => {
     if (value.trim() === '') return;
-    console.log(image)
+
 
     let msg;
 
@@ -41,7 +41,6 @@ const MessageInput = ({ user, channelId, channelName }) => {
         messageImg: null,
       }
     }
-    console.log(image)
     socket.emit(`chatMessage`, msg)
   }
 
@@ -71,10 +70,10 @@ const MessageInput = ({ user, channelId, channelName }) => {
     <div className='messageInputDiv'>
       <div className='dropzone' {...getRootProps()}>
         <input {...getInputProps()} />
-        <i class="fas fa-image fa-lg"/>
+        <i className="fas fa-image fa-lg"/>
       </div>
       <textarea
-        maxlength='140'
+        maxLength='140'
         onChange={e => setValue(e.target.value)}
         onKeyPress={ keyPress }
         value={ value }
@@ -84,7 +83,7 @@ const MessageInput = ({ user, channelId, channelName }) => {
       <div className='preview'>
         { files[0] &&
           <div onClick={() => setFiles([])}>
-            <i class="fas fa-window-close"/>
+            <i className="fas fa-window-close"/>
           </div>
         }
         {images}
