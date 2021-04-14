@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getGroup } from '../../store/groups'
 import { getChannel } from '../../store/channels'
-import { io } from 'socket.io-client';
 import './groups.scss'
 
 const Groups = () => {

@@ -10,6 +10,7 @@ import socket from '../../service/socket';
 import './ChatRoom.scss';
 import '../UserCard/UserCard.scss';
 
+
 const ChatRoom = () => {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
@@ -21,49 +22,27 @@ const ChatRoom = () => {
   const { id } = useParams();
   const channelId = id
   const channel = channelsObj[channelId];
-  const [value, setValue] = useState('');
-  const userId = user?.id
   
   //TODO: add an api route to get just the current channels messages from the redux store to you don't have to store all of them
   const rawMessages = Object.values(channelMessagesObj);
   const msgs = rawMessages.filter(message => message.channelId == id);
-  const channels = Object.values(channelsObj);
-
   
-  useEffect(async () => {
-    await dispatch(getGroup());
-    await dispatch(getChannel());
-    await dispatch(getChannelMessages())
+  useEffect(() => {
+    dispatch(getGroup());
+    dispatch(getChannel());
+    dispatch(getChannelMessages())
     setIsLoaded(true);
     // socket.emit('join_channel', format(channel, user))
     socket.on(`chat_message_${id}`, async (msg) => {
       await dispatch(getChannelMessages());
-      setIsLoaded(true);
       scroll()
     })
     socket.on(`join_channel_res_${id}`, (msg) => {socketRes(msg)})
     scroll()
-  }, []);
+  }, [id]);
   
-  const keyPress = (e) => {
-    if (e.key === 'Enter') {
-      e.preventDefault();
-      sendMessage();
-      setValue('');
-    }
-  }
-  const sendMessage = () => {
-    if (value.trim() === '') return;
-
-    const msg = {
-      messageText: value.trim(),
-      userId,
-      channelId,
-    }
-    socket.emit(`chatMessage`, msg)
-  }
-
   const socketRes = (msg) => {
+    console.log('socketRes')
     setHello(msg)
     scroll()
   }
@@ -84,14 +63,16 @@ const ChatRoom = () => {
   return (
     <>{ isLoaded && user &&
       <>
+        
         <div className='chatMessages' onClick={ scrollValue }>
           {msgs.map((msg) => (
 
-            <ChatComponent message={msg} users={users} scrollValue={ scrollValue } currentUserId={user.id} />
+            <ChatComponent key={msg.id} message={msg} users={users} scrollValue={ scrollValue } currentUserId={user.id} />
           ))}
-          <div id='messagePad'>{hello}</div>
+          <div>{hello}</div>
+          <div id='messagePad'> </div>
         </div>
-        <MessageInput user={user} channelId={id} channelName={channel.name} />
+        <MessageInput user={user} channelId={id} channelName={channel?.name} />
       </>
     }{
       !user && 
@@ -110,7 +91,6 @@ export function ChatComponent ({ message, users, scrollValue }) {
   let messageImg;
 
   const closeCard = async () => {
-    const div = document.querySelector('.post');
     const scroll = await scrollValue();
     setHeight(scroll);
     setCard(!card)
@@ -153,9 +133,9 @@ export function ChatComponent ({ message, users, scrollValue }) {
       </div>
       { open &&
       <>
-        <div class="modal">
+        <div className="modal">
         <div className="modal-background" onClick={() => setOpen(!open)} />
-          <img src={messageImg} class="modal-content"/>
+          <img src={messageImg} className="modal-content"/>
         </div>
       </>
       }

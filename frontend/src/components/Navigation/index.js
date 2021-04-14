@@ -36,7 +36,7 @@ export function NavItem(props) {
 
   return (
     <div className='nav-item'>
-      <a href='#' className={ open && 'icon-button-flip' } onClick={openFunc}>
+      <a href='#' className={ open ? 'icon-button-flip' : undefined } onClick={openFunc}>
         { props.icon }
       </a>
 
@@ -109,7 +109,7 @@ export function Dropdown({openFunc}) {
       {
         channelsArray.filter(channel => channel.groupId === groupId)
           .map(channel => (
-            <Link className='dropdown-item item' to={`/chatRoom/${ channel.id }`}>{ channel.name }</Link>
+            <Link key={channel.id} className='dropdown-item item' to={`/chatRoom/${ channel.id }`}>{ channel.name }</Link>
           ))
       }
       </>
@@ -122,9 +122,10 @@ export function Dropdown({openFunc}) {
         {
           groupsArray.map((group) => (
             <DropdownItem 
+              key={group.id}
               goToMenu='channels' 
               groupId={group.id} 
-              rightRightIcon={<i class="fas fa-chevron-right"/>}
+              rightRightIcon={<i className="fas fa-chevron-right"/>}
               group={group}
               >{group.name}</DropdownItem>
           ))
@@ -150,7 +151,7 @@ export function Dropdown({openFunc}) {
               <p>Groups:</p>
               <DropdownGroups />
               {/* <DropdownItem 
-                rightRightIcon={<i class="fas fa-chevron-right"/>} goToMenu='groups'>
+                rightRightIcon={<i className="fas fa-chevron-right"/>} goToMenu='groups'>
                   Groups
               </DropdownItem> */}
               {/* <Link className='dropdown-item item' to="/users">Users</Link> */}
@@ -166,7 +167,7 @@ export function Dropdown({openFunc}) {
             >
             <ul className='dd'>
               <DropdownItem 
-                rightRightIcon={<i class="fas fa-chevron-left"/>} 
+                rightRightIcon={<i className="fas fa-chevron-left"/>} 
                 goToMenu='main'>
                   ...back
               </DropdownItem>
@@ -182,15 +183,15 @@ export function Dropdown({openFunc}) {
             >
             <ul className='dd'>
               {/* <DropdownItem 
-                rightIcon={<i class="fas fa-chevron-left"/>}
-                rightRightIcon={<i class="fas fa-chevron-left"/>}
+                rightIcon={<i className="fas fa-chevron-left"/>}
+                rightRightIcon={<i className="fas fa-chevron-left"/>}
                 goToMenu='main'>
                 ....main
               </DropdownItem> */}
               <p>Channels:</p>
               <DropdownChannel />
               <DropdownItem 
-                rightRightIcon={<i class="fas fa-chevron-left"/>}
+                rightRightIcon={<i className="fas fa-chevron-left"/>}
                 goToMenu='main'>
                   ...back
               </DropdownItem>

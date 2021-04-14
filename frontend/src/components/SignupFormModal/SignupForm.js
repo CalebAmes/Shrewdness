@@ -110,12 +110,12 @@ function SignupFormPage({open, fromLogin}) {
           <div className='addavatar'>
             <div className='dropzone2' {...getRootProps()}>
               <input {...getInputProps()} />
-              <i class="fas fa-image fa-lg"/>
+              <i className="fas fa-image fa-lg"/>
             </div>
             <div className='preview preview2'>
               { files[0] &&
                 <div onClick={() => setFiles([])}>
-                  <i class="fas fa-window-close"/>
+                  <i className="fas fa-window-close"/>
                 </div>
               }
               {images}

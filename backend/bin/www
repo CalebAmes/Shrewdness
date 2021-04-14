@@ -17,9 +17,7 @@ const postMessage = async (channelMessage) => {
   } = channelMessage;
   let messageImg;
   if (channelMessage.messageImg !== null) {
-    console.log('this is the channelMessage.messageImg - - - >  ', channelMessage.messageImg)
     messageImg = await singlePublicFileUpload2(channelMessage.messageImg);
-    console.log('this is the messageImg - - - >  ', messageImg)
   }
   await ChannelMessage.createChannelMessage({ 
     channelId,
@@ -43,8 +41,10 @@ db.sequelize
       
       //this is to a single client (current user)
 
-      socket.on('join_channel', format => {
-        socket.emit(`message`, `Welcome to Shrewdness`)
+      socket.on('join_channel', 
+        ({ channel, user }, callback) => {
+        console.log('joinChannel Hit')
+        socket.emit(`join_channel_res_${channel.id}`, `Welcome to Shrewdness`)
         socket.broadcast.emit(`message`, `User has joined the chat room`);
       })
       
