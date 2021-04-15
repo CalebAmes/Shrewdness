@@ -4,7 +4,7 @@
   overflow: scroll;
   border: none;
   background: #fff;
-}
+};
 
 .avatar {
   width: 50px;
@@ -12,16 +12,16 @@
   border-radius: 50%;
   margin-right: 15px;
   cursor: pointer;
-}
+};
 
 .postMessage {
   display: flex;
   flex-direction: column;
-}
+};
 
 #messagePad {
   padding: 30px;
-}
+};
 
 .chatComponentDiv {
   box-sizing: border-box;
@@ -30,41 +30,39 @@
   margin-left: 5%;
   overflow-wrap: anywhere;
   margin-bottom: 8px;
-}
+};
 
 .post {
   display: flex;
   flex-direction: row;
-  // height: clamp(5vh, 80px, 80vh);
-}
+};
 
 .post:hover {
   background: #efefef
-}
+};
 
 .message {
   font-size: 14px;
   font-weight: 100;
   display: flex;
   flex-direction: column;
-
-}
+};
 
 .divImage {
   padding-top: 6px;
   margin: auto;
-}
+};
 
 .divImage:hover {
   opacity: 0.7;
-}
+};
 
 .postInfo {
   display: flex;
   flex-direction: row;
   margin: 0;
-  paddign: 0;
-}
+  padding: 0;
+};
 
 .messageImg {
   border-radius: 6px;
@@ -72,50 +70,50 @@
   max-height: 400px;
   transition: 0.3s;
   cursor: pointer;
-}
+};
 
 .messageOrigin {
   font-size: 18px;
   font-weight: bold;
   color: #f4743b;
   cursor: pointer;
-}
+};
 
 .messageOrigin:hover {
   text-decoration: underline;
-}
+};
 
 .messageTime {
   font-size: 8px;
   margin: 10px;
-  
-}
+};
 
 .messageText {
   max-width: clamp(20vw, 80vw, 90vw);
   font-size: 18px;
   margin: 0;
   padding: 0;
-}
+};
+
 .messageText > p {
   top: 0px;
   overflow-wrap: anywhere;
-  transform: translateY(-100px)
-}
+};
+
 .modal-content {
   animation-name: zoom;
   animation-duration: 0.3s;
-}
+};
 
 @keyframes zoom {
   from {transform:scale(0)}
   to {transform:scale(1)}
-}
+};
 
 .userCard {
   animation-name: fade;
   animation-duration: 0.6s;
-}
+};
 
 @keyframes fade {
   from {
@@ -124,15 +122,8 @@
   to {
     opacity: 1;
   }
-}
+};
 
 .deleteMessage {
-  border: 1px solid black;
-
-}
-
-// @media only screen and (max-width: 700px){
-//   .modal-content {
-//     width: 100%;
-//   }
-// }
+  width: 15px;
+};
