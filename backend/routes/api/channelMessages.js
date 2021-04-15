@@ -41,11 +41,14 @@ router.delete(
   })
 )
 
-router.get(
-  '/:id', asyncHandler(async(req, res) => {
-    const { id } = req.body
+router.put(
+  '/update', asyncHandler(async(req, res) => {
+    console.log('in update')
+    const { messageText, id } = req.body
     const message = await ChannelMessage.findByPk(id)
-    // message.destroy()
+    await message.update({
+      messageText: messageText,
+    })
     return res.json({message})
   })
 )
