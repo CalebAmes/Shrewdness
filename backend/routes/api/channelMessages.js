@@ -32,4 +32,22 @@ router.post(
   })
 )
 
+router.delete(
+  '/:id(\\d+/delete)', asyncHandler(async(req, res) => {
+    const { id } = req.body
+    const message = await ChannelMessage.findByPk(id)
+    message.destroy()
+    return res.json()
+  })
+)
+
+router.get(
+  '/:id', asyncHandler(async(req, res) => {
+    const { id } = req.body
+    const message = await ChannelMessage.findByPk(id)
+    // message.destroy()
+    return res.json({message})
+  })
+)
+
 module.exports = router;

@@ -23,49 +23,17 @@ export const getChannelMessages = () => async (dispatch) => {
   return res;
 }
 
-export const createChannelMessage = (channelMessage) => async (dispatch) => {
-  const { channelId, userId, messageText, messageImg } = channelMessage;
-  const formData = new FormData();
-  formData.append('channelId', channelId);
-  formData.append('userId', userId);
-  formData.append('messageText', messageText);
-  if (messageImg) formData.append('messageImg', messageImg);
-
-  const res = await fetch(`/api/channelMessages/`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "multipart/form-data",
-    },
-    body: formData,
-  });
-
-  const data = await res.json();
-  dispatch(addMessage(data.user));
-
-  // commented out for aws implementation
-
-  // const res = await fetch ('/api/channelMessages', {
-  //   method: 'POST',
-  //   headers: {'Content-Type': 'application/json'},
-  //   body: JSON.stringify({
-  //     channelId,
-  //     userId,
-  //     messageText,
-  //     messageImg,
-  //   })
-  // });
-  // if (res.ok) {
-  //   const data = await res.json();
-  //   dispatch(addMessage(data.channelMessage));
-  //   return data;
-  // }
-}
-
-export const deleteChannelMessage = () => async (dispatch) => {
-  const res = await fetch ('/api/channelMessages', {
+export const deleteChannelMessage = (channelMessageId) => async (dispatch) => {
+  console.log('in store, val: ', channelMessageId)
+  const res = await fetch 
+    (`/api/channelMessages/${channelMessageId}/delete`, {
     method: 'DELETE',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({
+      id: channelMessageId,
+    })
   });
-  dispatch(removeMessage());
+  await dispatch(removeMessage());
   return res;
 }
 

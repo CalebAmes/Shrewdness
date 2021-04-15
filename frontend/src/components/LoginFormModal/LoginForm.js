@@ -15,11 +15,13 @@ function LoginForm({open, fromSignup}) {
     setErrors([]);
     const res = await dispatch(sessionActions.login({ credential, password })).catch(
       (res) => {
+        console.log(res)
         if (res.data && res.data.errors) {
           setErrors(res.data.errors);
+          console.log(errors)
         }
       })
-
+    console.log(res)
     if(res && res.ok) open()
   };
 
