@@ -22,7 +22,6 @@ const MessageInput = ({ user, channelId, channelName }) => {
   const sendMessage = () => {
     if (value.trim() === '') return;
 
-
     let msg;
 
     if(files[0]){
