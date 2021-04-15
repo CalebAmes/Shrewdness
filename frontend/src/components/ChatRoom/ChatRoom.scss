@@ -84,8 +84,12 @@
 };
 
 .messageTime {
-  font-size: 8px;
-  margin: 10px;
+  margin-left: 20px;
+};
+
+.messageTime > p {
+  font-size: 10px;
+  transform: translateY(-8px)
 };
 
 .messageText {
