@@ -153,7 +153,12 @@ export function ChatComponent({ message, channelId, currentUserId, users, scroll
 								{user?.username}
 							</div>
 							<div className="messageTime">
-								{message.updatedAt}
+                { message.createdAt === message.updatedAt &&
+                  <p>{message.updatedAt}</p>
+                }
+                { message.createdAt !== message.updatedAt &&
+                  <p>edited at {message.updatedAt}</p>
+                }
 								{card && <UserCard user={user} closeCard={closeCard} height={height} />}
 							</div>
 						</div>
