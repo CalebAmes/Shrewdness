@@ -42,3 +42,14 @@
 .fa-window-close {
   transform: translateY(8px) translateX(-12px);
 }
+
+.autocomplete {
+  position: fixed;
+  z-index: 5;
+  width: 100px;
+  background: #483c46;
+  color: #beee62;
+  transform: translate(75vw, -130px);
+  padding: 10px;
+  border-radius: 12px;
+}

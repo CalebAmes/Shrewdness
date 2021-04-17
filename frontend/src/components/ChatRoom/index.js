@@ -27,9 +27,6 @@ const ChatRoom = () => {
 	const channelId = id;
 	const channel = channelsObj[channelId];
 
-	const [auto, setAuto] = useState([])
-	const [value, setValue] = useState('')
-
 	const rawMessages = Object.values(channelMessagesObj);
 	const msgs = rawMessages?.filter((message) => message?.channelId == id);
 
@@ -66,37 +63,16 @@ const ChatRoom = () => {
 		}
 	};
 
-	useEffect(() => {
-		console.log(value)
-		// let autoCompleteResults = 
-		console.log('test complete: ', autoComplete.autocomplete(value))
-		// setAuto(autoComplete.autocomplete(value))
-		console.log(auto)
-	}, [value])
 
-	const updateAutoComplete = () => {
 
-	}
+
 
 	return (
 		<>
 			{isLoaded && user && (
 				<>
-					<div>
-						<textarea className='autocompleteBox' onChange={e => setValue(e.target.value)} />
-						<ul className='autocompleteList'>
-							{auto?.length > 0 &&
-							<>
-							{
-								auto.map((word) => {
-									<li>{word}</li>
-								})
-							}
-							</>
-							}
-						</ul>
-					</div> 
-					{/* <div className="chatMessages" onClick={scrollValue}>
+
+					<div className="chatMessages" onClick={scrollValue}>
 						{msgs.map((msg) => (
 							<ChatComponent
 								key={msg.id}
@@ -109,7 +85,12 @@ const ChatRoom = () => {
 						))}
 						<div id="messagePad"> </div>
 					</div>
-					<MessageInput user={user} channelId={id} channelName={channel?.name} /> */}
+					<MessageInput 
+						user={user} 
+						channelId={id} 
+						channelName={channel?.name} 
+						autoComplete={autoComplete} 
+					/>
 				</>
 			)}
 			{!user && <Redirect to="/" />}
