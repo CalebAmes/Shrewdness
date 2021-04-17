@@ -7,6 +7,7 @@ const MessageInput = ({ user, channelId, channelName, autoComplete }) => {
   const [value, setValue] = useState('');
   const [image, setImage] = useState(null);
   const [files, setFiles] = useState([])
+  const [alert, setAlert] = useState('')
   const [autoCompleteResults, setAutoCompleteResults] = useState([])
   const userId = user?.id
 
@@ -23,6 +24,14 @@ const MessageInput = ({ user, channelId, channelName, autoComplete }) => {
       sendMessage();
       setValue('');
       setFiles([]);
+      setAutoCompleteResults([])
+    }
+    if (e.key === '/') {
+      e.preventDefault();
+      if (autoCompleteResults && autoCompleteResults.length !== 0) {
+        fillMessage(autoCompleteResults.shift())
+      }
+      else sendAlert('"/" key binding is reserved for autocomplete fill')
     }
   }
 
@@ -33,14 +42,19 @@ const MessageInput = ({ user, channelId, channelName, autoComplete }) => {
     const string = valueArray.join(' ');
     setValue(string);
     document.querySelector('.messageInputTextarea').innerHTML = value;
-    console.log('this is val ', value)
   }
-
+  
+  const sendAlert = (string) => {
+    setAlert(string)
+    console.log('in send alert function: ', alert)
+    setTimeout(() => setAlert(''),3000)
+  }
+  
   const sendMessage = () => {
     if (value.trim() === '') return;
-
+    
     let msg;
-
+    
     if(files[0]){
       msg = {
         messageText: value.trim(),
@@ -59,9 +73,9 @@ const MessageInput = ({ user, channelId, channelName, autoComplete }) => {
     }
     socket.emit(`chatMessage`, msg)
   }
-
+  
   const autoCompleteFunc = (val) => {
-		const newVal = valHandler(val);
+    const newVal = valHandler(val);
 		setAutoCompleteResults(autoComplete.autocomplete(newVal))
 	}
 
@@ -89,6 +103,11 @@ const MessageInput = ({ user, channelId, channelName, autoComplete }) => {
 
   return (
     <>
+      { alert &&
+        <div className='alert'>
+          <h3 className='messageOrigin'>{alert}</h3>
+        </div>
+      }
     <div className='messageInputDiv'>
       <div className='dropzone' {...getRootProps()}>
         <input {...getInputProps()} />
@@ -115,6 +134,7 @@ const MessageInput = ({ user, channelId, channelName, autoComplete }) => {
     </div>
     { autoCompleteResults?.length > 0 &&
       <div className='autocomplete'>
+        <p>Click or Press '/'</p>
         <ul className='autocompleteList'>
           {
             autoCompleteResults?.slice(0, 10).map((word) => (
