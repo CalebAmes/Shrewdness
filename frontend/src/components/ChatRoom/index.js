@@ -11,6 +11,7 @@ import {
 import MessageInput from '../MessageInput';
 import '../MessageInput/message.scss';
 import socket from '../../service/socket';
+import { autoComplete, seedAutoComplete } from '../../service/autoComplete';
 import './ChatRoom.scss';
 import '../UserCard/UserCard.scss';
 
@@ -34,6 +35,8 @@ const ChatRoom = () => {
 		dispatch(getChannel());
 		dispatch(getChannelMessages());
 		setIsLoaded(true);
+
+		seedAutoComplete()
 
 		socket.on(`chat_message_${id}`, async () => {
 			await dispatch(getChannelMessages());
@@ -60,10 +63,15 @@ const ChatRoom = () => {
 		}
 	};
 
+
+
+
+
 	return (
 		<>
 			{isLoaded && user && (
 				<>
+
 					<div className="chatMessages" onClick={scrollValue}>
 						{msgs.map((msg) => (
 							<ChatComponent
@@ -77,7 +85,12 @@ const ChatRoom = () => {
 						))}
 						<div id="messagePad"> </div>
 					</div>
-					<MessageInput user={user} channelId={id} channelName={channel?.name} />
+					<MessageInput 
+						user={user} 
+						channelId={id} 
+						channelName={channel?.name} 
+						autoComplete={autoComplete} 
+					/>
 				</>
 			)}
 			{!user && <Redirect to="/" />}
