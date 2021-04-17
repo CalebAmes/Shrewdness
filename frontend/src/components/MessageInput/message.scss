@@ -46,7 +46,7 @@
 .autocomplete {
   position: fixed;
   z-index: 5;
-  width: 100px;
+  width: 120px;
   background: #483c46;
   color: #beee62;
   transform: translateX(75vw);
@@ -78,7 +78,7 @@
 
 .autocomplete > p {
   padding: 0px;
-  margin: 0px auto;
+  margin: auto;
 }
 
 .alert {
