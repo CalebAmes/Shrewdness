@@ -7,7 +7,7 @@
 }
 
 .welcome > h1{
-  color: #fff;
+  color: var(--bg);
   margin-top: 30px;
   font-size: 30px;
 }
@@ -52,7 +52,7 @@
 }
 
 .labelDiv > input:hover {
-  border: 1px solid black;
+  border: 1px solid var(--color-main);
 }
 
 .labelDiv > input:focus {
@@ -74,7 +74,7 @@
   margin-top: 30px;
   background: #00b0f4;
   outline: none;
-  color: #fff;
+  color: var(--bg);
   transition: all var(--speed) ease;
 }
 

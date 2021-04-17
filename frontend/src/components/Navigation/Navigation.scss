@@ -1,5 +1,5 @@
 .nav-div {
-  color: black;
+  color: var(--color-main);
 }
 
 .navItem {
@@ -51,8 +51,8 @@
   width: 300px;
   top: 48px;
   transform: translateX(-0px);
-  color: black;
-  background: #beee62;
+  color: var(--color-main);
+  background: var(--highlight);
   overflow: scroll;
   z-index: 4;
   transition: height var(--speed) ease;
@@ -71,7 +71,7 @@
 
 .item {
   transition: all var(--speed);
-  color: black;
+  color: var(--color-main);
   height: 60px;
   display: flex;
   align-items: center;
@@ -127,11 +127,11 @@
 }
 
 .dropdown-item:hover {
-  background: #fff;
+  background: var(--bg);
 }
 
 .menu-item:hover {
-  background: #fff;
+  background: var(--bg);
 }
 
 .cat-menu > i{

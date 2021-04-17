@@ -10,7 +10,7 @@
 
 .topCard {
   top: 0px;
-  background: #beee62;
+  background: var(--highlight);
   height: 175px;
   width: 100%;
   display: flex;
@@ -37,12 +37,12 @@
 .bottomCard {
   width: 100;
   height: 275px;
-  background: #483c46;
+  background: var(--bars);
   margin: auto;
 }
 
 .cardText {
-  color: #483c46;
+  color: var(--bars);
   font-weight: 800;
   font-size: 18px;
   margin: 10px;

@@ -1,10 +1,10 @@
 .messageInputDiv {
-  // border: 1px solid black;
+  // border: 1px solid var(--color-main);
   font-size: 18px;
   display: flex;
   flex-direction: row;
-  background: #483c46;
-  color: #beee62;
+  background: var(--bars);
+  color: var(--highlight);
   border-radius: 12px;
   position: fixed;
   z-index: 1;
@@ -15,8 +15,8 @@
 }
 
 .messageInputTextarea {
-  background: #483c46;
-  color: #beee62;
+  background: var(--bars);
+  color: var(--highlight);
   width: 80%;
   border: none;
   outline: none;
@@ -47,8 +47,8 @@
   position: fixed;
   z-index: 5;
   width: 120px;
-  background: #483c46;
-  color: #beee62;
+  background: var(--bars);
+  color: var(--highlight);
   transform: translateX(75vw);
   bottom: 100px;
   padding: 10px;

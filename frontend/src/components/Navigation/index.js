@@ -8,7 +8,11 @@ import { getGroup } from '../../store/groups'
 import { getChannel } from '../../store/channels'
 import LoginFormModal from '../LoginFormModal';
 import SignupFormModal from '../SignupFormModal';
-
+import {
+  main,
+  darkmode,
+  blue,
+} from '../index'
 import '../../index.scss';
 import './Navigation.scss';
 
@@ -122,7 +126,7 @@ export function Dropdown({openFunc}) {
         {
           groupsArray.map((group) => (
             <DropdownItem 
-              key={group.id}
+              key = {group.id}
               goToMenu='channels' 
               groupId={group.id} 
               rightRightIcon={<i className="fas fa-chevron-right"/>}
@@ -150,17 +154,17 @@ export function Dropdown({openFunc}) {
             <ul className='dd'>
               <p>Groups:</p>
               <DropdownGroups />
-              {/* <DropdownItem 
-                rightRightIcon={<i className="fas fa-chevron-right"/>} goToMenu='groups'>
-                  Groups
-              </DropdownItem> */}
-              {/* <Link className='dropdown-item item' to="/users">Users</Link> */}
+              <DropdownItem 
+                rightRightIcon={<i className="fas fa-sliders-h"/>} 
+                goToMenu='themes'>
+                  Themes
+              </DropdownItem>
               <div className='dropdown-item item' onClick={logout}>Log Out</div>
             </ul>
           </CSSTransition>
 
           <CSSTransition 
-            in={ activeMenu === 'groups' } 
+            in={ activeMenu === 'themes' } 
             unmountOnExit
             timeout={ 500 }
             classNames='menu-secondary'
@@ -171,7 +175,9 @@ export function Dropdown({openFunc}) {
                 goToMenu='main'>
                   ...back
               </DropdownItem>
-                <DropdownGroups />
+              <div className='dropdown-item item' onClick={main}>Main</div>
+              <div className='dropdown-item item' onClick={darkmode}>Dark Mode</div>
+              <div className='dropdown-item item' onClick={blue}>Stylish</div>
             </ul>
 
           </CSSTransition>
@@ -182,12 +188,6 @@ export function Dropdown({openFunc}) {
             classNames='menu-secondary'
             >
             <ul className='dd'>
-              {/* <DropdownItem 
-                rightIcon={<i className="fas fa-chevron-left"/>}
-                rightRightIcon={<i className="fas fa-chevron-left"/>}
-                goToMenu='main'>
-                ....main
-              </DropdownItem> */}
               <p>Channels:</p>
               <DropdownChannel />
               <DropdownItem 
