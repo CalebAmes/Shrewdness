@@ -1,8 +1,11 @@
 :root {
-  --bg: #483c46;
-  --bg-secondary: #f6f6f6;
-  --text-color-1: #333;
-  --text-color-2: #555;
+  --bg: #fff;
+  --hover: #efefef;
+  --highlight: #beee62;
+  --bars: #483c46;
+  --color-main: #000;
+  --color-secondary: #483c46;
+  --color-accent: #f4743b;
   --font-size: 14px;
   --border-radius: 4px;
   --speed: 500ms;
@@ -10,9 +13,59 @@
   --nav-size: 48px;
 }
 
+.main {
+  --bg: #fff;
+  --hover: #efefef;
+  --highlight: #beee62;
+  --bars: #483c46;
+  --color-main: #000;
+  --color-secondary: #483c46;
+  --color-accent: #f4743b;
+}
+
+.darkmode {
+  --bg: #1B263B;
+  --hover: #415A77;
+  --highlight: #0D1B2A;
+  --bars: #483c46;
+  --color-main: #E0E1DD;
+  --color-secondary: #483c46;
+  --color-accent: #f4743b;
+}
+
+.colorful {
+  --bg: #fff;
+  --hover: #efefef;
+  --highlight: #beee62;
+  --bars: #483c46;
+  --color-main: #000;
+  --color-secondary: #483c46;
+  --color-accent: #f4743b;
+}
+
+.blue {
+  --bg: #2374AB;
+  --hover: #231651;
+  --highlight: #D6FFF6;
+  --bars: #4DCCBD;
+  --color-main: #000;
+  --color-secondary: #fff;
+  --color-accent: #FF8484;
+}
+
+.red {
+  --bg: #fff;
+  --hover: #efefef;
+  --highlight: #beee62;
+  --bars: #483c46;
+  --color-main: #000;
+  --color-secondary: #483c46;
+  --color-accent: #f4743b;
+}
+
 body {
   font-family: 'Poppins', sans-serif;
-  background: #fff
+  background: var(--bg);
 }
 
 ul,
@@ -29,8 +82,4 @@ a {
 
 link, div {
   text-decoration: none;
-}
-
-div {
-  cursor: default
 }

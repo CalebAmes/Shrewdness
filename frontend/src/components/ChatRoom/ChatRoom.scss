@@ -3,7 +3,7 @@
   min-height: 95vh;
   overflow: scroll;
   border: none;
-  background: #fff;
+  background: var(--bg);
 };
 
 .avatar {
@@ -25,7 +25,7 @@
 
 .chatComponentDiv {
   box-sizing: border-box;
-  color: black;
+  color: var(--color-main);
   width: 90vw;
   margin-left: 5%;
   overflow-wrap: anywhere;
@@ -38,7 +38,7 @@
 };
 
 .post:hover {
-  background: #efefef
+  background: var(--hover)
 };
 
 .message {
@@ -75,7 +75,7 @@
 .messageOrigin {
   font-size: 18px;
   font-weight: bold;
-  color: #f4743b;
+  color: var(--color-accent);
   cursor: pointer;
 };
 
@@ -136,8 +136,8 @@
   font-size: 18px;
   display: flex;
   flex-direction: row;
-  background: #483c46;
-  color: #beee62;
+  background: var(--bars);
+  color: var(--highlight);
   border-radius: 12px;
   z-index: 1;
   width: 70vw;
