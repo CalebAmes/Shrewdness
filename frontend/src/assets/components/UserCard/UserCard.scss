@@ -1,66 +1,66 @@
 @keyframes fade {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-};
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
 
 .userCard {
-  width: 270px;
-  height: 400px;
-  border-radius: 8px;
-  overflow: hidden;
-  position: fixed;
-  z-index: 3;
-  animation-name: fade;
-  animation-duration: 0.6s;
+	width: 270px;
+	height: 400px;
+	border-radius: 8px;
+	overflow: hidden;
+	position: fixed;
+	z-index: 3;
+	animation-name: fade;
+	animation-duration: 0.6s;
 }
 
 .topCard {
-  top: 0px;
-  background: var(--highlight);
-  height: 175px;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  flex-direction: column;
+	top: 0px;
+	background: var(--highlight);
+	height: 175px;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	flex-direction: column;
 }
 
 .cardBackground {
-  position: fixed;
-  top: 0;
-  right: 0;
-  left: 0;
-  bottom: 0;
-  z-index: 1;
+	position: fixed;
+	top: 0;
+	right: 0;
+	left: 0;
+	bottom: 0;
+	z-index: 1;
 }
 
 .cardImg {
-  height: 120px;
-  width: 120px;
-  border-radius: 50%;
+	height: 120px;
+	width: 120px;
+	border-radius: 50%;
 }
 
 .bottomCard {
-  width: 100;
-  height: 275px;
-  background: var(--bars);
-  margin: auto;
+	width: 100;
+	height: 275px;
+	background: var(--bars);
+	margin: auto;
 }
 
 .cardText {
-  color: var(--bars);
-  font-weight: 800;
-  font-size: 18px;
-  margin: 10px;
+	color: var(--bars);
+	font-weight: 800;
+	font-size: 18px;
+	margin: 10px;
 }
 
 .bioDiv {
-  box-sizing: border-box;
-  margin-left: 10px;
-  padding-top: 8px;
-  color: #8e9297;
+	box-sizing: border-box;
+	margin-left: 10px;
+	padding-top: 8px;
+	color: #8e9297;
 }

@@ -5,52 +5,51 @@ const { singlePublicFileUpload, singleMulterUpload } = require('../../awsS3');
 
 const router = express.Router();
 
-router.get('/', asyncHandler(async function (req, res) {
-  const channelMessage = await ChannelMessage.findAll(
-    { order: [['updatedAt', 'DESC']] }
-  );
-  return res.json({ channelMessage })
-}));
+router.get(
+	'/',
+	asyncHandler(async function (req, res) {
+		const channelMessage = await ChannelMessage.findAll({ order: [['updatedAt', 'DESC']] });
+		return res.json({ channelMessage });
+	})
+);
 
 router.post(
-  '/',
-  singleMulterUpload("image"),
-  asyncHandler(async (req, res) => {
-    const { 
-      channelId,
-      userId,
-      messageText,
-    } = req.body;
-    const messageImg = await singlePublicFileUpload(req.file);
-    const channelMessage = await ChannelMessage.createChannelMessage({ 
-      channelId,
-      userId,
-      messageText,
-      messageImg,
-    });
-    return res.json({ channelMessage })
-  })
-)
+	'/',
+	singleMulterUpload('image'),
+	asyncHandler(async (req, res) => {
+		const { channelId, userId, messageText } = req.body;
+		const messageImg = await singlePublicFileUpload(req.file);
+		const channelMessage = await ChannelMessage.createChannelMessage({
+			channelId,
+			userId,
+			messageText,
+			messageImg,
+		});
+		return res.json({ channelMessage });
+	})
+);
 
 router.delete(
-  '/:id(\\d+/delete)', asyncHandler(async(req, res) => {
-    const { id } = req.body
-    const message = await ChannelMessage.findByPk(id)
-    message.destroy()
-    return res.json()
-  })
-)
+	'/:id(\\d+/delete)',
+	asyncHandler(async (req, res) => {
+		const { id } = req.body;
+		const message = await ChannelMessage.findByPk(id);
+		message.destroy();
+		return res.json();
+	})
+);
 
 router.put(
-  '/update', asyncHandler(async(req, res) => {
-    console.log('in update')
-    const { messageText, id } = req.body
-    const message = await ChannelMessage.findByPk(id)
-    await message.update({
-      messageText: messageText,
-    })
-    return res.json({message})
-  })
-)
+	'/update',
+	asyncHandler(async (req, res) => {
+		console.log('in update');
+		const { messageText, id } = req.body;
+		const message = await ChannelMessage.findByPk(id);
+		await message.update({
+			messageText: messageText,
+		});
+		return res.json({ message });
+	})
+);
 
 module.exports = router;
