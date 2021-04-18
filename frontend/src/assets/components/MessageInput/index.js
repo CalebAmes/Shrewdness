@@ -5,7 +5,6 @@ import './MessageInput.scss';
 
 const MessageInput = ({ user, channelId, channelName, autoComplete }) => {
 	const [value, setValue] = useState('');
-	const [image, setImage] = useState(null);
 	const [files, setFiles] = useState([]);
 	const [alert, setAlert] = useState('');
 	const [autoCompleteResults, setAutoCompleteResults] = useState([]);
@@ -20,7 +19,6 @@ const MessageInput = ({ user, channelId, channelName, autoComplete }) => {
 	const keyPress = (e) => {
 		if (e.key === 'Enter') {
 			e.preventDefault();
-			if (files.length > 0) setImage(files[0]);
 			sendMessage();
 			setValue('');
 			setFiles([]);

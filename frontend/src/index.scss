@@ -89,6 +89,6 @@ link, div {
   min-height: 200px;
   max-width: 200px;
   overflow: scroll;
-  border: 1px solid black;
+  z-index: -1;
 }
 

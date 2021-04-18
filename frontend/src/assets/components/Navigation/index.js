@@ -12,7 +12,7 @@ import { main, darkmode, blue } from '../../index';
 import '../../../index.scss';
 import './Navigation.scss';
 
-const Navigation = (props) => {
+const Navigation = () => {
 	return (
 		<>
 			<div className="navItem">

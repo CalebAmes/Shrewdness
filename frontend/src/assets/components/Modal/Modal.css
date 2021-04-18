@@ -25,4 +25,11 @@
   max-width: 90vw;
   max-height: 80vh;
   z-index: 10;
+  animation-name: zoom;
+  animation-duration: 0.3s;
 }
+
+@keyframes zoom {
+  from {transform:scale(0)}
+  to {transform:scale(1)}
+};

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import * as sessionActions from '../../store/session';
 import LoginFormModal from '../LoginFormModal';
 import { useDropzone } from 'react-dropzone';
@@ -7,10 +7,8 @@ import './SignupForm.scss';
 
 function SignupFormPage({ open, fromLogin }) {
 	const dispatch = useDispatch();
-	const sessionUser = useSelector((state) => state.session.user);
 	const [email, setEmail] = useState('');
 	const [username, setUsername] = useState('');
-	const [image, setImage] = useState(null);
 	const [files, setFiles] = useState([]);
 	const [bio, setBio] = useState('');
 	const [password, setPassword] = useState('');

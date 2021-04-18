@@ -65,7 +65,7 @@ const ChatComponent = ({ message, channelId, currentUserId, users, scrollValue }
 		<>
 			<div className="chatComponentDiv" onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}>
 				<div className="post">
-					<img src={user?.avatar} className="avatar" onClick={closeCard} />
+					<img src={user?.avatar} alt='user avatar' className="avatar" onClick={closeCard} />
 					<div className="postMessage">
 						<div className="postInfo">
 							<div className="messageOrigin" onClick={closeCard}>
@@ -96,7 +96,7 @@ const ChatComponent = ({ message, channelId, currentUserId, users, scrollValue }
 									{messageImg && (
 										<>
 											<div className="divImage" onClick={() => setOpen(!open)}>
-												<img src={messageImg} className="messageImg" />
+												<img src={messageImg} alt='sent in chat' className="messageImg" />
 											</div>
 										</>
 									)}
@@ -111,7 +111,7 @@ const ChatComponent = ({ message, channelId, currentUserId, users, scrollValue }
 				<>
 					<div className="modal">
 						<div className="modal-background" onClick={() => setOpen(!open)} />
-						<img src={messageImg} className="modal-content" />
+						<img src={messageImg} alt='sent in chat, enlarged' className="modal-content" />
 					</div>
 				</>
 			)}

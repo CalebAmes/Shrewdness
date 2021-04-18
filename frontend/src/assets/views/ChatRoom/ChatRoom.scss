@@ -1,59 +1,11 @@
-#messagePad {
+.messagePad {
   padding: 30px;
 };
 
-.modal-content {
-  animation-name: zoom;
-  animation-duration: 0.3s;
+.chatMessages {
+  min-width: 100vw;
+  min-height: 95vh;
+  overflow: scroll;
+  border: none;
+  background: var(--bg);
 };
-
-@keyframes zoom {
-  from {transform:scale(0)}
-  to {transform:scale(1)}
-};
-
-
-
-.deleteMessageButton {
-  width: 15px;
-};
-
-.editMessageInputDiv {
-  font-size: 18px;
-  display: flex;
-  flex-direction: row;
-  background: var(--bars);
-  color: var(--highlight);
-  border-radius: 12px;
-  z-index: 1;
-  width: 70vw;
-  left: 50%;
-  bottom: 25px;
-}
-
-.editMessage {
-  margin-left: 15px;
-  display: grid;
-  grid-template-columns: 50% 50%;
-  grid-template-rows: 1;
-  color: var(--color-accent);
-  border: 1px solid #0d0d0d;
-  border-radius: var(--border-radius);
-  background: var(--hover);
-  cursor: pointer;
-  z-index: 3;
-  transform: translate(100%, -17px);
-  transition: all var(--speed) ease;
-}
-
-.editMessage:hover {
-  box-shadow: 0 2px 3px #0d0d0d;
-}
-
-.editMessage > div {
-  margin: 8px;
-}
-
-.editMessage > div:hover {
-  filter: brightness(0.5);
-}

@@ -9,7 +9,7 @@ const UserCard = ({ user, closeCard, height }) => {
 			<div className="cardBackground" onClick={closeCard}></div>
 			<div className="userCard" style={styles}>
 				<div className="topCard">
-					<img src={user.avatar} className="cardImg" />
+					<img src={user.avatar} alt='user avatar' className="cardImg" />
 					<h2 className="cardText">{user.username}</h2>
 				</div>
 				<div className="bottomCard">
