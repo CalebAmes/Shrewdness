@@ -33,16 +33,6 @@
   --color-accent: #f4743b;
 }
 
-.colorful {
-  --bg: #fff;
-  --hover: #efefef;
-  --highlight: #beee62;
-  --bars: #483c46;
-  --color-main: #000;
-  --color-secondary: #483c46;
-  --color-accent: #f4743b;
-}
-
 .blue {
   --bg: #2374AB;
   --hover: #231651;
@@ -51,16 +41,6 @@
   --color-main: #000;
   --color-secondary: #fff;
   --color-accent: #FF8484;
-}
-
-.red {
-  --bg: #fff;
-  --hover: #efefef;
-  --highlight: #beee62;
-  --bars: #483c46;
-  --color-main: #000;
-  --color-secondary: #483c46;
-  --color-accent: #f4743b;
 }
 
 body {
@@ -84,6 +64,7 @@ link, div {
   text-decoration: none;
 }
 
+// this is setup to let the user cards calculate height
 .chatMessages {
   max-height: 200px;
   min-height: 200px;
@@ -91,4 +72,3 @@ link, div {
   overflow: scroll;
   z-index: -1;
 }
-

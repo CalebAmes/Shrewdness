@@ -12,6 +12,9 @@ import { autoComplete, seedAutoComplete } from '../../services/autoComplete';
 import '../../components/UserCard/UserCard.scss';
 import './ChatRoom.scss';
 
+// this is for the electron version of this application
+// import { ipcRenderer } from 'electron';
+
 const ChatRoom = () => {
 	const dispatch = useDispatch();
 	const [isLoaded, setIsLoaded] = useState(false);
@@ -36,9 +39,12 @@ const ChatRoom = () => {
 
 		seedAutoComplete();
 
-
 		socket.on(`chat_message_${id}`, async () => {
 			await dispatch(getChannelMessages());
+			
+			// this is for the electron version of this application
+			// ipcRenderer.send('notify', msg);
+
 			scroll();
 		});
 

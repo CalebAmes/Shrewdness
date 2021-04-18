@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { ReactComponent as Image } from '../../icons/gorilla.svg';
 import * as sessionActions from '../../store/session';
 import { getGroup } from '../../store/groups';
 import { getChannel } from '../../store/channels';
@@ -11,6 +10,12 @@ import SignupFormModal from '../SignupFormModal';
 import { main, darkmode, blue } from '../../index';
 import '../../../index.scss';
 import './Navigation.scss';
+
+// this is for the web version of this application
+import { ReactComponent as Image } from '../../icons/gorilla.svg';
+
+// this is for the Electron version of this application
+// import Image from '../../icons/gorilla.svg';
 
 const Navigation = () => {
 	return (
