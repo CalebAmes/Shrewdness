@@ -24,7 +24,6 @@ export const getChannelMessages = () => async (dispatch) => {
 };
 
 export const updateChannelMessage = (newMessage, id) => async (dispatch) => {
-	console.log('in update')
   const res = await fetch (`/api/channelMessages/update`, {
     method: 'PUT',
     headers: {'Content-Type': 'application/json'},
