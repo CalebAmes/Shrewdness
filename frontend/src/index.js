@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 import './index.scss';
 
 import ReactDOM from 'react-dom';
@@ -16,28 +15,28 @@ import * as sessionActions from './assets/store/session';
 const store = configureStore();
 
 if (process.env.NODE_ENV !== 'production') {
-  restoreCSRF();
+	restoreCSRF();
 
-  window.csrfFetch = csrfFetch;
-  window.store = store;
-  window.sessionActions = sessionActions;
+	window.csrfFetch = csrfFetch;
+	window.store = store;
+	window.sessionActions = sessionActions;
 }
 
 function Root() {
-  return (
-    <ModalProvider>
-      <Provider store={store}>
-        <BrowserRouter>
-          <App />
-        </BrowserRouter>
-      </Provider>
-    </ModalProvider>
-  );
+	return (
+		<ModalProvider>
+			<Provider store={store}>
+				<BrowserRouter>
+					<App />
+				</BrowserRouter>
+			</Provider>
+		</ModalProvider>
+	);
 }
 
 ReactDOM.render(
-  <React.StrictMode>
-    <Root />
-  </React.StrictMode>,
-  document.getElementById('root')
+	<React.StrictMode>
+		<Root />
+	</React.StrictMode>,
+	document.getElementById('root')
 );
