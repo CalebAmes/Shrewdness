@@ -1,35 +1,39 @@
 .modal {
-  position: fixed;
-  top: 0;
-  right: 0;
-  left: 0;
-  bottom: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 10;
+	position: fixed;
+	top: 0;
+	right: 0;
+	left: 0;
+	bottom: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index: 10;
 }
 
 .modal-background {
-  position: fixed;
-  top: 0;
-  right: 0;
-  left: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.7);
-  z-index: 10;
+	position: fixed;
+	top: 0;
+	right: 0;
+	left: 0;
+	bottom: 0;
+	background-color: rgba(0, 0, 0, 0.7);
+	z-index: 10;
 }
 
 .modal-content {
-  position: absolute;
-  max-width: 90vw;
-  max-height: 80vh;
-  z-index: 10;
-  animation-name: zoom;
-  animation-duration: 0.3s;
+	position: absolute;
+	max-width: 90vw;
+	max-height: 80vh;
+	z-index: 10;
+	animation-name: zoom;
+	animation-duration: 0.3s;
 }
 
 @keyframes zoom {
-  from {transform:scale(0)}
-  to {transform:scale(1)}
-};
+	from {
+		transform: scale(0);
+	}
+	to {
+		transform: scale(1);
+	}
+} ;

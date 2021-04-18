@@ -1,74 +1,75 @@
 :root {
-  --bg: #fff;
-  --hover: #efefef;
-  --highlight: #beee62;
-  --bars: #483c46;
-  --color-main: #000;
-  --color-secondary: #483c46;
-  --color-accent: #f4743b;
-  --font-size: 14px;
-  --border-radius: 4px;
-  --speed: 500ms;
-  --border: 1px solid rgba(0, 0, 0, 0.2);
-  --nav-size: 48px;
+	--bg: #fff;
+	--hover: #efefef;
+	--highlight: #beee62;
+	--bars: #483c46;
+	--color-main: #000;
+	--color-secondary: #483c46;
+	--color-accent: #f4743b;
+	--font-size: 14px;
+	--border-radius: 4px;
+	--speed: 500ms;
+	--border: 1px solid rgba(0, 0, 0, 0.2);
+	--nav-size: 48px;
 }
 
 .main {
-  --bg: #fff;
-  --hover: #efefef;
-  --highlight: #beee62;
-  --bars: #483c46;
-  --color-main: #000;
-  --color-secondary: #483c46;
-  --color-accent: #f4743b;
+	--bg: #fff;
+	--hover: #efefef;
+	--highlight: #beee62;
+	--bars: #483c46;
+	--color-main: #000;
+	--color-secondary: #483c46;
+	--color-accent: #f4743b;
 }
 
 .darkmode {
-  --bg: #1B263B;
-  --hover: #415A77;
-  --highlight: #0D1B2A;
-  --bars: #483c46;
-  --color-main: #E0E1DD;
-  --color-secondary: #483c46;
-  --color-accent: #f4743b;
+	--bg: #1b263b;
+	--hover: #415a77;
+	--highlight: #0d1b2a;
+	--bars: #483c46;
+	--color-main: #e0e1dd;
+	--color-secondary: #483c46;
+	--color-accent: #f4743b;
 }
 
 .blue {
-  --bg: #2374AB;
-  --hover: #231651;
-  --highlight: #D6FFF6;
-  --bars: #4DCCBD;
-  --color-main: #000;
-  --color-secondary: #fff;
-  --color-accent: #FF8484;
+	--bg: #2374ab;
+	--hover: #231651;
+	--highlight: #d6fff6;
+	--bars: #4dccbd;
+	--color-main: #000;
+	--color-secondary: #fff;
+	--color-accent: #ff8484;
 }
 
 body {
-  font-family: 'Poppins', sans-serif;
-  background: var(--bg);
+	font-family: 'Poppins', sans-serif;
+	background: var(--bg);
 }
 
 ul,
 li {
-  list-style: none;
-  margin: 0;
-  padding: 0;
+	list-style: none;
+	margin: 0;
+	padding: 0;
 }
 
 a {
-  color: inherit;
-  text-decoration: none;
+	color: inherit;
+	text-decoration: none;
 }
 
-link, div {
-  text-decoration: none;
+link,
+div {
+	text-decoration: none;
 }
 
 // this is setup to let the user cards calculate height
 .chatMessages {
-  max-height: 200px;
-  min-height: 200px;
-  max-width: 200px;
-  overflow: scroll;
-  z-index: -1;
+	max-height: 200px;
+	min-height: 200px;
+	max-width: 200px;
+	overflow: scroll;
+	z-index: -1;
 }

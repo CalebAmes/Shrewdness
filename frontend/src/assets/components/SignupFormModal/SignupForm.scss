@@ -1,149 +1,151 @@
 .signupDiv {
-  width: 480px;
-  min-height: 675px;
-  background: #36393f;
-  color: #8e9297;
-  border-radius: 8px;
+	width: 480px;
+	min-height: 675px;
+	background: #36393f;
+	color: #8e9297;
+	border-radius: 8px;
 }
 
-.welcome > h1{
-  color: var(--bg);
-  margin-top: 30px;
-  font-size: 30px;
+.welcome > h1 {
+	color: var(--bg);
+	margin-top: 30px;
+	font-size: 30px;
 }
 
-.welcome > h2{
-  margin: 0px;
-  font-weight: 100;
+.welcome > h2 {
+	margin: 0px;
+	font-weight: 100;
 }
 
 .welcome {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  margin: 0px;
-  margin-top: -5px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	margin: 0px;
+	margin-top: -5px;
 }
 
 .loginForm {
-  margin: 10px 25px;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-  font-family: 300;
-  font-size: 10px;
+	margin: 10px 25px;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	align-items: center;
+	font-family: 300;
+	font-size: 10px;
 }
 
 .labelDiv > input {
-  width: 410px;
-  height: 40px;
-  border-radius: 3px;
-  box-shadow: none;
-  border: 1px solid #222428;
-  box-sizing: border-box;
-  outline: none;
-  font-size: 14px;
-  padding-left: 10px;
-  background: #303339;
-  color: #dcddde;
-  transition: all var(--speed) ease;
+	width: 410px;
+	height: 40px;
+	border-radius: 3px;
+	box-shadow: none;
+	border: 1px solid #222428;
+	box-sizing: border-box;
+	outline: none;
+	font-size: 14px;
+	padding-left: 10px;
+	background: #303339;
+	color: #dcddde;
+	transition: all var(--speed) ease;
 }
 
 .labelDiv > input:hover {
-  border: 1px solid black;
+	border: 1px solid black;
 }
 
 .labelDiv > input:focus {
-  border: 1px solid #00b0f4;
+	border: 1px solid #00b0f4;
 }
 
 .labelDiv {
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
 }
 
 .loginForm > button {
-  width: 410px;
-  height: 40px;
-  border-radius: 3px;
-  box-shadow: none;
-  border: none;
-  margin-top: 30px;
-  background: #00b0f4;
-  outline: none;
-  color: var(--bg);
-  transition: all var(--speed) ease;
+	width: 410px;
+	height: 40px;
+	border-radius: 3px;
+	box-shadow: none;
+	border: none;
+	margin-top: 30px;
+	background: #00b0f4;
+	outline: none;
+	color: var(--bg);
+	transition: all var(--speed) ease;
 }
 
 .loginForm > button:hover {
-  background: #7289da;
+	background: #7289da;
 }
 
 .registerDemo {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
 }
 
 .toRegister {
-  display: flex;
-  flex-direction: row;
+	display: flex;
+	flex-direction: row;
 }
 
 .toRegister > p {
-  margin-left: 35px;
-  margin-top: 15px;
-  color: #72767d;
-  font-size: 12px;
-  cursor: default;
+	margin-left: 35px;
+	margin-top: 15px;
+	color: #72767d;
+	font-size: 12px;
+	cursor: default;
 }
 
-.toRegister > div, .demo > div {
-  margin-left: 5px;
-  margin-top: 15px;
-  color: #7289da;
-  font-size: 12px;
-  cursor: default;
+.toRegister > div,
+.demo > div {
+	margin-left: 5px;
+	margin-top: 15px;
+	color: #7289da;
+	font-size: 12px;
+	cursor: default;
 }
 
-.toRegister > div:hover, .demo > div:hover {
-  text-decoration: underline;
+.toRegister > div:hover,
+.demo > div:hover {
+	text-decoration: underline;
 }
 
 .demo {
-  margin-right: 35px;
+	margin-right: 35px;
 }
 
 .openModal {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: center;
 }
 
 .addavatar {
-  display: flex;
-  flex-direction: row;
-  margin-top: 15px;
+	display: flex;
+	flex-direction: row;
+	margin-top: 15px;
 }
 
 .avatarh3 {
-  position: fixed;
-  transform: translateX(-166px)
+	position: fixed;
+	transform: translateX(-166px);
 }
 
-.dropzone2{
-  margin: 15px;
-  height: 15px;
+.dropzone2 {
+	margin: 15px;
+	height: 15px;
 }
 
 .dropzone2 > i {
-  font-size: 30px;
+	font-size: 30px;
 }
 
 .preview2 {
-  transform: translate(95px, 10px)
+	transform: translate(95px, 10px);
 }

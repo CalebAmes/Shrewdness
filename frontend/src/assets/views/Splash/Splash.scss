@@ -1,330 +1,328 @@
 .yourPlace {
-  top: 0;
-  width: 100vw;
-  height: 600px;
-  background: linear-gradient(#2a5ee8, #00b0f4);
-  overflow: hidden;
-  padding-left: 10px;
-  transform: translateX(-10px) translateY(-10px);
-  display: flex;
-  justify-content: center;
-  align-items: center;
+	top: 0;
+	width: 100vw;
+	height: 600px;
+	background: linear-gradient(#2a5ee8, #00b0f4);
+	overflow: hidden;
+	padding-left: 10px;
+	transform: translateX(-10px) translateY(-10px);
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 .yourText {
-  display: flex;
-  flex-direction: column;
-  max-width: 780px;
-  margin-left: 10px;
-  margin-right: 20px;
-  justify-content: center;
-  align-items: center;
-  color: var(--bg);
-  z-index: 3;
+	display: flex;
+	flex-direction: column;
+	max-width: 780px;
+	margin-left: 10px;
+	margin-right: 20px;
+	justify-content: center;
+	align-items: center;
+	color: var(--bg);
+	z-index: 3;
 }
 
 .yourText > h3 {
-  text-align: center;
-  font-weight: 100;
-  font-size: 20px;
+	text-align: center;
+	font-weight: 100;
+	font-size: 20px;
 }
 
 .yourText > h1 {
-  text-align: center;
-  font-weight: 600;
-  font-size: 56px;
+	text-align: center;
+	font-weight: 600;
+	font-size: 56px;
 }
 
 .plentyBlock {
-  top: 0;
-  width: 100vw;
-  height: 600px;
-  background: linear-gradient(var(--bg), var(--highlight));
-  overflow: hidden;
-  padding-left: 10px;
-  transform: translateX(-10px) translateY(-10px);
-  display: flex;
-  justify-content: center;
-  align-items: center;
+	top: 0;
+	width: 100vw;
+	height: 600px;
+	background: linear-gradient(var(--bg), var(--highlight));
+	overflow: hidden;
+	padding-left: 10px;
+	transform: translateX(-10px) translateY(-10px);
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 .plentyText {
-  display: flex;
-  flex-direction: column;
-  max-width: 780px;
-  margin-left: 10px;
-  margin-right: 20px;
-  justify-content: center;
-  align-items: center;
-  color: #23272a;
-  z-index: 3;
-  animation: float 6s ease-in-out infinite;
+	display: flex;
+	flex-direction: column;
+	max-width: 780px;
+	margin-left: 10px;
+	margin-right: 20px;
+	justify-content: center;
+	align-items: center;
+	color: #23272a;
+	z-index: 3;
+	animation: float 6s ease-in-out infinite;
 }
 
 @keyframes float {
-  0% {
-    transform: translate(0px, 50px)
-  }
-  50% {
-    transform: translate(0px, 0px)
-  }
-  100% {
-    transform: translate(0px, 50px)
-  }
+	0% {
+		transform: translate(0px, 50px);
+	}
+	50% {
+		transform: translate(0px, 0px);
+	}
+	100% {
+		transform: translate(0px, 50px);
+	}
 }
 
 .plentyText > h3 {
-  text-align: center;
-  font-weight: 100;
-  font-size: 20px;
+	text-align: center;
+	font-weight: 100;
+	font-size: 20px;
 }
 
 .plentyText > h1 {
-  text-align: center;
-  font-weight: 600;
-  font-size: 56px;
+	text-align: center;
+	font-weight: 600;
+	font-size: 56px;
 }
 .journeyBlock {
-  top: 0;
-  width: 100vw;
-  height: 600px;
-  background: linear-gradient(var(--highlight), var(--bg));
-  overflow: hidden;
-  padding-left: 10px;
-  transform: translateX(-10px) translateY(-10px);
-  display: flex;
-  justify-content: center;
-  align-items: center;
+	top: 0;
+	width: 100vw;
+	height: 600px;
+	background: linear-gradient(var(--highlight), var(--bg));
+	overflow: hidden;
+	padding-left: 10px;
+	transform: translateX(-10px) translateY(-10px);
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 .journeyText {
-  display: flex;
-  flex-direction: column;
-  max-width: 780px;
-  margin-left: 10px;
-  margin-right: 20px;
-  justify-content: center;
-  align-items: center;
-  color: #23272a;
-  z-index: 3;
-  animation: floatTwo 6s ease-in-out infinite;
+	display: flex;
+	flex-direction: column;
+	max-width: 780px;
+	margin-left: 10px;
+	margin-right: 20px;
+	justify-content: center;
+	align-items: center;
+	color: #23272a;
+	z-index: 3;
+	animation: floatTwo 6s ease-in-out infinite;
 }
 
 @keyframes floatTwo {
-  0% {
-    transform: translate(0px, 0px)
-  }
-  50% {
-    transform: translate(0px, 50px)
-  }
-  100% {
-    transform: translate(0px, 0px)
-  }
+	0% {
+		transform: translate(0px, 0px);
+	}
+	50% {
+		transform: translate(0px, 50px);
+	}
+	100% {
+		transform: translate(0px, 0px);
+	}
 }
 
 .journeyText > h3 {
-  text-align: center;
-  font-weight: 100;
-  font-size: 20px;
+	text-align: center;
+	font-weight: 100;
+	font-size: 20px;
 }
 
 .journeyText > h1 {
-  text-align: center;
-  font-weight: 600;
-  font-size: 56px;
+	text-align: center;
+	font-weight: 600;
+	font-size: 56px;
 }
 
 .image {
-  position: fixed;
-  z-index: 2;
-
+	position: fixed;
+	z-index: 2;
 }
 
 .imageOne {
-  animation: imageOne 16s ease-in-out infinite;
-  height: 55px;
+	animation: imageOne 16s ease-in-out infinite;
+	height: 55px;
 }
 
 @keyframes imageOne {
-  0% {
-    transform: translateY(-1000%);
-  }
-  50% {
-    transform: translateY(1000%);
-  }
-  100% {
-    transform: translateY(-1000%);
-  }
+	0% {
+		transform: translateY(-1000%);
+	}
+	50% {
+		transform: translateY(1000%);
+	}
+	100% {
+		transform: translateY(-1000%);
+	}
 }
 
 .imageTwo {
-  animation: imageTwo 10s ease-in-out infinite;
-  height: 55px;
+	animation: imageTwo 10s ease-in-out infinite;
+	height: 55px;
 }
 
 @keyframes imageTwo {
-  0% {
-    transform: translateX(-400%);
-    opacity: 1;
-  }
-  50% {
-    transform: translateX(400%);
-    opacity: 0;
-  }
-  100% {
-    transform: translateX(-400%);
-    opacity: 1;
-  }
+	0% {
+		transform: translateX(-400%);
+		opacity: 1;
+	}
+	50% {
+		transform: translateX(400%);
+		opacity: 0;
+	}
+	100% {
+		transform: translateX(-400%);
+		opacity: 1;
+	}
 }
-  
+
 .imageThree {
-  animation: imageThree 24s ease-in-out infinite;
-  height: 55px;
+	animation: imageThree 24s ease-in-out infinite;
+	height: 55px;
 }
 
 @keyframes imageThree {
-  0% {
-    transform: translateY(-1000%) translateX(-1000px);
-  }
-  50% {
-    transform: translateY(1000%) translateX(1000px);
-  }
-  0% {
-    transform: translateY(-1000%) translateX(-1000px);
-  }
+	0% {
+		transform: translateY(-1000%) translateX(-1000px);
+	}
+	50% {
+		transform: translateY(1000%) translateX(1000px);
+	}
+	0% {
+		transform: translateY(-1000%) translateX(-1000px);
+	}
 }
 
 .imageFour {
-  animation: imageFour 6s ease-in-out infinite;
-  height: 55px;
+	animation: imageFour 6s ease-in-out infinite;
+	height: 55px;
 }
 
 @keyframes imageFour {
-  0% {
-    transform: translateX(1000%) translateY(200px);
-  }
-  50% {
-    transform: translateX(-1100%) translateY(800px);
-  }
-  100% {
-    transform: translateX(1000%) translateY(200px);
-  }
+	0% {
+		transform: translateX(1000%) translateY(200px);
+	}
+	50% {
+		transform: translateX(-1100%) translateY(800px);
+	}
+	100% {
+		transform: translateX(1000%) translateY(200px);
+	}
 }
 
 .imageFive {
-  animation: imageFive 12s ease-in-out infinite;
-  height: 55px;
+	animation: imageFive 12s ease-in-out infinite;
+	height: 55px;
 }
 
 @keyframes imageFive {
-  0% {
-    transform: translateX(-1000%);
-  }
-  50% {
-    transform: translateX(1000%);
-  }
-  100% {
-    transform: translateX(-1000%);
-  }
+	0% {
+		transform: translateX(-1000%);
+	}
+	50% {
+		transform: translateX(1000%);
+	}
+	100% {
+		transform: translateX(-1000%);
+	}
 }
 .imageSix {
-  animation: imageSix 10s ease-in-out infinite;
-  height: 55px;
+	animation: imageSix 10s ease-in-out infinite;
+	height: 55px;
 }
 
 @keyframes imageSix {
-  0% {
-    transform: translateY(1000%);
-  }
-  50% {
-    transform: translateY(-1000%);
-  }
-  100% {
-    transform: translateY(1000%);
-  }
+	0% {
+		transform: translateY(1000%);
+	}
+	50% {
+		transform: translateY(-1000%);
+	}
+	100% {
+		transform: translateY(1000%);
+	}
 }
 
 .imageSeven {
-  animation: imageSeven 9s ease-in-out infinite;
-  height: 55px;
+	animation: imageSeven 9s ease-in-out infinite;
+	height: 55px;
 }
 
 @keyframes imageSeven {
-  0% {
-    transform: translateX(400%);
-    opacity: 0;
-  }
-  50% {
-    transform: translateX(-400%);
-    opacity: 1;
-  }
-  100% {
-    transform: translateX(400%);
-    opacity: 0;
-  }
+	0% {
+		transform: translateX(400%);
+		opacity: 0;
+	}
+	50% {
+		transform: translateX(-400%);
+		opacity: 1;
+	}
+	100% {
+		transform: translateX(400%);
+		opacity: 0;
+	}
 }
-  
+
 .imageEight {
-  animation: imageEight 11s ease-in-out infinite;
-  height: 55px;
+	animation: imageEight 11s ease-in-out infinite;
+	height: 55px;
 }
 
 @keyframes imageEight {
-  0% {
-    transform: translateY(1000%) translateX(1000px);
-  }
-  50% {
-    transform: translateY(-1000%) translateX(-1000px);
-  }
-  100% {
-    transform: translateY(1000%) translateX(1000px);
-  }
+	0% {
+		transform: translateY(1000%) translateX(1000px);
+	}
+	50% {
+		transform: translateY(-1000%) translateX(-1000px);
+	}
+	100% {
+		transform: translateY(1000%) translateX(1000px);
+	}
 }
 
 .imageNine {
-  animation: imageNine 30s ease-in-out infinite;
-  height: 55px;
+	animation: imageNine 30s ease-in-out infinite;
+	height: 55px;
 }
 
 @keyframes imageNine {
-  0% {
-    transform: translateX(-1000%) translateY(-200px);
-  }
-  50% {
-    transform: translateX(1100%) translateY(800px);
-  }
-  100% {
-    transform: translateX(-1000%) translateY(-200px);
-  }
+	0% {
+		transform: translateX(-1000%) translateY(-200px);
+	}
+	50% {
+		transform: translateX(1100%) translateY(800px);
+	}
+	100% {
+		transform: translateX(-1000%) translateY(-200px);
+	}
 }
 
 .imageTen {
-  animation: imageTen 18s ease-in-out infinite;;
-  height: 55px;
+	animation: imageTen 18s ease-in-out infinite;
+	height: 55px;
 }
 
 @keyframes imageTen {
-  0% {
-    transform: translateX(1000%);
-  }
-  50% {
-    transform: translateX(-1000%);
-  }
-  100% {
-    transform: translateX(1000%);
-  }
+	0% {
+		transform: translateX(1000%);
+	}
+	50% {
+		transform: translateX(-1000%);
+	}
+	100% {
+		transform: translateX(1000%);
+	}
 }
 
 .arrow {
-  position: fixed;
-  transform: translateX(50px) translateY(30px) rotate(230deg);
-  z-index: 1;
+	position: fixed;
+	transform: translateX(50px) translateY(30px) rotate(230deg);
+	z-index: 1;
 }
 
 .click {
-  z-index: 1;
-  position: fixed;
-  transform: translateX(130px) translateY(100px) rotate(-50deg);
-  font-weight: 100;
-
+	z-index: 1;
+	position: fixed;
+	transform: translateX(130px) translateY(100px) rotate(-50deg);
+	font-weight: 100;
 }
