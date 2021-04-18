@@ -63,10 +63,6 @@ const ChatRoom = () => {
 		}
 	};
 
-
-
-
-
 	return (
 		<>
 			{isLoaded && user && (
@@ -104,6 +100,7 @@ export function ChatComponent({ message, channelId, currentUserId, users, scroll
 	const [card, setCard] = useState(false);
 	const [height, setHeight] = useState(0);
 	const [messageEditor, setMessageEditor] = useState(false);
+	const [hover, setHover] = useState(false);
 
 	const userId = message.userId;
 	const user = users[userId];
@@ -122,8 +119,6 @@ export function ChatComponent({ message, channelId, currentUserId, users, scroll
 
 	const editMessage = async (newMessage, id) => {
     if (newMessage !== message.messageText){
-      console.log('new message: ', newMessage)
-      console.log('id: ', id)
       await dispatch(updateChannelMessage(newMessage, id));
       socket.emit('edit', channelId);
     }
@@ -157,7 +152,10 @@ export function ChatComponent({ message, channelId, currentUserId, users, scroll
 
 	return (
 		<>
-			<div className="chatComponentDiv">
+			<div 
+				className="chatComponentDiv" 
+				onMouseEnter={() => setHover(true)}
+				onMouseLeave={() => setHover(false)}>
 				<div className="post">
 					<img src={user?.avatar} className="avatar" onClick={closeCard} />
 					<div className="postMessage">
@@ -174,6 +172,16 @@ export function ChatComponent({ message, channelId, currentUserId, users, scroll
                 }
 								{card && <UserCard user={user} closeCard={closeCard} height={height} />}
 							</div>
+								{user?.id === currentUserId && hover &&(
+									<div className="editMessage">
+										<div className="deleteMessageButton" onClick={() => deleteMessage(message.id)}>
+											<i className="fas fa-trash-alt" />
+										</div>
+										<div className="editMessageButton" onClick={() => editMessage()}>
+											<i className="fas fa-edit" />
+										</div>
+									</div>
+								)}
 						</div>
 						{!messageEditor && (
 							<>
@@ -194,16 +202,6 @@ export function ChatComponent({ message, channelId, currentUserId, users, scroll
 						{messageEditor && <EditMessage func={editMessage} />}
 					</div>
 				</div>
-				{user?.id === currentUserId && (
-					<div className="editMessage">
-						<div className="deleteMessageButton" onClick={() => deleteMessage(message.id)}>
-							<i className="fas fa-trash-alt" />
-						</div>
-						<div className="editMessageButton" onClick={() => editMessage()}>
-							<i className="fas fa-edit" />
-						</div>
-					</div>
-				)}
 			</div>
 			{open && (
 				<>

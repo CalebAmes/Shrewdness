@@ -146,6 +146,28 @@
 }
 
 .editMessage {
-  display: flex;
-  flex-direction: row;
+  margin-left: 15px;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 1;
+  color: var(--color-accent);
+  border: 1px solid #0d0d0d;
+  border-radius: var(--border-radius);
+  background: var(--hover);
+  cursor: pointer;
+  z-index: 3;
+  transform: translate(100%, -17px);
+  transition: all var(--speed) ease;
+}
+
+.editMessage:hover {
+  box-shadow: 0 2px 3px #0d0d0d;
+}
+
+.editMessage > div {
+  margin: 8px;
+}
+
+.editMessage > div:hover {
+  filter: brightness(0.5);
 }
