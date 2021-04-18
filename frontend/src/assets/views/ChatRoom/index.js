@@ -4,16 +4,12 @@ import { Redirect } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getGroup } from '../../store/groups';
 import { getChannel } from '../../store/channels';
-import { 
-  getChannelMessages, 
-  deleteChannelMessage, 
-  updateChannelMessage } from '../../store/channelMessages';
-import MessageInput from '../MessageInput';
-import '../MessageInput/message.scss';
-import socket from '../../service/socket';
-import { autoComplete, seedAutoComplete } from '../../service/autoComplete';
+import { getChannelMessages, deleteChannelMessage, updateChannelMessage } from '../../store/channelMessages';
+import MessageInput from '../../components/MessageInput';
+import socket from '../../services/socket';
+import { autoComplete, seedAutoComplete } from '../../services/autoComplete';
 import './ChatRoom.scss';
-import '../UserCard/UserCard.scss';
+import '../../components/UserCard/UserCard.scss';
 
 const ChatRoom = () => {
 	const dispatch = useDispatch();
@@ -36,7 +32,7 @@ const ChatRoom = () => {
 		dispatch(getChannelMessages());
 		setIsLoaded(true);
 
-		seedAutoComplete()
+		seedAutoComplete();
 
 		socket.on(`chat_message_${id}`, async () => {
 			await dispatch(getChannelMessages());
@@ -67,7 +63,6 @@ const ChatRoom = () => {
 		<>
 			{isLoaded && user && (
 				<>
-
 					<div className="chatMessages" onClick={scrollValue}>
 						{msgs.map((msg) => (
 							<ChatComponent
@@ -81,12 +76,7 @@ const ChatRoom = () => {
 						))}
 						<div id="messagePad"> </div>
 					</div>
-					<MessageInput 
-						user={user} 
-						channelId={id} 
-						channelName={channel?.name} 
-						autoComplete={autoComplete} 
-					/>
+					<MessageInput user={user} channelId={id} channelName={channel?.name} autoComplete={autoComplete} />
 				</>
 			)}
 			{!user && <Redirect to="/" />}
@@ -118,10 +108,10 @@ export function ChatComponent({ message, channelId, currentUserId, users, scroll
 	};
 
 	const editMessage = async (newMessage, id) => {
-    if (newMessage !== message.messageText){
-      await dispatch(updateChannelMessage(newMessage, id));
-      socket.emit('edit', channelId);
-    }
+		if (newMessage !== message.messageText) {
+			await dispatch(updateChannelMessage(newMessage, id));
+			socket.emit('edit', channelId);
+		}
 		setMessageEditor(!messageEditor);
 	};
 
@@ -152,10 +142,7 @@ export function ChatComponent({ message, channelId, currentUserId, users, scroll
 
 	return (
 		<>
-			<div 
-				className="chatComponentDiv" 
-				onMouseEnter={() => setHover(true)}
-				onMouseLeave={() => setHover(false)}>
+			<div className="chatComponentDiv" onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}>
 				<div className="post">
 					<img src={user?.avatar} className="avatar" onClick={closeCard} />
 					<div className="postMessage">
@@ -164,24 +151,20 @@ export function ChatComponent({ message, channelId, currentUserId, users, scroll
 								{user?.username}
 							</div>
 							<div className="messageTime">
-                { message.createdAt === message.updatedAt &&
-                  <p>{message.updatedAt}</p>
-                }
-                { message.createdAt !== message.updatedAt &&
-                  <p>edited at {message.updatedAt}</p>
-                }
+								{message.createdAt === message.updatedAt && <p>{message.updatedAt}</p>}
+								{message.createdAt !== message.updatedAt && <p>edited at {message.updatedAt}</p>}
 								{card && <UserCard user={user} closeCard={closeCard} height={height} />}
 							</div>
-								{user?.id === currentUserId && hover &&(
-									<div className="editMessage">
-										<div className="deleteMessageButton" onClick={() => deleteMessage(message.id)}>
-											<i className="fas fa-trash-alt" />
-										</div>
-										<div className="editMessageButton" onClick={() => editMessage()}>
-											<i className="fas fa-edit" />
-										</div>
+							{user?.id === currentUserId && hover && (
+								<div className="editMessage">
+									<div className="deleteMessageButton" onClick={() => deleteMessage(message.id)}>
+										<i className="fas fa-trash-alt" />
 									</div>
-								)}
+									<div className="editMessageButton" onClick={() => editMessage()}>
+										<i className="fas fa-edit" />
+									</div>
+								</div>
+							)}
 						</div>
 						{!messageEditor && (
 							<>

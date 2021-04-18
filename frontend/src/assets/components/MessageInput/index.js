@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import socket from '../../service/socket';
+import socket from '../../services/socket';
 import { useDropzone } from 'react-dropzone';
-import './message.scss';
+import './MessageInput.scss';
 
 const MessageInput = ({ user, channelId, channelName, autoComplete }) => {
   const [value, setValue] = useState('');
