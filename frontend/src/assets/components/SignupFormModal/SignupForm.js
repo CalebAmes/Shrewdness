@@ -67,25 +67,25 @@ function SignupFormPage({ open, fromLogin }) {
 	return (
 		<>
 			<div className="signUpDiv">
-				<div className="welcome2">
+				<div className="welcome">
 					<h1>Create an account</h1>
 					<h2>Look at you making great decisions!</h2>
 				</div>
-				<form className="loginForm2" onSubmit={handleSubmit}>
+				<form className="loginForm" onSubmit={handleSubmit}>
 					<ul>
 						{errors.map((error, idx) => (
 							<li key={idx}>{error}</li>
 						))}
 					</ul>
-					<div className="labelDiv2">
+					<div className="labelDiv">
 						<h3>Email</h3>
 						<input type="text" value={email} onChange={(e) => setEmail(e.target.value)} required />
 					</div>
-					<div className="labelDiv2">
+					<div className="labelDiv">
 						<h3>Username</h3>
 						<input type="text" value={username} onChange={(e) => setUsername(e.target.value)} required />
 					</div>
-					<div className="labelDiv2">
+					<div className="labelDiv">
 						<h3>Biography</h3>
 						<input type="text" value={bio} onChange={(e) => setBio(e.target.value)} required />
 					</div>
@@ -104,7 +104,7 @@ function SignupFormPage({ open, fromLogin }) {
 							{images}
 						</div>
 					</div>
-					<div className="labelDiv2">
+					<div className="labelDiv">
 						<h3>Password</h3>
 						<input
 							type="password"
@@ -113,7 +113,7 @@ function SignupFormPage({ open, fromLogin }) {
 							required
 						/>
 					</div>
-					<div className="labelDiv2">
+					<div className="labelDiv">
 						<h3>Confirm Password</h3>
 						<input
 							type="password"
@@ -124,8 +124,8 @@ function SignupFormPage({ open, fromLogin }) {
 					</div>
 					<button type="submit">Sign Up</button>
 				</form>
-				<div className="registerDemo2">
-					<div className="toRegister2">
+				<div className="registerDemo">
+					<div className="toRegister">
 						<p>Already an account? </p>
 						{fromLogin && <div onClick={open}>Log in here</div>}
 						{!fromLogin && (

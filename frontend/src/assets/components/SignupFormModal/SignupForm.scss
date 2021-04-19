@@ -6,18 +6,18 @@
 	border-radius: 8px;
 }
 
-.welcome2 > h1 {
+.welcome > h1 {
 	color: var(--bg);
 	margin-top: 30px;
 	font-size: 30px;
 }
 
-.welcome2 > h2 {
+.welcome > h2 {
 	margin: 0px;
 	font-weight: 100;
 }
 
-.welcome2 {
+.welcome {
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -26,7 +26,7 @@
 	margin-top: -5px;
 }
 
-.loginForm2 {
+.loginForm {
 	margin: 10px 25px;
 	display: flex;
 	justify-content: center;
@@ -36,7 +36,7 @@
 	font-size: 10px;
 }
 
-.labelDiv2 > input {
+.labelDiv > input {
 	width: 410px;
 	height: 40px;
 	border-radius: 3px;
@@ -51,21 +51,21 @@
 	transition: all var(--speed) ease;
 }
 
-.labelDiv2 > input:hover {
+.labelDiv > input:hover {
 	border: 1px solid black;
 }
 
-.labelDiv2 > input:focus {
+.labelDiv > input:focus {
 	border: 1px solid #00b0f4;
 }
 
-.labelDiv2 {
+.labelDiv {
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
 }
 
-.loginForm2 > button {
+.loginForm > button {
 	width: 410px;
 	height: 40px;
 	border-radius: 3px;
@@ -78,22 +78,22 @@
 	transition: all var(--speed) ease;
 }
 
-.loginForm2 > button:hover {
+.loginForm > button:hover {
 	background: #7289da;
 }
 
-.registerDemo2 {
+.registerDemo {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
 }
 
-.toRegister2 {
+.toRegister {
 	display: flex;
 	flex-direction: row;
 }
 
-.toRegister2 > p {
+.toRegister > p {
 	margin-left: 35px;
 	margin-top: 15px;
 	color: #72767d;
@@ -101,7 +101,7 @@
 	cursor: default;
 }
 
-.toRegister2 > div,
+.toRegister > div,
 .demo > div {
 	margin-left: 5px;
 	margin-top: 15px;
@@ -110,12 +110,12 @@
 	cursor: default;
 }
 
-.toRegister2 > div:hover,
+.toRegister > div:hover,
 .demo > div:hover {
 	text-decoration: underline;
 }
 
-.demo2 {
+.demo {
 	margin-right: 35px;
 }
 
@@ -146,6 +146,6 @@
 	font-size: 30px;
 }
 
-.preview2 {
+.preview {
 	transform: translate(95px, 10px);
 }
