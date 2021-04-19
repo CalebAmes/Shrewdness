@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import * as sessionActions from '../../store/session';
 import LoginFormModal from '../LoginFormModal';
 import { useDropzone } from 'react-dropzone';
-import './SignupForm.scss';
+import './SignupForm.scss'
 
 function SignupFormPage({ open, fromLogin }) {
 	const dispatch = useDispatch();
@@ -66,7 +66,7 @@ function SignupFormPage({ open, fromLogin }) {
 
 	return (
 		<>
-			<div className="signupDiv">
+			<div className="signUpDiv">
 				<div className="welcome">
 					<h1>Create an account</h1>
 					<h2>Look at you making great decisions!</h2>
