@@ -4,6 +4,7 @@ import { Redirect } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getGroup } from '../../store/groups';
 import { getChannel } from '../../store/channels';
+import { getUsers } from '../../store/users';
 import { getChannelMessages } from '../../store/channelMessages';
 import ChatComponent from '../../components/ChatComponent';
 import MessageInput from '../../components/MessageInput';
@@ -29,11 +30,14 @@ const ChatRoom = () => {
 	const rawMessages = Object.values(channelMessagesObj);
 	const msgs = rawMessages?.filter((message) => message?.channelId === currentChannelId);
 
+	console.log('this is user:  ', user)
+	console.log('this is users: ', users)
 
 	useEffect(() => {
 		dispatch(getGroup());
 		dispatch(getChannel());
 		dispatch(getChannelMessages());
+		dispatch(getUsers())
 		setIsLoaded(true);
 		scroll();
 

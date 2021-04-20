@@ -14,14 +14,10 @@ function LoginForm({ open, fromSignup }) {
 		e.preventDefault();
 		setErrors([]);
 		const res = await dispatch(sessionActions.login({ credential, password })).catch((res) => {
-			console.log(res);
-			if (res.data && res.data.errors) {
-				setErrors(res.data.errors);
-				console.log(errors);
+			if (res.status === 401) {
+				setErrors(['The provided credentials are invalid.']);
 			}
 		});
-		console.log(res);
-		if (res && res.ok) open();
 	};
 
 	const demoLogin = () => {
