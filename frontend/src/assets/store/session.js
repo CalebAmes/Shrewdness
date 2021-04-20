@@ -16,7 +16,7 @@ export const restoreUser = () => async (dispatch) => {
 	const response = await csrfFetch('/api/session');
 	const data = await response.json();
 	dispatch(setUser(data.user));
-	return response;
+	return data;
 };
 
 export const login = (user) => async (dispatch) => {
@@ -29,19 +29,22 @@ export const login = (user) => async (dispatch) => {
 		}),
 	});
 	const data = await response.json();
-	console.log('this is data: ', data);
 	dispatch(setUser(data.user));
-	return response;
+	return data;
 };
 
 export const signup = (user) => async (dispatch) => {
 	const { username, email, password, bio, avatar } = user;
+	user = {
+		credential: username,
+		password: password,
+	}
 	const formData = new FormData();
 	formData.append('username', username);
 	formData.append('email', email);
 	formData.append('bio', bio);
 	formData.append('password', password);
-
+	
 	if (avatar) formData.append('avatar', avatar);
 
 	const res = await csrfFetch('/api/users', {
@@ -49,10 +52,11 @@ export const signup = (user) => async (dispatch) => {
 		headers: { 'Content-Type': 'multipart/form-data' },
 		body: formData,
 	});
-
+	
 	const data = await res.json();
-	await dispatch(setUser(data.user));
-	return res;
+	console.log('this is data: ', data);
+	dispatch(login(user));
+	return data;
 };
 
 export const logout = () => async (dispatch) => {
@@ -69,7 +73,7 @@ function reducer(state = initialState, action) {
 	let newState;
 	switch (action.type) {
 		case SET_USER:
-			return { ...state, user: action.payload };
+			return { user: action.payload };
 		case REMOVE_USER:
 			newState = Object.assign({}, state, { user: null });
 			return newState;
