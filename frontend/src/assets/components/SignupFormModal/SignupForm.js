@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import * as sessionActions from '../../store/session';
 import LoginFormModal from '../LoginFormModal';
 import { useDropzone } from 'react-dropzone';
-import './SignupForm.scss'
+import './SignupForm.scss';
 
 function SignupFormPage({ open, fromLogin }) {
 	const dispatch = useDispatch();
@@ -65,13 +65,12 @@ function SignupFormPage({ open, fromLogin }) {
 	));
 
 	const signUpDiv = {
-		'width': '480px',
-		'min-height': '675px',
-		'background': '#36393f',
-		'color': '#8e9297',
-		'border-radius': '8px',
-	}
-
+		width: '480px',
+		minHeight: '675px',
+		background: '#36393f',
+		color: '#8e9297',
+		borderRadius: '8px',
+	};
 
 	return (
 		<>

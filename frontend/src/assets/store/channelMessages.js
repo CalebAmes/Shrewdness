@@ -40,7 +40,6 @@ export const updateChannelMessage = (newMessage, id) => async (dispatch) => {
 };
 
 export const deleteChannelMessage = (channelMessageId) => async (dispatch) => {
-	console.log('in store, val: ', channelMessageId);
 	const res = await fetch(`/api/channelMessages/${channelMessageId}/delete`, {
 		method: 'DELETE',
 		headers: { 'Content-Type': 'application/json' },

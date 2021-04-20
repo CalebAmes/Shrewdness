@@ -13,7 +13,7 @@ function LoginForm({ open, fromSignup }) {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		setErrors([]);
-		const res = await dispatch(sessionActions.login({ credential, password })).catch((res) => {
+		await dispatch(sessionActions.login({ credential, password })).catch((res) => {
 			if (res.status === 401) {
 				setErrors(['The provided credentials are invalid.']);
 			}

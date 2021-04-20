@@ -24,20 +24,17 @@ const ChatRoom = () => {
 	const users = useSelector((state) => state.users);
 	const user = useSelector((state) => state.session.user);
 	const { id } = useParams();
-	const currentChannelId = parseInt(id, 10)
+	const currentChannelId = parseInt(id, 10);
 	const channel = channelsObj[currentChannelId];
 
 	const rawMessages = Object.values(channelMessagesObj);
 	const msgs = rawMessages?.filter((message) => message?.channelId === currentChannelId);
 
-	console.log('this is user:  ', user)
-	console.log('this is users: ', users)
-
 	useEffect(() => {
 		dispatch(getGroup());
 		dispatch(getChannel());
 		dispatch(getChannelMessages());
-		dispatch(getUsers())
+		dispatch(getUsers());
 		setIsLoaded(true);
 		scroll();
 
@@ -45,7 +42,7 @@ const ChatRoom = () => {
 
 		socket.on(`chat_message_${id}`, async () => {
 			await dispatch(getChannelMessages());
-			
+
 			// this is for the electron version of this application
 			// ipcRenderer.send('notify', msg);
 
@@ -75,7 +72,7 @@ const ChatRoom = () => {
 			{isLoaded && user && (
 				<>
 					<div className="chatMessages" onClick={scrollValue}>
-					<div className="messagePad"></div>
+						<div className="messagePad"></div>
 						{msgs.map((msg) => (
 							<ChatComponent
 								key={msg.id}
@@ -86,7 +83,7 @@ const ChatRoom = () => {
 								currentUserId={user.id}
 							/>
 						))}
-						<div id='messagePad' className="messagePad"></div>
+						<div id="messagePad" className="messagePad"></div>
 					</div>
 					<MessageInput user={user} channelId={id} channelName={channel?.name} autoComplete={autoComplete} />
 				</>
