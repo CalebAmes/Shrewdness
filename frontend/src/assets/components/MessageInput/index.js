@@ -43,7 +43,6 @@ const MessageInput = ({ user, channelId, channelName, autoComplete }) => {
 
 	const sendAlert = (string) => {
 		setAlert(string);
-		console.log('in send alert function: ', alert);
 		setTimeout(() => setAlert(''), 3000);
 	};
 

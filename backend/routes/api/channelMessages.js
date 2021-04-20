@@ -42,7 +42,6 @@ router.delete(
 router.put(
 	'/update',
 	asyncHandler(async (req, res) => {
-		console.log('in update');
 		const { messageText, id } = req.body;
 		const message = await ChannelMessage.findByPk(id);
 		await message.update({

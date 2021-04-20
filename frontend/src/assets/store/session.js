@@ -38,13 +38,13 @@ export const signup = (user) => async (dispatch) => {
 	user = {
 		credential: username,
 		password: password,
-	}
+	};
 	const formData = new FormData();
 	formData.append('username', username);
 	formData.append('email', email);
 	formData.append('bio', bio);
 	formData.append('password', password);
-	
+
 	if (avatar) formData.append('avatar', avatar);
 
 	const res = await csrfFetch('/api/users', {
@@ -52,9 +52,8 @@ export const signup = (user) => async (dispatch) => {
 		headers: { 'Content-Type': 'multipart/form-data' },
 		body: formData,
 	});
-	
+
 	const data = await res.json();
-	console.log('this is data: ', data);
 	dispatch(login(user));
 	return data;
 };
