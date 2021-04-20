@@ -95,7 +95,7 @@ function SignupFormPage({ open, fromLogin }) {
 					</div>
 					<div className="labelDiv2">
 						<h3>Biography</h3>
-						<input type="text" value={bio} onChange={(e) => setBio(e.target.value)} required />
+						<input type="text" value={bio} maxLength='140' onChange={(e) => setBio(e.target.value)} required />
 					</div>
 					<h3 className="avatarh3">Add an Avatar:</h3>
 					<div className="addavatar">

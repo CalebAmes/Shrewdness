@@ -1,21 +1,29 @@
 import React from 'react';
 
 const UserCard = ({ user, closeCard, height }) => {
+	const translate = height + 65;
 	const styles = {
-		transform: `translateY(-${height}px)`,
+		transform: `translateY(-${translate}px)`,
 	};
+
+	const avatarStyle = {
+		background:'url('+user.avatar+') center center',
+		backgroundSize: 'cover',
+		height: '175px',
+		width: '200px',
+	}
+
 	return (
 		<>
 			<div className="cardBackground" onClick={closeCard}></div>
 			<div className="userCard" style={styles}>
-				<div className="topCard">
-					<img src={user.avatar} alt='user avatar' className="cardImg" />
-					<h2 className="cardText">{user.username}</h2>
+				<div className="leftCard" 
+					style={avatarStyle}>
 				</div>
-				<div className="bottomCard">
+				<div className="rightCard">
+						<h2 className="cardText">{user.username}</h2>
 					<div className="bioDiv">
-						<h1>Biography:</h1>
-						<h2 className="bio">{user.bio}</h2>
+						<h3 className="bio">{user.bio}</h3>
 					</div>
 				</div>
 			</div>

@@ -36,22 +36,23 @@ const ChatRoom = () => {
 		dispatch(getChannelMessages());
 		dispatch(getUsers());
 		setIsLoaded(true);
-		scroll();
-
+		
 		seedAutoComplete();
-
+		
 		socket.on(`chat_message_${id}`, async () => {
 			await dispatch(getChannelMessages());
-
+			
 			// this is for the electron version of this application
 			// ipcRenderer.send('notify', msg);
-
+			
 			scroll();
 		});
-
+		
 		socket.on(`edit_channel_${id}`, async () => {
 			await dispatch(getChannelMessages());
 		});
+		
+		scroll();
 	}, [id, dispatch]);
 
 	const scroll = () => {
