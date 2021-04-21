@@ -1,9 +1,10 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import './Splash.scss';
 import { ReactComponent as Image } from '../../icons/gorilla.svg';
 import { ReactComponent as Arrow } from '../../icons/arrow_10.svg';
+import { macDownload } from '../../services/downloadLinks'
 
 const Home = () => {
 	const user = useSelector((state) => state.session?.user);
@@ -32,6 +33,9 @@ const Home = () => {
 						of friends that want to spend some time together, Shrewdness makes it easy to talk every day and
 						hang out more often.
 					</h3>
+					<h2 className="download">Download for mac: <br/>
+						<a href={macDownload} target="mac os download link"><i class="fab fa-apple"/></a>
+					</h2>
 				</div>
 			</div>
 			<div className="plentyBlock">

@@ -326,3 +326,14 @@
 	transform: translateX(130px) translateY(100px) rotate(-50deg);
 	font-weight: 100;
 }
+
+.download {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	align-items: center;
+}
+
+.download > a {
+	padding: 15px;
+}
