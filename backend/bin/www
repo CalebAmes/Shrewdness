@@ -10,7 +10,7 @@ const db = require('../db/models');
 const io = require('socket.io')(httpServer);
 
 const postMessage = async (channelMessage) => {
-  const { 
+  const {
     channelId,
     userId,
     messageText,
@@ -19,7 +19,7 @@ const postMessage = async (channelMessage) => {
   if (channelMessage.messageImg !== null) {
     messageImg = await singlePublicFileUpload2(channelMessage.messageImg);
   }
-  await ChannelMessage.createChannelMessage({ 
+  await ChannelMessage.createChannelMessage({
     channelId,
     userId,
     messageText,
@@ -27,7 +27,7 @@ const postMessage = async (channelMessage) => {
   });
 
   return true
-} 
+}
 
 // Check the database connection before starting the app
 db.sequelize
@@ -38,19 +38,19 @@ db.sequelize
 
 
     io.on('connection', socket => {
-      
+
       //this is to a single client (current user)
 
-      socket.on('join_channel', 
+      socket.on('join_channel',
         ({ channel, user }, callback) => {
-        socket.emit(`join_channel_res_${channel.id}`, `Welcome to Shrewdness`)
-        socket.broadcast.emit(`message`, `User has joined the chat room`);
-      })
-      
+          socket.emit(`join_channel_res_${channel.id}`, `Welcome to Shrewdness`)
+          socket.broadcast.emit(`message`, `User has joined the chat room`);
+        })
+
       socket.on('disconnect', () => {
         io.emit('message', 'user has left the chat')
       })
-      
+
       socket.on('chatMessage', async (msg) => {
         await postMessage(msg);
         io.emit(`chat_message_${msg.channelId}`, msg);
