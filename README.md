@@ -28,5 +28,5 @@ Highlights:
 
 ### User Auth
 
-<img align="center" alt="user auth gif" width="640px" height="400px" src="https://github.com/CalebAmes/CalebAmes/blob/main/authCapture.gif">
+<img alt="user auth gif" width="640px" height="400px" src="https://github.com/CalebAmes/CalebAmes/blob/main/authCapture.gif">
 
