@@ -23,3 +23,10 @@ Highlights:
   - the blue div has a very subtle gradient that makes it look a lot nicer
   - the second the third divs have reversed gradients that makes them look like one div
 - This page has 12 unique animations
+
+<br />
+
+### User Auth
+
+<img align="center" alt="user auth gif" width="640px" height="400px" src="https://github.com/CalebAmes/CalebAmes/blob/main/authCapture.gif">
+
