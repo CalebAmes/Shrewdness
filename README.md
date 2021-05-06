@@ -144,3 +144,8 @@ The way this works is very similar to the autocomplete on your cellphone. It use
 ###### Here is a visualization that might help you conceptualize
 
 <img alt="trie data structure" width="440px" height="330px" src="https://github.com/CalebAmes/CalebAmes/blob/main/TrieDataStructureImpl.png">
+
+<br />
+<br />
+
+### Well, that's all I have time to detail in this readme at the moment. I'll be adding more when I have the time. For now, thanks for checking out my project and feel free to reach out to me if you have any questions or want to collaborate (links in my profile readme). Have a nice day ⚡️
