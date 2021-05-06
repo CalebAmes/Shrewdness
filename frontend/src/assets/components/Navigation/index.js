@@ -114,6 +114,21 @@ export function Dropdown({ openFunc }) {
 		);
 	}
 
+	function DropdownLinks() {
+		return (
+			<>
+				<div className="dropdown-item item">
+					<a href="https://github.com/CalebAmes">Github</a>
+				</div>
+				<div className="dropdown-item item">
+					<a href="https://www.linkedin.com/in/caleb-gilbert-b522ab142/">LinkedIn</a>
+				</div>
+				<div className="dropdown-item item">
+					<a href="https://calebames.github.io">Portfolio Site</a>
+				</div>
+			</>
+		);
+	}
 	function DropdownGroups() {
 		return (
 			<>
@@ -148,6 +163,9 @@ export function Dropdown({ openFunc }) {
 							<ul className="dd">
 								<p>Groups:</p>
 								<DropdownGroups />
+								<DropdownItem rightRightIcon={<i className="fas fa-chevron-right" />} goToMenu="links">
+									My Links
+								</DropdownItem>
 								<DropdownItem rightRightIcon={<i className="fas fa-sliders-h" />} goToMenu="themes">
 									Themes
 								</DropdownItem>
@@ -192,6 +210,20 @@ export function Dropdown({ openFunc }) {
 								</DropdownItem>
 							</ul>
 						</CSSTransition>
+						<CSSTransition
+							in={activeMenu === 'links'}
+							unmountOnExit
+							timeout={500}
+							classNames="menu-secondary"
+						>
+							<ul className="dd">
+								<p>Connect with me here 🚀</p>
+								<DropdownLinks />
+								<DropdownItem rightRightIcon={<i className="fas fa-chevron-left" />} goToMenu="main">
+									...back
+								</DropdownItem>
+							</ul>
+						</CSSTransition>
 					</div>
 				</>
 			)}
@@ -205,6 +237,15 @@ export function Dropdown({ openFunc }) {
 							</div>
 							<div className="dropdown-item item">
 								<SignupFormModal user={user} text={'Sign Up'} />
+							</div>
+							<div className="dropdown-item item">
+								<a href="https://github.com/CalebAmes">Github</a>
+							</div>
+							<div className="dropdown-item item">
+								<a href="https://www.linkedin.com/in/caleb-gilbert-b522ab142/">LinkedIn</a>
+							</div>
+							<div className="dropdown-item item">
+								<a href="https://calebames.github.io">Portfolio Site</a>
 							</div>
 						</ul>
 					</div>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { Redirect, Link } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import './Splash.scss';
 import { ReactComponent as Image } from '../../icons/gorilla.svg';
 import { ReactComponent as Arrow } from '../../icons/arrow_10.svg';
