@@ -130,7 +130,7 @@ export const blue = () => {
 
 <br />
 
-This was actually pretty complex to get everything working how I wanted and reliably. I am debating adding a detailed rightup here about it. For now feel free to dig into/fork my repo and/or message me about it 🚀
+This was actually pretty complex to get everything working how I wanted and reliably. I am debating adding a detailed write up here about it. For now feel free to dig into/fork my repo and/or message me about it 🚀
 
 ### Autocomplete using a trie data structure
 
