@@ -30,7 +30,7 @@ Highlights:
 
 ### User Auth
 
-<img alt="user auth gif" width="640px" height="400px" src="https://github.com/CalebAmes/CalebAmes/blob/main/authCapture.gif">
+<img alt="auth demo gif" width="640px" height="400px" src="https://github.com/CalebAmes/CalebAmes/blob/main/authCapture.gif">
 
 Features:
 - Modals for login and signup forms
@@ -47,7 +47,7 @@ Highlights:
 
 ### Themes
 
-<img alt="user auth gif" width="640px" height="400px" src="https://github.com/CalebAmes/CalebAmes/blob/main/themeCapture.gif">
+<img alt="theme demo gif" width="640px" height="400px" src="https://github.com/CalebAmes/CalebAmes/blob/main/themeCapture.gif">
 
 This works by setting default values in CSS:
 ```
@@ -126,4 +126,21 @@ export const blue = () => {
 ### Instant Messaging with Sockets and AWS integration for media
 * #### Plus live updating and deleting for a users posts
 
-<img alt="user auth gif" width="640px" height="400px" src="https://github.com/CalebAmes/CalebAmes/blob/main/chatCapture.gif">
+<img alt="chat demo gif" width="640px" height="400px" src="https://github.com/CalebAmes/CalebAmes/blob/main/chatCapture.gif">
+
+<br />
+
+This was actually pretty complex to get everything working how I wanted and reliably. I am debating adding a detailed rightup here about it. For now feel free to dig into/fork my repo and/or message me about it 🚀
+
+### Autocomplete using a trie data structure
+
+<img alt="autocomplete gif" width="640px" height="160px" src="https://github.com/CalebAmes/CalebAmes/blob/main/autocompleteCapture.gif">
+
+Source Code:
+- frontend/src/assets/services/autoComplete.js
+
+The way this works is very similar to the autocomplete on your cellphone. It uses a trie data sturcture which is basically a tree. When you navigate to a chatroom it calls a function that seeds an array of the 3000 most commonly used english words into the trie. This makes nodes for every letter in our tree and when you type in a letter it treverses the tree and returns the possible words left based on the letters entered so far.
+
+###### Here is a visualization that might help you conceptualize
+
+<img alt="trie data structure" width="440px" height="330px" src="https://github.com/CalebAmes/CalebAmes/blob/main/TrieDataStructureImpl.png">
