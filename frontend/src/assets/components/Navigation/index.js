@@ -117,15 +117,19 @@ export function Dropdown({ openFunc }) {
 	function DropdownLinks() {
 		return (
 			<>
-				<div className="dropdown-item item">
-					<a href="https://github.com/CalebAmes">Github</a>
-				</div>
-				<div className="dropdown-item item">
-					<a href="https://www.linkedin.com/in/caleb-gilbert-b522ab142/">LinkedIn</a>
-				</div>
-				<div className="dropdown-item item">
-					<a href="https://calebames.github.io">Portfolio Site</a>
-				</div>
+				<a className="dropdown-item item" href="https://github.com/CalebAmes" target="_blank">
+					Github
+				</a>
+				<a
+					className="dropdown-item item"
+					href="https://www.linkedin.com/in/caleb-gilbert-b522ab142/"
+					target="_blank"
+				>
+					LinkedIn
+				</a>
+				<a className="dropdown-item item" href="https://calebames.github.io" target="_blank">
+					Portfolio Site
+				</a>
 			</>
 		);
 	}
@@ -238,15 +242,7 @@ export function Dropdown({ openFunc }) {
 							<div className="dropdown-item item">
 								<SignupFormModal user={user} text={'Sign Up'} />
 							</div>
-							<div className="dropdown-item item">
-								<a href="https://github.com/CalebAmes">Github</a>
-							</div>
-							<div className="dropdown-item item">
-								<a href="https://www.linkedin.com/in/caleb-gilbert-b522ab142/">LinkedIn</a>
-							</div>
-							<div className="dropdown-item item">
-								<a href="https://calebames.github.io">Portfolio Site</a>
-							</div>
+							<DropdownLinks />
 						</ul>
 					</div>
 				</>
