@@ -1,6 +1,8 @@
 # Shrewdness
 Welcome to the GitHub Repository for my App Academy Capstone Solo Project. The goal of this project is to be a Full Stack Group Chat Application. I will be implementing the Electron Framework to create a native MacOS and Windows application REPO:https://github.com/CalebAmes/ShrewdnessElectron. All this using a NODEjs backend, PostgreSQL database, and a React/Redux front end, styled with CSS and SCSS.
 
+<a href="https://shrewdness.herokuapp.com/" target="_blank">Click Here for live site<a/>
+
 ## Here are some of the features I'd like to highlight
 
 <img align="right" alt="splash page gif" src="https://github.com/CalebAmes/CalebAmes/blob/main/splashCapture.gif">
