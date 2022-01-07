@@ -8,13 +8,8 @@
 	background: var(--bars);
 	color: var(--highlight);
 	border-radius: 12px;
-	position: fixed;
-	z-index: 1;
-	width: 90vw;
-	left: 50%;
+	width: 100%;
 	margin: auto;
-	transform: translate(-50%, 0);
-	bottom: 25px;
 	min-height: 50px;
 }
 

@@ -1,11 +1,18 @@
-.messagePad {
-	padding: 30px;
+.chatPage {
+//	display: flex;
+	flex-direction: column;
+	width: 90%;
+	max-height: 80vh;
+	gap: 0;
+	margin: auto;
+	overflow: none;
 }
 
-.chatMessages {
-	min-width: 100vw;
-	min-height: 95vh;
+.messageContainer {
 	overflow: scroll;
-	border: none;
-	background: var(--bg);
+	// height: fit-content;
+	// transform: translateY(50px);
+	margin: auto;
+	height: 100%;
+	width: 100%;
 }

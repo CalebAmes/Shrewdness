@@ -18,6 +18,13 @@
 	margin-left: 5%;
 	overflow-wrap: anywhere;
 	margin-bottom: 8px;
+	position: relative;
+}
+
+.cardContainer {
+	position: absolute;
+	left: 10em;
+	top: -2em;
 }
 
 .post {
