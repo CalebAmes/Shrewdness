@@ -90,7 +90,6 @@ const ChatRoom = () => {
             ))}
           </div>
           <MessageInput
-            func={scroll}
             user={user}
             channelId={id}
             channelName={channel?.name}
