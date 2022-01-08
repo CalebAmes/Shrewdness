@@ -1,18 +1,28 @@
 .chatPage {
-//	display: flex;
+	display: flex;
 	flex-direction: column;
-	width: 90%;
-	max-height: 80vh;
-	gap: 0;
+	// justify-content: ;
+	margin: 3.5vh 0 0vh !important;
+	width: 100vw;
+	height: 95vh;
+	gap: 0.5em;
 	margin: auto;
 	overflow: none;
+	position: absolute;
+	z-index: 0;
 }
 
 .messageContainer {
-	overflow: scroll;
+	border-top: 1px solid var(--color-secondary);
+	border-bottom: 1px solid var(--color-secondary);
+	box-sizing: border-box;
+	overflow-y: scroll;
+	display: flex;
+	flex-direction: column;
+
 	// height: fit-content;
 	// transform: translateY(50px);
-	margin: auto;
+	padding: 10px;
 	height: 100%;
 	width: 100%;
 }
