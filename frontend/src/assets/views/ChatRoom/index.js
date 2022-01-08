@@ -71,7 +71,7 @@ const ChatRoom = () => {
 
   useEffect(() => {
     scroll();
-  }, [channelMessagesObj]);
+  }, [isLoaded, id]);
 
   return (
     <>
@@ -90,6 +90,7 @@ const ChatRoom = () => {
             ))}
           </div>
           <MessageInput
+            func={scroll}
             user={user}
             channelId={id}
             channelName={channel?.name}

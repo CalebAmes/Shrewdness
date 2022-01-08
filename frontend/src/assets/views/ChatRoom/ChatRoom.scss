@@ -2,9 +2,9 @@
 	display: flex;
 	flex-direction: column;
 	// justify-content: ;
-	margin: 3.5vh 0 0vh !important;
+	margin: 40px 0 0vh !important;
 	width: 100vw;
-	height: 95vh;
+	height: calc(100vh - 0.5em - 40px);
 	gap: 0.5em;
 	margin: auto;
 	overflow: none;
