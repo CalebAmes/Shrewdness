@@ -24,6 +24,16 @@
 }
 
 .darkmode {
+	--bg: #101e24;
+	--hover: #1a3038;
+	--highlight: #e63946;
+	--bars: #7ea7a8;
+	--color-main: rgb(190, 188, 188);
+	--color-secondary: #483c46;
+	--color-accent: #e63946;
+}
+
+.blue {
 	--bg: #1b263b;
 	--hover: #415a77;
 	--highlight: #0d1b2a;
@@ -33,19 +43,36 @@
 	--color-accent: #f4743b;
 }
 
-.blue {
-	--bg: #2374ab;
-	--hover: #231651;
-	--highlight: #d6fff6;
-	--bars: #4dccbd;
-	--color-main: #000;
-	--color-secondary: #fff;
-	--color-accent: #ff8484;
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+	height: 5px;
 }
+
+/* Track */
+::-webkit-scrollbar-track {
+	background: var(--hover);
+	border-radius: 8px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+	background: var(--color-accent);
+	border-radius: 8px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: var(--dark-text);
+}
+
 
 body {
 	font-family: 'Poppins', sans-serif;
 	background: var(--bg);
+	overflow: hidden;
+	margin: 0;
+	padding: 0;
 }
 
 ul,

@@ -3,7 +3,7 @@ import React from 'react';
 const UserCard = ({ user, closeCard, height }) => {
 	const translate = height + 65;
 	const styles = {
-		transform: `translateY(-${translate}px)`,
+	//	transform: `translateY(-${translate}px)`,
 	};
 
 	const avatarStyle = {
@@ -14,7 +14,7 @@ const UserCard = ({ user, closeCard, height }) => {
 	}
 
 	return (
-		<>
+		<div className="cardContainer">
 			<div className="cardBackground" onClick={closeCard}></div>
 			<div className="userCard" style={styles}>
 				<div className="leftCard" 
@@ -27,7 +27,7 @@ const UserCard = ({ user, closeCard, height }) => {
 					</div>
 				</div>
 			</div>
-		</>
+		</div>
 	);
 };
 

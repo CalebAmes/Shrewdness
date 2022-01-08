@@ -1,11 +1,24 @@
-.messagePad {
-	padding: 30px;
+.chatPage {
+	display: flex;
+	flex-direction: column;
+	margin: 40px 0 0vh !important;
+	width: 100vw;
+	height: calc(100vh - 0.5em - 40px);
+	gap: 0.5em;
+	margin: auto;
+	overflow: none;
+	position: absolute;
+	z-index: 0;
 }
 
-.chatMessages {
-	min-width: 100vw;
-	min-height: 95vh;
-	overflow: scroll;
-	border: none;
-	background: var(--bg);
+.messageContainer {
+	border-top: 1px solid var(--color-secondary);
+	border-bottom: 1px solid var(--color-secondary);
+	box-sizing: border-box;
+	overflow-y: scroll;
+	display: flex;
+	flex-direction: column;
+	padding: 10px;
+	height: 100%;
+	width: 100%;
 }

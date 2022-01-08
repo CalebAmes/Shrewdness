@@ -12,7 +12,7 @@
 	height: 150px;
 	border-radius: 8px;
 	overflow: hidden;
-	position: fixed;
+	position: absolute;
 	z-index: 10;
 	animation-name: fade;
 	animation-duration: 0.6s;
@@ -20,6 +20,7 @@
 	grid-template-columns: 50% 50%;
 	grid-template-rows: 1;
 	margin: 0;
+	border: 1px solid var(--highlight);
 }
 
 .leftCard {
@@ -39,7 +40,7 @@
 .bioDiv {
 	box-sizing: border-box;
 	margin-left: 8px;
-	color: #8e9297;
+	color: var(--color-secondary);
 	display: flex;
 	flex-direction: column;
 	transform: translateY(-10px);

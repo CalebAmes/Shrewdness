@@ -64,6 +64,7 @@ const ChatComponent = ({ message, channelId, currentUserId, users, scrollValue }
 	return (
 		<>
 			<div className="chatComponentDiv" onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}>
+				{card && <UserCard user={user} closeCard={closeCard} height={height} />}
 				<div className="post">
 					<img src={user?.avatar} alt='user avatar' className="avatar" onClick={closeCard} />
 					<div className="postMessage">
@@ -74,7 +75,6 @@ const ChatComponent = ({ message, channelId, currentUserId, users, scrollValue }
 							<div className="messageTime">
 								{message.createdAt === message.updatedAt && <p>{message.updatedAt}</p>}
 								{message.createdAt !== message.updatedAt && <p>edited at {message.updatedAt}</p>}
-								{card && <UserCard user={user} closeCard={closeCard} height={height} />}
 							</div>
 							{user?.id === currentUserId && hover && (
 								<div className="editMessage">

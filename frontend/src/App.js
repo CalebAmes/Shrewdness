@@ -12,6 +12,7 @@ import { getGroup } from './assets/store/groups';
 import { getNotification } from './assets/store/notifications';
 import { getUserGroup } from './assets/store/userGroups';
 import { getUsers } from './assets/store/users';
+import { applyTheme } from './assets';
 
 function App() {
 	const dispatch = useDispatch();
@@ -26,6 +27,10 @@ function App() {
 		dispatch(getUserGroup());
 		dispatch(getUsers());
 	}, [dispatch]);
+
+	useEffect(() => {
+		applyTheme()
+	}, [isLoaded])
 
 	return (
 		<>

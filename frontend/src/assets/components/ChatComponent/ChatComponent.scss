@@ -14,10 +14,17 @@
 .chatComponentDiv {
 	box-sizing: border-box;
 	color: var(--color-main);
-	width: 90vw;
-	margin-left: 5%;
+	// width: 100%;
+	// margin-left: 5%;
 	overflow-wrap: anywhere;
 	margin-bottom: 8px;
+	position: relative;
+}
+
+.cardContainer {
+	position: absolute;
+	left: 10em;
+	top: -2em;
 }
 
 .post {
