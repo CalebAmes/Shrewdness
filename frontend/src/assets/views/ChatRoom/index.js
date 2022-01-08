@@ -51,14 +51,16 @@ const ChatRoom = () => {
   useEffect(() => {
     dispatch(getGroup());
     dispatch(getChannel());
-    dispatch(getChannelMessages());
+    dispatch(getChannelMessages()).then(() => setIsLoaded(true));
     dispatch(getUsers());
-    setIsLoaded(true);
 
     seedAutoComplete();
 
-    socket.on(`chat_message_${id}`, async () => {
+    socket.on(`chat_message_${id}`, async (msg) => {
       await dispatch(getChannelMessages());
+      if (user.id === msg.userId) {
+        scroll();
+      }
 
       // this is for the electron version of this application
       // ipcRenderer.send('notify', msg);
