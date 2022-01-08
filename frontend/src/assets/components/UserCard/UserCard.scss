@@ -40,7 +40,7 @@
 .bioDiv {
 	box-sizing: border-box;
 	margin-left: 8px;
-	color: #8e9297;
+	color: var(--color-secondary);
 	display: flex;
 	flex-direction: column;
 	transform: translateY(-10px);
