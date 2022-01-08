@@ -24,6 +24,16 @@
 }
 
 .darkmode {
+	--bg: #101e24;
+	--hover: #1a3038;
+	--highlight: #e63946;
+	--bars: #7ea7a8;
+	--color-main: rgb(190, 188, 188);
+	--color-secondary: #483c46;
+	--color-accent: #457b9d;
+}
+
+.blue {
 	--bg: #1b263b;
 	--hover: #415a77;
 	--highlight: #0d1b2a;
@@ -33,7 +43,7 @@
 	--color-accent: #f4743b;
 }
 
-.blue {
+.x {
 	--bg: #2374ab;
 	--hover: #231651;
 	--highlight: #d6fff6;

@@ -1,7 +1,6 @@
 .chatPage {
 	display: flex;
 	flex-direction: column;
-	// justify-content: ;
 	margin: 40px 0 0vh !important;
 	width: 100vw;
 	height: calc(100vh - 0.5em - 40px);
@@ -19,9 +18,6 @@
 	overflow-y: scroll;
 	display: flex;
 	flex-direction: column;
-
-	// height: fit-content;
-	// transform: translateY(50px);
 	padding: 10px;
 	height: 100%;
 	width: 100%;

@@ -8,7 +8,7 @@
 	background: var(--bars);
 	color: var(--highlight);
 	border-radius: 12px;
-	width: 97%;
+	width: calc(100% - 1em);
 	margin: auto;
 	min-height: 50px;
 	// position: fixed;
