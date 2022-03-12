@@ -13,6 +13,15 @@ router.get(
 	})
 );
 
+router.get(
+	'/:id',
+	asyncHandler(async function (req, res) {
+		const { id } = req.params;
+		const channelMessage = await ChannelMessage.findAll({ where: { channelId: id }, order: [['updatedAt', 'DESC']] });
+		return res.json({ channelMessage });
+	})
+)
+
 router.post(
 	'/',
 	singleMulterUpload('image'),
