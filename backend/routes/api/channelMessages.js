@@ -17,7 +17,7 @@ router.get(
 	'/:id',
 	asyncHandler(async function (req, res) {
 		const { id } = req.params;
-		const channelMessage = await ChannelMessage.findAll({ where: { channelId: id }, order: [['updatedAt', 'DESC']] });
+		const channelMessage = await ChannelMessage.findAll({ where: { channelId: id }});
 		return res.json({ channelMessage });
 	})
 )
