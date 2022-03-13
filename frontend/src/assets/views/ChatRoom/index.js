@@ -62,7 +62,7 @@ const ChatRoom = () => {
 
     fetchMessages(id).then(res => {
       setMessages(res)
-    }).then(() => setIsLoaded(true));
+    }).then(() => setIsLoaded(true)).then(() => scroll());
 
     seedAutoComplete();
 
