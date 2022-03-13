@@ -51,13 +51,25 @@ const ChatRoom = () => {
   useEffect(() => {
     dispatch(getGroup());
     dispatch(getChannel());
-    dispatch(getChannelMessages()).then(() => setIsLoaded(true));
     dispatch(getUsers());
+
+    const fetchMessages = async (id) => {
+      const data = await fetch(
+        `/api/channelMessages/${id}`
+      ).then((res) => res.json()).catch((err) => console.error(err))
+      return data.channelMessage;
+    }
+
+    fetchMessages(id).then(res => {
+      setMessages(res)
+    }).then(() => setIsLoaded(true));
 
     seedAutoComplete();
 
     socket.on(`chat_message_${id}`, async (msg) => {
-      await dispatch(getChannelMessages());
+      await fetchMessages(id).then(res => {
+        setMessages(res)
+      })
       if (user.id === msg.userId) {
         scroll();
       }
@@ -67,7 +79,9 @@ const ChatRoom = () => {
     });
 
     socket.on(`edit_channel_${id}`, async () => {
-      await dispatch(getChannelMessages());
+      await fetchMessages(id).then(res => {
+        setMessages(res)
+      })
     });
   }, [id, dispatch]);
 
@@ -80,7 +94,7 @@ const ChatRoom = () => {
       {isLoaded && user && (
         <div className="chatPage">
           <div className="messageContainer" ref={scrollRef}>
-            {msgs.map((msg) => (
+            {messages.map((msg) => (
               <ChatComponent
                 key={msg.id}
                 channelId={id}
