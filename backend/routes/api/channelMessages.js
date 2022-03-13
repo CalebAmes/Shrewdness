@@ -1,6 +1,6 @@
 const express = require('express');
 const asyncHandler = require('express-async-handler');
-const { ChannelMessage } = require('../../db/models');
+const { ChannelMessage, User } = require('../../db/models');
 const { singlePublicFileUpload, singleMulterUpload } = require('../../awsS3');
 
 const router = express.Router();
@@ -17,7 +17,7 @@ router.get(
 	'/:id',
 	asyncHandler(async function (req, res) {
 		const { id } = req.params;
-		const channelMessage = await ChannelMessage.findAll({ where: { channelId: id }});
+		const channelMessage = await ChannelMessage.findAll({ where: { channelId: id }, include: User});
 		return res.json({ channelMessage });
 	})
 )
