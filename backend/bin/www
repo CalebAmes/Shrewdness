@@ -38,6 +38,8 @@ db.sequelize
 
 
     io.on('connection', socket => {
+      // testing when a socket is connected to test a cross origin connection from portfolio site
+      console.log('-> socket connection')
 
       //this is to a single client (current user)
 
