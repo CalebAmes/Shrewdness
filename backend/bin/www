@@ -7,7 +7,8 @@ const { singlePublicFileUpload2, singleMulterUpload } = require('../awsS3')
 
 const httpServer = require('http').createServer(app);
 const db = require('../db/models');
-const io = require('socket.io')(httpServer);
+const io = require('socket.io')(httpServer,
+  { cors: { origin: "http://localhost:3000" } });
 
 const postMessage = async (channelMessage) => {
   const {
