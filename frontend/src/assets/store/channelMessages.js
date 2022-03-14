@@ -55,7 +55,7 @@ function reducer(state = {}, action) {
 	let newState;
 	switch (action.type) {
 		case ADD_MESSAGE:
-			return { ...state, channelMessagel: action.payload };
+			return { ...state, channelMessage: action.payload };
 		case SET_MESSAGE:
 			newState = {};
 			action.channelMessage.forEach((item) => {

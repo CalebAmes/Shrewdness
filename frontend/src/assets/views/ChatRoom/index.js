@@ -35,8 +35,8 @@ const ChatRoom = () => {
   );
 
   const scroll = () => {
-    if (scrollRef.current?.lastChild) {
-      scrollRef.current.lastChild.scrollIntoView({ behavior: "smooth" });
+    if (scrollRef.current?.firstChild) {
+      scrollRef.current.firstChild.scrollIntoView({ behavior: "smooth" });
     }
   };
 
