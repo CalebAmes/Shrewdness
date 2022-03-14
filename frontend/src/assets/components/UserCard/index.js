@@ -1,11 +1,6 @@
 import React from 'react';
 
-const UserCard = ({ user, closeCard, height }) => {
-	const translate = height + 65;
-	const styles = {
-	//	transform: `translateY(-${translate}px)`,
-	};
-
+const UserCard = ({ user, closeCard }) => {
 	const avatarStyle = {
 		background:'url('+user.avatar+') center center',
 		backgroundSize: 'cover',
