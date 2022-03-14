@@ -11,7 +11,7 @@ const UserCard = ({ user, closeCard }) => {
 	return (
 		<div className="cardContainer">
 			<div className="cardBackground" onClick={closeCard}></div>
-			<div className="userCard" style={styles}>
+			<div className="userCard">
 				<div className="leftCard" 
 					style={avatarStyle}>
 				</div>
