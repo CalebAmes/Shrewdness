@@ -8,7 +8,11 @@ const { singlePublicFileUpload2, singleMulterUpload } = require('../awsS3')
 const httpServer = require('http').createServer(app);
 const db = require('../db/models');
 const io = require('socket.io')(httpServer,
-  { cors: { origin: "http://localhost:3000" } });
+  {
+    cors: {
+      origin: ["http://localhost:3000", "https://calebames.herokuapp.com/"]
+    }
+  });
 
 const postMessage = async (channelMessage) => {
   const {
@@ -40,7 +44,6 @@ db.sequelize
 
     io.on('connection', socket => {
       // testing when a socket is connected to test a cross origin connection from portfolio site
-      console.log('-> socket connection')
 
       //this is to a single client (current user)
 

@@ -24,7 +24,7 @@ if (!isProduction) {
 }
 
 // app.use(cors())
-app.use(cors({ origin: 'http://localhost:3000'}))
+app.use(cors({ origin: ['http://localhost:3000', 'https://calebames.herokuapp.com/']}))
 
 app.use(
 	helmet({
