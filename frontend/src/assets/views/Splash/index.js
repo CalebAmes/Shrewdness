@@ -33,9 +33,9 @@ const Home = () => {
 						of friends that want to spend some time together, Shrewdness makes it easy to talk every day and
 						hang out more often.
 					</h3>
-					<h2 className="download">Download for mac: <br/>
+					{/* <h2 className="download">Download for mac: <br/>
 						<a href={macDownload} target="mac os download link"><i class="fab fa-apple"/></a>
-					</h2>
+					</h2> */}
 				</div>
 			</div>
 			<div className="plentyBlock">
