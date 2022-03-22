@@ -29,7 +29,9 @@ app.use(
     origin: [
       "http://localhost:3000",
       "https://calebames.herokuapp.com",
-      "http://calebames.herokuapp.com"
+      "http://calebames.herokuapp.com",
+      "https://calebames.com",
+      "http://calebames.com",
     ]
   })
 );

@@ -1,25 +1,26 @@
 #!/usr/bin/env node
-const asyncHandler = require('express-async-handler');
-const { port } = require('../config');
-const app = require('../app');
-const { ChannelMessage } = require('../db/models');
-const { singlePublicFileUpload2, singleMulterUpload } = require('../awsS3')
+const asyncHandler = require("express-async-handler");
+const { port } = require("../config");
+const app = require("../app");
+const { ChannelMessage } = require("../db/models");
+const { singlePublicFileUpload2, singleMulterUpload } = require("../awsS3");
 
-const httpServer = require('http').createServer(app);
-const db = require('../db/models');
-const io = require('socket.io')(httpServer,
-  {
-    cors: {
-	    origin: ["http://localhost:3000", "https://calebames.herokuapp.com", "http://calebames.herokuapp.com"]
-    }
-  });
+const httpServer = require("http").createServer(app);
+const db = require("../db/models");
+const io = require("socket.io")(httpServer, {
+  cors: {
+    origin: [
+      "http://localhost:3000",
+      "https://calebames.herokuapp.com",
+      "http://calebames.herokuapp.com",
+      "https://calebames.com",
+      "http://calebames.com",
+    ],
+  },
+});
 
 const postMessage = async (channelMessage) => {
-  const {
-    channelId,
-    userId,
-    messageText,
-  } = channelMessage;
+  const { channelId, userId, messageText } = channelMessage;
   let messageImg;
   if (channelMessage.messageImg !== null) {
     messageImg = await singlePublicFileUpload2(channelMessage.messageImg);
@@ -31,46 +32,44 @@ const postMessage = async (channelMessage) => {
     messageImg,
   });
 
-  return true
-}
+  return true;
+};
 
 // Check the database connection before starting the app
 db.sequelize
   .authenticate()
   .then(() => {
-    console.log('Database connection success! Sequelize is ready to use...');
+    console.log("Database connection success! Sequelize is ready to use...");
     //run when client connects
 
-
-    io.on('connection', socket => {
+    io.on("connection", (socket) => {
       // testing when a socket is connected to test a cross origin connection from portfolio site
 
       //this is to a single client (current user)
 
-      socket.on('join_channel',
-        ({ channel, user }, callback) => {
-          socket.emit(`join_channel_res_${channel.id}`, `Welcome to Shrewdness`)
-          socket.broadcast.emit(`message`, `User has joined the chat room`);
-        })
+      socket.on("join_channel", ({ channel, user }, callback) => {
+        socket.emit(`join_channel_res_${channel.id}`, `Welcome to Shrewdness`);
+        socket.broadcast.emit(`message`, `User has joined the chat room`);
+      });
 
-      socket.on('disconnect', () => {
-        io.emit('message', 'user has left the chat')
-      })
+      socket.on("disconnect", () => {
+        io.emit("message", "user has left the chat");
+      });
 
-      socket.on('chatMessage', async (msg) => {
+      socket.on("chatMessage", async (msg) => {
         await postMessage(msg);
         io.emit(`chat_message_${msg.channelId}`, msg);
-      })
+      });
 
-      socket.on('edit', (id) => {
-        io.emit(`edit_channel_${id}`)
-      })
+      socket.on("edit", (id) => {
+        io.emit(`edit_channel_${id}`);
+      });
     });
 
     // Start listening for connections
     httpServer.listen(port, () => console.log(`Listening on port ${port}...`));
   })
   .catch((err) => {
-    console.log('Database connection failure.');
+    console.log("Database connection failure.");
     console.error(err);
   });
