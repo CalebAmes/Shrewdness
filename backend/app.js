@@ -32,7 +32,9 @@ app.use(
       "http://calebames.herokuapp.com",
       "https://calebames.com",
       "http://calebames.com",
-    ]
+      "https://www.calebames.com",
+      "http://www.calebames.com",
+    ],
   })
 );
 
