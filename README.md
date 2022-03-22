@@ -19,7 +19,7 @@ Files:
 Features:
 - 10 independently animated SVGs
 - 2 animated text blocks
-- 3 full with divs with gradient backgrounds
+- 3 full width divs with gradient backgrounds
 - ONLY accessible when the user is logged out
 
 Highlights:
