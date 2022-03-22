@@ -19,10 +19,10 @@ import "./ChatRoom.scss";
 const ChatRoom = () => {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
-  const channelsObj = useSelector((state) => state.channels);
-  const channelMessagesObj = useSelector((state) => state.channelMessages);
-  const users = useSelector((state) => state.users);
-  const user = useSelector((state) => state.session.user);
+  const channelsObj = useSelector(state => state.channels);
+  const channelMessagesObj = useSelector(state => state.channelMessages);
+  const users = useSelector(state => state.users);
+  const user = useSelector(state => state.session.user);
   const { id } = useParams();
   const currentChannelId = parseInt(id, 10);
   const channel = channelsObj[currentChannelId];
@@ -31,7 +31,7 @@ const ChatRoom = () => {
 
   const rawMessages = Object.values(channelMessagesObj);
   const msgs = rawMessages?.filter(
-    (message) => message?.channelId === currentChannelId
+    message => message?.channelId === currentChannelId
   );
 
   const scroll = () => {
@@ -48,71 +48,81 @@ const ChatRoom = () => {
     }
   };
 
-  useEffect(() => {
-    dispatch(getGroup());
-    dispatch(getChannel());
-    dispatch(getUsers());
+  useEffect(
+    () => {
+      dispatch(getGroup());
+      dispatch(getChannel());
+      dispatch(getUsers());
 
-    const fetchMessages = async (id) => {
-      const data = await fetch(
-        `/api/channelMessages/${id}`
-      ).then((res) => res.json()).catch((err) => console.error(err))
-      return data.channelMessage;
-    }
+      const fetchMessages = async id => {
+        const data = await fetch(`/api/channelMessages/${id}`)
+          .then(res => res.json())
+          .catch(err => console.error(err));
+        return data.channelMessage;
+      };
 
-    fetchMessages(id).then(res => {
-      setMessages(res)
-    }).then(() => setIsLoaded(true)).then(() => scroll());
+      fetchMessages(id)
+        .then(res => {
+          setMessages(res);
+        })
+        .then(() => setIsLoaded(true))
+        .then(() => scroll());
 
-    seedAutoComplete();
+      seedAutoComplete();
 
-    socket.on(`chat_message_${id}`, async (msg) => {
-      await fetchMessages(id).then(res => {
-        setMessages(res)
-      })
-      if (user.id === msg.userId) {
-        scroll();
-      }
+      socket.on(`chat_message_${id}`, async msg => {
+        await fetchMessages(id).then(res => {
+          setMessages(res);
+        });
+        if (user.id === msg.userId) {
+          scroll();
+        }
 
-      // this is for the electron version of this application
-      // ipcRenderer.send('notify', msg);
-    });
+        // this is for the electron version of this application
+        // ipcRenderer.send('notify', msg);
+      });
 
-    socket.on(`edit_channel_${id}`, async () => {
-      await fetchMessages(id).then(res => {
-        setMessages(res)
-      })
-    });
-  }, [id, dispatch]);
+      socket.on(`edit_channel_${id}`, async () => {
+        await fetchMessages(id).then(res => {
+          setMessages(res);
+        });
+      });
+    },
+    [id, dispatch]
+  );
 
-  useEffect(() => {
-    scroll();
-  }, [isLoaded, id]);
+  useEffect(
+    () => {
+      scroll();
+    },
+    [isLoaded, id]
+  );
 
   return (
     <>
-      {isLoaded && user && (
-        <div className="chatPage">
-          <div className="messageContainer" ref={scrollRef}>
-            {messages.map((msg) => (
-              <ChatComponent
-                key={msg.id}
-                channelId={id}
-                message={msg}
-                users={users}
-                scrollValue={scrollValue}
-                currentUserId={user.id}
-              />
-            ))}
+      {isLoaded &&
+        user && (
+          <div className="chatPage">
+            <div className="messageContainer" ref={scrollRef}>
+              {messages.map(msg => (
+                <ChatComponent
+                  key={msg.id}
+                  channelId={id}
+                  message={msg}
+                  users={users}
+                  scrollValue={scrollValue}
+                  currentUserId={user.id}
+                />
+              ))}
+            </div>
+            <MessageInput
+              user={user}
+              channelId={id}
+              channelName={channel?.name}
+              autoComplete={autoComplete}
+            />
           </div>
-          <MessageInput
-            user={user}
-            channelId={id}
-            channelName={channel?.name}
-            autoComplete={autoComplete}
-          />
-        </div>
-      )}
+        )}
       {!user && <Redirect to="/" />}
     </>
   );

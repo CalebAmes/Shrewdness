@@ -10,13 +10,13 @@ const MessageInput = ({ user, channelId, channelName, autoComplete }) => {
   const [autoCompleteResults, setAutoCompleteResults] = useState([]);
   const userId = user?.id;
 
-  const valHandler = (array) => {
+  const valHandler = array => {
     const valArray = array.split(" ");
     const val = valArray[valArray.length - 1].toString();
     return val;
   };
 
-  const keyPress = (e) => {
+  const keyPress = e => {
     if (e.key === "Enter") {
       e.preventDefault();
       sendMessage();
@@ -32,7 +32,7 @@ const MessageInput = ({ user, channelId, channelName, autoComplete }) => {
     }
   };
 
-  const fillMessage = async (word) => {
+  const fillMessage = async word => {
     const valueArray = value.split(" ");
     valueArray.pop();
     valueArray.push(word);
@@ -41,7 +41,7 @@ const MessageInput = ({ user, channelId, channelName, autoComplete }) => {
     document.querySelector(".messageInputTextarea").innerHTML = value;
   };
 
-  const sendAlert = (string) => {
+  const sendAlert = string => {
     setAlert(string);
     setTimeout(() => setAlert(""), 3000);
   };
@@ -56,39 +56,39 @@ const MessageInput = ({ user, channelId, channelName, autoComplete }) => {
         messageText: value.trim(),
         userId,
         channelId,
-        messageImg: files[0],
+        messageImg: files[0]
       };
     } else {
       msg = {
         messageText: value.trim(),
         userId,
         channelId,
-        messageImg: null,
+        messageImg: null
       };
     }
     socket.emit(`chatMessage`, msg);
   };
 
-  const autoCompleteFunc = (val) => {
+  const autoCompleteFunc = val => {
     const newVal = valHandler(val);
     setAutoCompleteResults(autoComplete.autocomplete(newVal));
   };
 
   const { getRootProps, getInputProps } = useDropzone({
     accept: "image/*",
-    onDrop: (acceptedFiles) => {
+    onDrop: acceptedFiles => {
       setFiles(
-        acceptedFiles.map((file) =>
+        acceptedFiles.map(file =>
           Object.assign(file, {
-            preview: URL.createObjectURL(file),
+            preview: URL.createObjectURL(file)
           })
         )
       );
     },
-    maxFileSize: 3097152,
+    maxFileSize: 3097152
   });
 
-  const images = files.map((file) => (
+  const images = files.map(file => (
     <div key={file.name}>
       <div>
         <img src={file.preview} style={{ width: "100px" }} alt="preview" />
@@ -110,9 +110,9 @@ const MessageInput = ({ user, channelId, channelName, autoComplete }) => {
             <i className="fas fa-image fa-lg" />
           </div>
           <input
-						type="text"
+            type="text"
             maxLength="140"
-            onChange={(e) => {
+            onChange={e => {
               autoCompleteFunc(e.target.value);
               setValue(e.target.value);
             }}
@@ -120,7 +120,7 @@ const MessageInput = ({ user, channelId, channelName, autoComplete }) => {
             value={value}
             className="messageInputTextarea"
             placeholder={`Message # ${channelName}`}
-          ></input>
+          />
         </div>
         <div className="preview">
           {files[0] && (
@@ -135,7 +135,7 @@ const MessageInput = ({ user, channelId, channelName, autoComplete }) => {
         <div className="autocomplete">
           <p>Click or Press '/'</p>
           <ul className="autocompleteList">
-            {autoCompleteResults?.slice(0, 10).map((word) => (
+            {autoCompleteResults?.slice(0, 10).map(word => (
               <li key={word} onClick={() => fillMessage(word)}>
                 {word}
               </li>

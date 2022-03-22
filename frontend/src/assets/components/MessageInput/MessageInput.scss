@@ -1,105 +1,105 @@
 .messageInputDiv {
-	// border: 1px solid var(--color-main);
-	font-size: 18px;
-	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
-	align-items: center;
-	background: var(--bars);
-	color: var(--highlight);
-	border-radius: 12px;
-	width: calc(100% - 1em);
-	margin: auto;
-	min-height: 50px;
-	// position: fixed;
-	// bottom: 20px;
+  // border: 1px solid var(--color-main);
+  font-size: 18px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--bars);
+  color: var(--highlight);
+  border-radius: 12px;
+  width: calc(100% - 1em);
+  margin: auto;
+  min-height: 50px;
+  // position: fixed;
+  // bottom: 20px;
 }
 
-.messageInputLeft{
-	// margin: auto;
-	height: 100%;
-	display: flex;
-	flex-direction: row;
-	justify-content: flex-start;
-	align-items: center;
-	width: 100%;
-	margin-left: 8px;
+.messageInputLeft {
+  // margin: auto;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  margin-left: 8px;
 }
 
 .messageInputTextarea {
-	background: var(--bars);
-	color: var(--highlight);
-	width: 80%;
-	border: none;
-	outline: none;
-	resize: none;
-	font-size: 18px;
-	// margin-top: 15px;
-	margin-left: 8px;
+  background: var(--bars);
+  color: var(--highlight);
+  width: 80%;
+  border: none;
+  outline: none;
+  resize: none;
+  font-size: 18px;
+  // margin-top: 15px;
+  margin-left: 8px;
 }
 
 .dropzone {
-	// margin-top: 20px;
-	// margin-left: 25px;
-	display: flex;
-	flex-direction: row;
-	outline: none;
-	cursor: pointer;
+  // margin-top: 20px;
+  // margin-left: 25px;
+  display: flex;
+  flex-direction: row;
+  outline: none;
+  cursor: pointer;
 }
 
 .preview {
-	transform: translateY(-3px) translateX(-15px);
+  transform: translateY(-3px) translateX(-15px);
 }
 
 .fa-window-close {
-	transform: translateY(8px) translateX(-12px);
+  transform: translateY(8px) translateX(-12px);
 }
 
 .autocomplete {
-	position: fixed;
-	z-index: 5;
-	width: 120px;
-	background: var(--bars);
-	color: var(--highlight);
-	transform: translateX(65vw);
-	bottom: 100px;
-	padding: 10px;
-	border-radius: 12px;
-	opacity: 0.8;
-	transition: all var(--speed) ease;
-	animation-name: fade2;
-	animation-duration: 0.3s;
+  position: fixed;
+  z-index: 5;
+  width: 120px;
+  background: var(--bars);
+  color: var(--highlight);
+  transform: translateX(65vw);
+  bottom: 100px;
+  padding: 10px;
+  border-radius: 12px;
+  opacity: 0.8;
+  transition: all var(--speed) ease;
+  animation-name: fade2;
+  animation-duration: 0.3s;
 }
 
 @keyframes fade2 {
-	from {
-		opacity: 0;
-	}
-	to {
-		opacity: 0.8;
-	}
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 0.8;
+  }
 }
 
 .autocomplete:hover {
-	opacity: 1;
+  opacity: 1;
 }
 
 .autocompleteList > li:hover {
-	filter: brightness(2.3);
+  filter: brightness(2.3);
 }
 
 .autocomplete > p {
-	padding: 0px;
-	margin: auto;
+  padding: 0px;
+  margin: auto;
 }
 
 .alert {
-	position: fixed;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	width: 90vw;
-	left: 50%;
-	transform: translate(-50%, 0);
-	bottom: 100px;
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 90vw;
+  left: 50%;
+  transform: translate(-50%, 0);
+  bottom: 100px;
 }

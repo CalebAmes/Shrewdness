@@ -1,64 +1,64 @@
 :root {
-	--bg: #fff;
-	--hover: #efefef;
-	--highlight: #beee62;
-	--bars: #483c46;
-	--color-main: #000;
-	--color-secondary: #483c46;
-	--color-accent: #f4743b;
-	--font-size: 14px;
-	--border-radius: 4px;
-	--speed: 500ms;
-	--border: 1px solid rgba(0, 0, 0, 0.2);
-	--nav-size: 48px;
+  --bg: #fff;
+  --hover: #efefef;
+  --highlight: #beee62;
+  --bars: #483c46;
+  --color-main: #000;
+  --color-secondary: #483c46;
+  --color-accent: #f4743b;
+  --font-size: 14px;
+  --border-radius: 4px;
+  --speed: 500ms;
+  --border: 1px solid rgba(0, 0, 0, 0.2);
+  --nav-size: 48px;
 }
 
 .main {
-	--bg: #fff;
-	--hover: #efefef;
-	--highlight: #beee62;
-	--bars: #483c46;
-	--color-main: #000;
-	--color-secondary: #483c46;
-	--color-accent: #f4743b;
+  --bg: #fff;
+  --hover: #efefef;
+  --highlight: #beee62;
+  --bars: #483c46;
+  --color-main: #000;
+  --color-secondary: #483c46;
+  --color-accent: #f4743b;
 }
 
 .darkmode {
-	--bg: #101e24;
-	--hover: #1a3038;
-	--highlight: #e63946;
-	--bars: #7ea7a8;
-	--color-main: rgb(190, 188, 188);
-	--color-secondary: #483c46;
-	--color-accent: #e63946;
+  --bg: #101e24;
+  --hover: #1a3038;
+  --highlight: #e63946;
+  --bars: #7ea7a8;
+  --color-main: rgb(190, 188, 188);
+  --color-secondary: #483c46;
+  --color-accent: #e63946;
 }
 
 .blue {
-	--bg: #1b263b;
-	--hover: #415a77;
-	--highlight: #0d1b2a;
-	--bars: #483c46;
-	--color-main: #e0e1dd;
-	--color-secondary: #887284;
-	--color-accent: #f4743b;
+  --bg: #1b263b;
+  --hover: #415a77;
+  --highlight: #0d1b2a;
+  --bars: #483c46;
+  --color-main: #e0e1dd;
+  --color-secondary: #887284;
+  --color-accent: #f4743b;
 }
 
 /* width */
 ::-webkit-scrollbar {
   width: 5px;
-	height: 5px;
+  height: 5px;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
-	background: var(--hover);
-	border-radius: 8px;
+  background: var(--hover);
+  border-radius: 8px;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-	background: var(--color-accent);
-	border-radius: 8px;
+  background: var(--color-accent);
+  border-radius: 8px;
 }
 
 /* Handle on hover */
@@ -66,38 +66,36 @@
   background: var(--dark-text);
 }
 
-
 body {
-	font-family: 'Poppins', sans-serif;
-	background: var(--bg);
-	// overflow-y: hidden;
-	margin: 0;
-	padding: 0;
+  font-family: "Poppins", sans-serif;
+  background: var(--bg);
+  // overflow-y: hidden;
+  margin: 0;
+  padding: 0;
 }
 
 ul,
 li {
-	list-style: none;
-	margin: 0;
-	padding: 0;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 a {
-	color: inherit;
-	text-decoration: none;
+  color: inherit;
+  text-decoration: none;
 }
 
 link,
 div {
-	text-decoration: none;
+  text-decoration: none;
 }
 
 // this is setup to let the user cards calculate height
 .chatMessages {
-	max-height: 200px;
-	min-height: 200px;
-	max-width: 200px;
-	overflow: scroll;
-	z-index: -1;
+  max-height: 200px;
+  min-height: 200px;
+  max-width: 200px;
+  overflow: scroll;
+  z-index: -1;
 }
-
